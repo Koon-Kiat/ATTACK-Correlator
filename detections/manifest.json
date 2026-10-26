@@ -1,0 +1,373 @@
+{
+  "index_pattern": "windows-apt-events-*",
+  "matching_unit": "distinct event.id",
+  "phase": 6,
+  "schema_version": 1,
+  "scope": "All retained historical documents; no wall-clock or annotation/scenario predicate. Missing timestamps remain eligible for individual rules.",
+  "techniques": [
+    {
+      "attack_guidance": {
+        "absent": "Native PowerShell provider logs, including 4103/4104/4105/4106 and 400/403, were not observed.",
+        "analytic_id": "AN1252",
+        "data_components": [
+          "Process Creation (DC0032)",
+          "Command Execution (DC0064)",
+          "Process Metadata (DC0034)",
+          "Module Load (DC0016)"
+        ],
+        "present": "Sysmon 1 process creation; Sysmon 7 module telemetry exists; other mapped supporting events can be explored.",
+        "strategy_id": "DET0455",
+        "summary": "Inspect interpreter arguments and ancestry together with module, network or child-process observations; direct and hosted PowerShell require different coverage."
+      },
+      "attack_id": "T1059.001",
+      "authoritative_refined_query_file": "detections/technique-1/detection.esql",
+      "baseline_query_file": "detections/technique-1/baseline.esql",
+      "baseline_rationale": "The baseline requires Sysmon process creation (provider plus event 1) and a case-insensitive PowerShell executable name. It measures observed interpreter launches, including approved administration; it does not infer malicious intent.",
+      "car": [
+        {
+          "id": "CAR-2014-04-003",
+          "name": "Powershell Execution",
+          "use": "Process creation and non-interactive parent context; an explorer-parent exclusion is a contextual concept, not copied as a final rule."
+        }
+      ],
+      "comparisons": [
+        {
+          "event_id": "4ea94313bd0565c1a29ba059663e5824ebe4f2b9a7e25e1430f451017feef75c",
+          "explanation": "Process inventory with Bypass has routine command semantics; its Public-directory splunkd.exe parent remains suspicious. Ambiguous comparison, not a known benign event."
+        }
+      ],
+      "directory": "detections/technique-1",
+      "false_negative_limitations": [
+        "Native PowerShell 400/403/4103/4104 telemetry absent",
+        "Renamed or in-process PowerShell and encoded-only commands",
+        "Aliases, alternate spacing, string construction and missing command content",
+        "Downloads and execution split across events are intentionally outside this rule"
+      ],
+      "false_positive_candidates": [
+        "Approved download-and-run administration or software bootstrap scripts",
+        "Authorized hidden automation and marker-file tests",
+        "Quoted, commented or echoed indicators without executing the represented action"
+      ],
+      "kql_file": "detections/technique-1/detection.kql",
+      "kql_role": "Coarse process/command-presence review filter only; not equivalent to refined ES|QL. KQL cannot reproduce TO_LOWER plus token-pattern logic faithfully.",
+      "latest_validated_match_counts": {
+        "powershell_baseline": 2060,
+        "powershell_kql_review": 2060,
+        "powershell_refined": 290
+      },
+      "logic": "PowerShell process creation whose same command contains retrieval plus execution indicators, or hidden window plus no-profile and inline command switches. No separate event is required.",
+      "matching_unit": "distinct event.id",
+      "name": "PowerShell",
+      "predicate_fields": [
+        "event.provider",
+        "event.code",
+        "process.name",
+        "process.command_line"
+      ],
+      "providers_event_codes": {
+        "Microsoft-Windows-Sysmon": [
+          "1"
+        ]
+      },
+      "queries": [
+        {
+          "cohort": "process_creation",
+          "file": "detections/technique-1/baseline.esql",
+          "id": "powershell_baseline",
+          "language": "esql",
+          "phase5_query_key": "powershell_execution",
+          "role": "baseline"
+        },
+        {
+          "cohort": "process_creation",
+          "file": "detections/technique-1/detection.esql",
+          "id": "powershell_refined",
+          "language": "esql",
+          "refines": "powershell_baseline",
+          "role": "refined"
+        },
+        {
+          "cohort": "process_review",
+          "file": "detections/technique-1/detection.kql",
+          "id": "powershell_kql_review",
+          "language": "kql",
+          "role": "review_filter"
+        }
+      ],
+      "reference_access_date_utc": "2026-09-13",
+      "reference_urls": [
+        "https://attack.mitre.org/techniques/T1059/001/",
+        "https://attack.mitre.org/detectionstrategies/DET0455/",
+        "https://car.mitre.org/analytics/CAR-2014-04-003/"
+      ],
+      "refinement_tradeoff": "Require retrieval together with execution in the same command, or the combination of hidden window, no-profile and inline-command switches. Retrieval means Invoke-WebRequest, DownloadString, DownloadFile or bounded iwr; execution means Invoke-Expression, bounded iex or Start-Process. Bypass alone, inventory commands, encoded-only commands and download-only scripts are excluded. Approved installers can satisfy both retrieval and execution; hidden marker-file automation can also match. The omitted events include valid PowerShell activity, so lower volume does not demonstrate improved accuracy.",
+      "tactics": [
+        "Execution"
+      ],
+      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+    },
+    {
+      "attack_guidance": {
+        "absent": "AN0578 lists Security 4688, which is absent here. EDR script-block telemetry is also unavailable; do not claim those feeds exist.",
+        "analytic_id": "AN0578",
+        "data_components": [
+          "Process Creation (DC0032)",
+          "Module Load (DC0016)",
+          "Script Execution (DC0029)"
+        ],
+        "present": "Dataset Sysmon 1 provides equivalent Process Creation telemetry; CAR also uses process creation and parent fields.",
+        "strategy_id": "DET0202",
+        "summary": "Assess shell argument patterns, ancestry and related actions. Local historical baselines are needed before calling a parent unusual."
+      },
+      "attack_id": "T1059.003",
+      "authoritative_refined_query_file": "detections/technique-2/detection.esql",
+      "baseline_query_file": "detections/technique-2/baseline.esql",
+      "baseline_rationale": "The baseline requires Sysmon process creation (provider plus event 1) and cmd.exe. It retains ordinary command-shell activity, including /c commands and routine directory changes.",
+      "car": [
+        {
+          "id": "CAR-2014-11-002",
+          "name": "Outlier Parents of Cmd",
+          "use": "Parent-context comparison; historical anomaly thresholds require later testing."
+        },
+        {
+          "id": "CAR-2014-05-002",
+          "name": "Services launching Cmd",
+          "use": "Service-origin cmd process concept, also relevant to Windows Service."
+        }
+      ],
+      "comparisons": [
+        {
+          "event_id": "013759f2600917245402d8f22e97bde725d1262bdd8b0a6ec1ba03f28de52002",
+          "explanation": "Directory-changing shell command has a routine explanation. Retain ancestry; not independently certified benign."
+        }
+      ],
+      "directory": "detections/technique-2",
+      "false_negative_limitations": [
+        "Renamed cmd.exe, missing command/parent fields or unsupported quoting/spacing",
+        "Absolute or remote sc invocation forms outside the literal command pattern",
+        "Other shell abuse unrelated to service mechanisms remains outside this refinement"
+      ],
+      "false_positive_candidates": [
+        "Authorized service wrappers and maintenance scripts",
+        "Approved changes assigning interpreters to service commands",
+        "Quoted/echoed commands; substring presence is not full shell parsing"
+      ],
+      "kql_file": "detections/technique-2/detection.kql",
+      "kql_role": "Coarse process/command-presence review filter only; not equivalent to refined ES|QL. KQL cannot reproduce TO_LOWER plus token-pattern logic faithfully.",
+      "latest_validated_match_counts": {
+        "shell_baseline": 7717,
+        "shell_kql_review": 7717,
+        "shell_refined": 172
+      },
+      "logic": "cmd.exe process creation whose same record has services.exe ancestry plus a PowerShell executable in its command, or an sc create/config command assigning an interpreter-valued binPath.",
+      "matching_unit": "distinct event.id",
+      "name": "Windows Command Shell",
+      "predicate_fields": [
+        "event.provider",
+        "event.code",
+        "process.name",
+        "process.command_line",
+        "process.parent.name"
+      ],
+      "providers_event_codes": {
+        "Microsoft-Windows-Sysmon": [
+          "1"
+        ]
+      },
+      "queries": [
+        {
+          "cohort": "process_creation",
+          "file": "detections/technique-2/baseline.esql",
+          "id": "shell_baseline",
+          "language": "esql",
+          "phase5_query_key": "command_shell_execution",
+          "role": "baseline"
+        },
+        {
+          "cohort": "process_creation",
+          "file": "detections/technique-2/detection.esql",
+          "id": "shell_refined",
+          "language": "esql",
+          "refines": "shell_baseline",
+          "role": "refined"
+        },
+        {
+          "cohort": "process_review",
+          "file": "detections/technique-2/detection.kql",
+          "id": "shell_kql_review",
+          "language": "kql",
+          "role": "review_filter"
+        }
+      ],
+      "reference_access_date_utc": "2026-09-13",
+      "reference_urls": [
+        "https://attack.mitre.org/techniques/T1059/003/",
+        "https://attack.mitre.org/detectionstrategies/DET0202/",
+        "https://car.mitre.org/analytics/CAR-2014-11-002/",
+        "https://car.mitre.org/analytics/CAR-2014-05-002/"
+      ],
+      "refinement_tradeoff": "Require services.exe as parent plus a PowerShell executable mention, or an sc create/config command with an interpreter mentioned after binPath=. Neither /c nor a rare parent alone qualifies. The three services-parent records support that branch; service-control command intent supports the other. Routine directory changes and most shell work are removed, but shell abuse outside these service mechanisms is also missed. Strings are inspected as preserved, including escaped quotes and literal &amp;&amp;; no shell parser, executed child or final GUID join is implied.",
+      "tactics": [
+        "Execution"
+      ],
+      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+    },
+    {
+      "attack_guidance": {
+        "absent": "DET0552 lists Security 4697 and Sysmon 6/14; these are absent. SCM 7045 is the dataset substitution, not falsely described as 4697.",
+        "analytic_id": "AN1527",
+        "data_components": [
+          "Service Creation (DC0060)",
+          "Process Creation (DC0032)",
+          "Windows Registry Key Modification (DC0063)",
+          "Driver Load (DC0079)"
+        ],
+        "present": "Sysmon 1 and 13 are present. SCM System 7045 supplies service-installation evidence corresponding to the service creation concept.",
+        "strategy_id": "DET0552",
+        "summary": "Combine service creation/configuration, registry changes and process lineage; inspect unusual executable locations or service-launched interpreters."
+      },
+      "attack_id": "T1543.003",
+      "authoritative_refined_query_file": "detections/technique-3/detection.esql",
+      "baseline_query_file": "detections/technique-3/baseline.esql",
+      "baseline_rationale": "The primary baseline uses Service Control Manager 7045 installation semantics. Separate Sysmon 1 sc.exe create and binPath configuration baselines supply like-for-like denominators for their refinements. Sysmon 13 Services ImagePath writes form a supporting cohort. No count is subtracted from 102 installations or summed across these cohorts.",
+      "car": [
+        {
+          "id": "CAR-2014-05-002",
+          "name": "Services launching Cmd",
+          "use": "Direct service-origin shell behaviour, observed in three independent process records."
+        },
+        {
+          "id": "CAR-2013-09-005",
+          "name": "Service Outlier Executables",
+          "use": "Service executable comparison; no 30-day clean baseline or copied historical pseudocode is claimed."
+        }
+      ],
+      "comparisons": [
+        {
+          "event_id": "0b1f6f98acb0185bf38e6311eff2d76c0f98da7c178dea8dbe3fecc074ab9f7e",
+          "explanation": "SCM installation uses a Defender Definition Updates driver path. Plausible legitimate update; path appearance is not signature or trust verification."
+        },
+        {
+          "event_id": "078a375e7354cdc8386ff93052945d498573e06a1f989587a7e6368899b659ff",
+          "explanation": "sc config Fax assigns fxssvc.exe, consistent with restoring a service binary. Context/authorization is unverified."
+        },
+        {
+          "event_id": "0487faae790fdea3e8ddbe6d23a87a7cd485da163032b1e9b4a5959adff6f555",
+          "explanation": "Creation of an AtomicTestService_CMD executable service is excluded because the configured binary is not an interpreter. This illustrates a coverage gap, not a benign verdict."
+        }
+      ],
+      "directory": "detections/technique-3",
+      "false_negative_limitations": [
+        "Security 4697 absent; SCM object fields preserved but unindexed",
+        "API/PowerShell service modifications bypass the sc.exe process variants",
+        "Services using direct executables instead of interpreters, including genuinely suspicious creations, are excluded",
+        "Interpreter mention is not proof of service startup, outcome or persistence"
+      ],
+      "false_positive_candidates": [
+        "Approved service tests, maintenance and interpreter-based service wrappers",
+        "Legitimate Defender/driver and software-update installations in the separate SCM baseline",
+        "An interpreter string in a quoted argument may not be the actual service executable"
+      ],
+      "kql_file": "detections/technique-3/detection.kql",
+      "kql_role": "Coarse process/command-presence review filter only; not equivalent to refined ES|QL. KQL cannot reproduce TO_LOWER plus token-pattern logic faithfully.",
+      "latest_validated_match_counts": {
+        "service_config_baseline": 117,
+        "service_config_refined": 108,
+        "service_create_baseline": 155,
+        "service_create_refined": 41,
+        "service_installation": 102,
+        "service_kql_review": 523,
+        "service_registry": 708
+      },
+      "logic": "Separate sc.exe create and config process variants with an interpreter mentioned after binPath=. SCM 7045 and Services ImagePath writes remain distinct observational baselines; no searchable installation-object refinement is claimed.",
+      "matching_unit": "distinct event.id",
+      "name": "Windows Service",
+      "predicate_fields": [
+        "event.provider",
+        "event.code",
+        "process.name",
+        "process.command_line",
+        "registry.path"
+      ],
+      "providers_event_codes": {
+        "Microsoft-Windows-Sysmon": [
+          "1",
+          "13"
+        ],
+        "Service Control Manager": [
+          "7045"
+        ]
+      },
+      "queries": [
+        {
+          "cohort": "service_installation",
+          "file": "detections/technique-3/baseline.esql",
+          "id": "service_installation",
+          "language": "esql",
+          "phase5_query_key": "service_installed",
+          "role": "baseline"
+        },
+        {
+          "cohort": "service_create_process",
+          "file": "detections/technique-3/baseline-create.esql",
+          "id": "service_create_baseline",
+          "language": "esql",
+          "phase5_query_key": "service_create_command",
+          "role": "comparison_baseline"
+        },
+        {
+          "cohort": "service_create_process",
+          "file": "detections/technique-3/detection.esql",
+          "id": "service_create_refined",
+          "language": "esql",
+          "refines": "service_create_baseline",
+          "role": "refined"
+        },
+        {
+          "cohort": "service_config_process",
+          "file": "detections/technique-3/baseline-config.esql",
+          "id": "service_config_baseline",
+          "language": "esql",
+          "phase5_query_key": "service_binpath_config",
+          "role": "comparison_baseline"
+        },
+        {
+          "cohort": "service_config_process",
+          "file": "detections/technique-3/detection-config.esql",
+          "id": "service_config_refined",
+          "language": "esql",
+          "refines": "service_config_baseline",
+          "role": "refined"
+        },
+        {
+          "cohort": "registry_write",
+          "file": "detections/technique-3/baseline-registry.esql",
+          "id": "service_registry",
+          "language": "esql",
+          "phase5_query_key": "service_registry_imagepath",
+          "role": "supporting_baseline"
+        },
+        {
+          "cohort": "process_review",
+          "file": "detections/technique-3/detection.kql",
+          "id": "service_kql_review",
+          "language": "kql",
+          "role": "review_filter"
+        }
+      ],
+      "reference_access_date_utc": "2026-09-13",
+      "reference_urls": [
+        "https://attack.mitre.org/techniques/T1543/003/",
+        "https://attack.mitre.org/detectionstrategies/DET0552/",
+        "https://car.mitre.org/analytics/CAR-2014-05-002/",
+        "https://car.mitre.org/analytics/CAR-2013-09-005/"
+      ],
+      "refinement_tradeoff": "For sc.exe create and config separately, require an interpreter mention after binPath=. Direct service executables, including potentially suspicious test binaries, are excluded; configuration restoring fxssvc.exe has a routine explanation. A textual mention after binPath is not proof of the parsed executable or service start. SCM serviceName/imagePath remain retrieved, unindexed original fields. The 7045 and registry cohorts remain broad observations rather than falsely claimed refinements.",
+      "tactics": [
+        "Persistence",
+        "Privilege Escalation"
+      ],
+      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+FROM windows-apt-events-*
+| WHERE event.provider == "Microsoft-Windows-Sysmon" AND event.code == "1"
+    AND TO_LOWER(process.name) IN ("powershell.exe", "pwsh.exe")
+| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, ""))
+| EVAL retrieval = command_lc RLIKE ".*(invoke-webrequest|downloadstring|downloadfile|[^a-z0-9_]iwr[^a-z0-9_]).*",
+    execution = command_lc RLIKE ".*(invoke-expression|[^a-z0-9_]iex[^a-z0-9_]|start-process).*",
+    hidden = command_lc RLIKE ".*[ ]-(w|windowstyle)[ ]+hidden([ ].*)?",
+    no_profile = command_lc RLIKE ".*[ ]-(nop|noprofile)([ ].*)?",
+    inline_command = command_lc RLIKE ".*[ ]-(c|command)[ ]+.*"
+| WHERE (retrieval AND execution) OR (hidden AND no_profile AND inline_command)
+| KEEP event.id, @timestamp, host.name, retrieval, execution, hidden, no_profile, inline_command
+| SORT event.id ASC
+| LIMIT 10000

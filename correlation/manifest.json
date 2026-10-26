@@ -1,0 +1,51 @@
+{
+  "correlation_id": "SHA-256 of compact UTF-8 JSON array of ordered event IDs",
+  "default_window_seconds": 60,
+  "index_pattern": "windows-apt-events-*",
+  "matching_unit": "ordered tuple of distinct event IDs",
+  "phase6_expected_refined_counts": {
+    "powershell_refined": 290,
+    "service_config_refined": 108,
+    "service_create_refined": 41,
+    "shell_refined": 172
+  },
+  "phase6_query_sha256": {
+    "detections/technique-1/baseline.esql": "3608c17c8968d44484e145b59955c10b1e72270a93ed475b21a4431eb668ea45",
+    "detections/technique-1/detection.esql": "a5c0fe4dd9d0d5e98a620cef5cfd2f26b9a7d5fbfab02adeda724f36fe6938b4",
+    "detections/technique-1/detection.kql": "023b32bc935e27a2c91a63c85857043b5efbfbed09db30c0d1426307c0b9d838",
+    "detections/technique-2/baseline.esql": "c9f1d06026a5aa462ee406eeb0d5365f3d8bf873ef109e94b9c9e5f789c745df",
+    "detections/technique-2/detection.esql": "fe55d00ede00ecade2ca6c2c30234c6ec1d0696ed854fb0ca28444ab0695ad08",
+    "detections/technique-2/detection.kql": "48bed556670a145e2a7f98b82682ab7621d5ce7ad1721267e121551e5c779422",
+    "detections/technique-3/baseline-config.esql": "f076ef01e2aa6cfad8da249b80801e13aad5ce4f734bf4cef97ba346bfeace61",
+    "detections/technique-3/baseline-create.esql": "b6ed3c8f4acc94c596083de9c172504ee52c410ee4a8fac0bff64aef2e3ca9ee",
+    "detections/technique-3/baseline-registry.esql": "f3d6c7662a4570e083ffff28f7988a4f6f592e52cdb07d87da03f5dc5157b921",
+    "detections/technique-3/baseline.esql": "eea1745f2a5696cae8dbcf862b1819192a1c8db8569fdf71283d33a5e5c8512e",
+    "detections/technique-3/detection-config.esql": "cf03df40bdcbfb81fd708f88494689008702a9c29143816d9f50631974c4ad45",
+    "detections/technique-3/detection.esql": "c7ba53145709d2d4be931d84ecd85e783b1a6b171a87bc0e22370e6aaf6db187",
+    "detections/technique-3/detection.kql": "c04583f09c3e6c16e6e0036c4647d8330ca32ef21556a97f3f50a1e5d6a778dd"
+  },
+  "queries": {
+    "broad_eql": "correlation/baseline.eql",
+    "endpoint_esql": "correlation/correlation.esql",
+    "eql_request": "correlation/eql-request.json",
+    "primary_eql": "correlation/correlation.eql"
+  },
+  "reference_access_date_utc": "2026-09-13",
+  "references": [
+    "https://www.elastic.co/docs/reference/query-languages/eql",
+    "https://www.elastic.co/docs/reference/query-languages/eql/eql-syntax",
+    "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search",
+    "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+  ],
+  "schema_version": 1,
+  "selected_ids": [
+    "T1059.001",
+    "T1059.003",
+    "T1543.003"
+  ],
+  "sensitivity_windows_seconds": [
+    60,
+    300,
+    900
+  ]
+}

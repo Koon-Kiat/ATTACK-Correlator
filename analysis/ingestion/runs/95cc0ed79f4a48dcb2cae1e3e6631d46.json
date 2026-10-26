@@ -1,0 +1,261 @@
+{
+  "completed_at_utc": "2026-09-12T13:36:51.039561+00:00",
+  "error": "Docker Compose exec failed; inspect local service logs",
+  "index": "windows-apt-events-v1",
+  "index_count_before": 0,
+  "ingestion_seconds": 69.93,
+  "logstash_stats": {
+    "ephemeral_id": "e4935160-4a1c-4a37-9d50-20fb68aaca98",
+    "host": "48f471123a3d",
+    "http_address": "0.0.0.0:9600",
+    "id": "a90eda35-c38f-4afd-b69c-a138275947a8",
+    "name": "48f471123a3d",
+    "pipeline": {
+      "batch_delay": 50,
+      "batch_size": 125,
+      "workers": 1
+    },
+    "pipelines": {
+      "main": {
+        "batch": {
+          "byte_size": {
+            "average": {
+              "last_1_minute": 3457000,
+              "lifetime": 3457000
+            },
+            "current": 4485871,
+            "max": {
+              "lifetime": 4534271
+            },
+            "p50": {
+              "lifetime": 3221503
+            },
+            "p90": {
+              "lifetime": 4276223
+            }
+          },
+          "event_count": {
+            "average": {
+              "last_1_minute": 125,
+              "lifetime": 125
+            },
+            "current": 125
+          }
+        },
+        "dead_letter_queue": {
+          "dropped_events": 0,
+          "expired_events": 0,
+          "last_error": "no errors",
+          "max_queue_size_in_bytes": 1073741824,
+          "queue_size_in_bytes": 1,
+          "storage_policy": "drop_newer"
+        },
+        "ephemeral_id": "02fa201c-a924-4cdb-bfc2-5c565cdc662d",
+        "events": {
+          "duration_in_millis": 59758,
+          "filtered": 102011,
+          "in": 102011,
+          "out": 102011,
+          "queue_push_duration_in_millis": 49138
+        },
+        "flow": {
+          "filter_throughput": {
+            "current": 1590.0,
+            "last_1_minute": 1663.0,
+            "lifetime": 1663.0
+          },
+          "input_throughput": {
+            "current": 1566.0,
+            "last_1_minute": 1663.0,
+            "lifetime": 1663.0
+          },
+          "output_throughput": {
+            "current": 1590.0,
+            "last_1_minute": 1663.0,
+            "lifetime": 1663.0
+          },
+          "queue_backpressure": {
+            "current": 0.7856,
+            "last_1_minute": 0.8009,
+            "lifetime": 0.8009
+          },
+          "worker_concurrency": {
+            "current": 0.9386,
+            "last_1_minute": 0.974,
+            "lifetime": 0.974
+          },
+          "worker_utilization": {
+            "current": 93.86,
+            "last_1_minute": 97.4,
+            "lifetime": 97.4
+          }
+        },
+        "hash": "8a6d0802bd0ea91abec45ed79f7e6cab87af8c4dc03f62abfcf73f9de6672610",
+        "pipeline": {
+          "batch_delay": 50,
+          "batch_size": 125,
+          "workers": 1
+        },
+        "plugins": {
+          "codecs": [
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 0,
+                "writes_in": 0
+              },
+              "id": "plain_5c4d1f99-4675-4287-82ac-6c24b6aa4145",
+              "name": "plain"
+            },
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 23,
+                "writes_in": 0
+              },
+              "id": "json_lines_dd335b46-ff19-4cc3-b3e2-621f4f824501",
+              "name": "json_lines"
+            },
+            {
+              "id": "23ebb15b-2aff-4f1c-bf95-b05d17e9968e",
+              "name": "plain"
+            }
+          ],
+          "filters": [
+            {
+              "events": {
+                "duration_in_millis": 9633,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.09218,
+                  "last_1_minute": 0.09443,
+                  "lifetime": 0.09443
+                },
+                "worker_utilization": {
+                  "current": 14.55,
+                  "last_1_minute": 15.7,
+                  "lifetime": 15.7
+                }
+              },
+              "id": "phase4_evidence",
+              "name": "ruby"
+            }
+          ],
+          "inputs": [
+            {
+              "events": {
+                "out": 102011,
+                "queue_push_duration_in_millis": 49125
+              },
+              "flow": {
+                "throughput": {
+                  "current": 1566.0,
+                  "last_1_minute": 1663.0,
+                  "lifetime": 1663.0
+                }
+              },
+              "id": "phase4_input",
+              "name": "file"
+            }
+          ],
+          "outputs": [
+            {
+              "bulk_requests": {
+                "responses": {
+                  "200": 817
+                },
+                "successes": 817
+              },
+              "documents": {
+                "successes": 102011
+              },
+              "events": {
+                "duration_in_millis": 49804,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.5001,
+                  "last_1_minute": 0.4882,
+                  "lifetime": 0.4882
+                },
+                "worker_utilization": {
+                  "current": 78.93,
+                  "last_1_minute": 81.18,
+                  "lifetime": 81.18
+                }
+              },
+              "id": "phase4_elasticsearch",
+              "name": "elasticsearch"
+            },
+            {
+              "events": {
+                "duration_in_millis": 183,
+                "in": 0,
+                "out": 0
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": "Infinity",
+                  "last_1_minute": "Infinity",
+                  "lifetime": "Infinity"
+                },
+                "worker_utilization": {
+                  "current": 0.2103,
+                  "last_1_minute": 0.2983,
+                  "lifetime": 0.2983
+                }
+              },
+              "id": "phase4_rejects",
+              "name": "file"
+            }
+          ]
+        },
+        "queue": {
+          "events_count": 0,
+          "max_queue_size_in_bytes": 0,
+          "queue_size_in_bytes": 0,
+          "type": "memory"
+        },
+        "reloads": {
+          "failures": 0,
+          "last_error": null,
+          "last_failure_timestamp": null,
+          "last_success_timestamp": null,
+          "successes": 0
+        }
+      }
+    },
+    "snapshot": false,
+    "status": "yellow",
+    "version": "9.5.3"
+  },
+  "phase3_manifest_sha256": "b4d715be0d67d4aba9b8b3478e67df24295e8536ed738ca473c5e483597d4806",
+  "phase3_verification": {
+    "all_original_rows_reconstructed": true,
+    "all_rows_accounted_for": true,
+    "input_events": 102011,
+    "offline_mapping_contract_passed": true,
+    "output_and_report_hashes_match": true,
+    "processed_events": 102011,
+    "raw_hashes_match": true,
+    "rejected_events": 0
+  },
+  "processed_sha256": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac",
+  "reset_requested": false,
+  "run_id": "95cc0ed79f4a48dcb2cae1e3e6631d46",
+  "started_at_utc": "2026-09-12T13:35:41.082135+00:00",
+  "status": "failed"
+}

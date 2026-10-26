@@ -1,0 +1,395 @@
+{
+  "index_patterns": [
+    "windows-apt-events-*"
+  ],
+  "priority": 200,
+  "template": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "@timestamp": {
+          "format": "strict_date_optional_time_nanos",
+          "type": "date_nanos"
+        },
+        "agent": {
+          "properties": {
+            "id": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "destination": {
+          "properties": {
+            "ip": {
+              "type": "ip"
+            },
+            "port": {
+              "type": "long"
+            }
+          }
+        },
+        "dll": {
+          "properties": {
+            "hash": {
+              "properties": {
+                "md5": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha1": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha256": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha512": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                }
+              }
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "path": {
+              "type": "wildcard"
+            }
+          }
+        },
+        "dns": {
+          "properties": {
+            "question": {
+              "properties": {
+                "name": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "event": {
+          "properties": {
+            "code": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "id": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "original": {
+              "doc_values": false,
+              "index": false,
+              "type": "keyword"
+            },
+            "provider": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "file": {
+          "properties": {
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "path": {
+              "type": "wildcard"
+            }
+          }
+        },
+        "host": {
+          "properties": {
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "network": {
+          "properties": {
+            "transport": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "process": {
+          "properties": {
+            "command_line": {
+              "type": "wildcard"
+            },
+            "entity_id": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "executable": {
+              "type": "wildcard"
+            },
+            "hash": {
+              "properties": {
+                "md5": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha1": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha256": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                },
+                "sha512": {
+                  "ignore_above": 128,
+                  "type": "keyword"
+                }
+              }
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "parent": {
+              "properties": {
+                "command_line": {
+                  "type": "wildcard"
+                },
+                "entity_id": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "executable": {
+                  "type": "wildcard"
+                },
+                "name": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "pid": {
+                  "type": "long"
+                }
+              }
+            },
+            "pid": {
+              "type": "long"
+            }
+          }
+        },
+        "registry": {
+          "properties": {
+            "path": {
+              "type": "wildcard"
+            }
+          }
+        },
+        "rule": {
+          "properties": {
+            "id": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "source": {
+          "properties": {
+            "ip": {
+              "type": "ip"
+            },
+            "port": {
+              "type": "long"
+            }
+          }
+        },
+        "user": {
+          "properties": {
+            "domain": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "id": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "name": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "windows_apt": {
+          "properties": {
+            "annotations": {
+              "properties": {
+                "attack": {
+                  "properties": {
+                    "ids": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    },
+                    "names": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    },
+                    "tactics": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "wazuh": {
+                  "enabled": false,
+                  "type": "object"
+                }
+              }
+            },
+            "observed": {
+              "properties": {
+                "flags": {
+                  "properties": {
+                    "destination_is_ipv6": {
+                      "type": "boolean"
+                    },
+                    "initiated": {
+                      "type": "boolean"
+                    },
+                    "signed": {
+                      "type": "boolean"
+                    },
+                    "source_is_ipv6": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            },
+            "original": {
+              "enabled": false,
+              "type": "object"
+            },
+            "provenance": {
+              "properties": {
+                "csv_record_end_line": {
+                  "type": "long"
+                },
+                "dataset": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "dataset_version": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "original_id": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "original_index": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "processing_version": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "row_sha256": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "source_file": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "source_representation": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "source_row_index": {
+                  "type": "long"
+                },
+                "source_sha256": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                }
+              }
+            },
+            "quality": {
+              "properties": {
+                "mapping_warnings": {
+                  "properties": {
+                    "code": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    },
+                    "field": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "normalization_warnings": {
+                  "properties": {
+                    "code": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    },
+                    "field": {
+                      "ignore_above": 1024,
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "timestamp": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                }
+              }
+            },
+            "scenario": {
+              "properties": {
+                "attribution_strength": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "derived_label": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "id": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "metadata_ref": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "name": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "source_mapping": {
+                  "enabled": false,
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "settings": {
+      "number_of_replicas": 0,
+      "number_of_shards": 1
+    }
+  }
+}

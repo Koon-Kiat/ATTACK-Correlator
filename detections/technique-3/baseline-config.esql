@@ -1,0 +1,8 @@
+FROM windows-apt-events-*
+| WHERE event.provider == "Microsoft-Windows-Sysmon" AND event.code == "1"
+    AND TO_LOWER(process.name) == "sc.exe"
+    AND TO_LOWER(COALESCE(process.command_line, "")) LIKE "* config *"
+    AND TO_LOWER(COALESCE(process.command_line, "")) LIKE "*binpath=*"
+| KEEP event.id, @timestamp, host.name
+| SORT event.id ASC
+| LIMIT 10000

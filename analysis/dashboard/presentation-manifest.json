@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "document_count": 881,
+    "primary_rows": 3,
+    "record_counts": {
+      "correlation_pair": 261,
+      "detection_event": 611,
+      "scenario_event": 9
+    },
+    "refined_hosts": 3,
+    "refined_pairs": 3,
+    "rule_counts": {
+      "powershell_refined": 290,
+      "service_config_refined": 108,
+      "service_create_refined": 41,
+      "shell_refined": 172
+    },
+    "scenario_triples": 3
+  },
+  "documents_sha256": "217fa276783712abc02bfe3bf0e4a26e3b96ae52cd500180c9363c74b1015bcf",
+  "generator_sha256": "3ca36530e829df3845d5615fc1d9b19391c08b56dcce9412cf02a51c29db8054",
+  "historical_time_range": {
+    "from": "2024-11-05T00:00:00.000Z",
+    "to": "2024-12-15T23:59:59.999Z"
+  },
+  "input_sha256": {
+    "analysis/evaluation/dashboard-contract.json": "afb8fec0f9a159810542d00291e2a3586da969fcf8458d1513aa255db0c4d2bc",
+    "analysis/evaluation/evaluation-results.json": "029867f3b6b452f1b3a6cbe308510bf740dd0ad6418a01b0d3e5a8ec42dfcfee",
+    "analysis/scenarios/scenario-demonstration.json": "0169ef7f918f601b6567d8421abc1df34ebc0f75813ff6c748a8a8aabc967326"
+  },
+  "passed": true,
+  "presentation_index": "attack-correlator-dashboard-v1",
+  "presentation_source_event_ids": 1091,
+  "source_event_ids_sha256": "bc4adc79a85c38aa6fe64658cbc239336bf3911b17c9f1b23ab60626ddfbd79c",
+  "source_event_ids_verified": 1096,
+  "source_index_pattern": "windows-apt-events-*",
+  "source_projection_sha256": "e017290789a07f2b06c6bcc86388bdb808f2d0436ccfee66d9ae828f227f46c1",
+  "source_state": {
+    "counts": {
+      "timed": 90601,
+      "total": 102011,
+      "undated": 11410
+    },
+    "mapping_sha256": "c5d6addd202746103dac6b8cc31ab6bd9ca08106eaba723283b00614e613bf6f"
+  },
+  "timezone": "UTC",
+  "units": {
+    "correlation_pair": "ordered pair",
+    "detection_event": "event within rule",
+    "scenario_event": "event within triple"
+  }
+}

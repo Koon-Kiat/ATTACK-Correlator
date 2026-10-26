@@ -1,0 +1,40 @@
+{
+  "_source": [
+    "@timestamp",
+    "event.id",
+    "event.code",
+    "event.provider",
+    "host.name",
+    "agent",
+    "user",
+    "process",
+    "file",
+    "registry",
+    "dll",
+    "source",
+    "destination",
+    "dns",
+    "windows_apt.provenance",
+    "windows_apt.quality",
+    "windows_apt.original"
+  ],
+  "query": {
+    "ids": {
+      "values": [
+        "be75d1504e5784527dfd60bc35420d21f910b57ffba3ffcc1d84ec30c23070f9",
+        "c5a93a534cf031f5789b321d070b3f6cf33ec3e79e50b72cf15e384b7821e8e4",
+        "c87894aacb7c79e770e4eb8b1fd95fcf9612bb5fddba0c3f00edea3a9a9d6634"
+      ]
+    }
+  },
+  "size": 10,
+  "sort": [
+    {
+      "@timestamp": "asc"
+    },
+    {
+      "event.id": "asc"
+    }
+  ],
+  "track_total_hits": true
+}

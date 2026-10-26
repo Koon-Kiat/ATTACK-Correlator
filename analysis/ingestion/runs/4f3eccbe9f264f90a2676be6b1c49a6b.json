@@ -1,0 +1,269 @@
+{
+  "completed_at_utc": "2026-09-12T13:39:30.917569+00:00",
+  "error": "Live validation failed; see analysis/ingestion/phase4-validation.json",
+  "implementation_sha256": {
+    "docker-compose.yml": "83795daa33b646601fb2430a058e2ced8d10621bc4af4ccbe88edb3c15b884fd",
+    "logstash/config/logstash.yml": "e0d1ade857d51fae305470aaa20492cb509055e2aa2e43e0a348a3cda85feffc",
+    "logstash/pipeline/windows-apt.conf": "f5043a8358fe4db9176ebe9401f23c93e50fb0c5c147184cb061205e8653e623",
+    "logstash/scripts/preserve_event.rb": "66222196980a81125b1fb8ac1d0ebef9487f922b3ef3c0c451cfe8c33f922c7f",
+    "scripts/ingest.py": "a6147c5ac02452fc66d184be10f5931322b9bd6ded7cf498861a993b26db321c"
+  },
+  "index": "windows-apt-events-v1",
+  "index_count_after": 102011,
+  "index_count_before": 102011,
+  "ingestion_seconds": 68.83,
+  "logstash_stats": {
+    "ephemeral_id": "35a8b573-3849-451e-97a9-33a3d25680cd",
+    "host": "90f779cbcede",
+    "http_address": "0.0.0.0:9600",
+    "id": "a90eda35-c38f-4afd-b69c-a138275947a8",
+    "name": "90f779cbcede",
+    "pipeline": {
+      "batch_delay": 50,
+      "batch_size": 125,
+      "workers": 1
+    },
+    "pipelines": {
+      "main": {
+        "batch": {
+          "byte_size": {
+            "average": {
+              "last_1_minute": 3459000,
+              "lifetime": 3459000
+            },
+            "current": 0,
+            "max": {
+              "lifetime": 4349951
+            },
+            "p50": {
+              "lifetime": 3282943
+            },
+            "p90": {
+              "lifetime": 4202495
+            }
+          },
+          "event_count": {
+            "average": {
+              "last_1_minute": 125,
+              "lifetime": 125
+            },
+            "current": 0
+          }
+        },
+        "dead_letter_queue": {
+          "dropped_events": 0,
+          "expired_events": 0,
+          "last_error": "no errors",
+          "max_queue_size_in_bytes": 1073741824,
+          "queue_size_in_bytes": 1,
+          "storage_policy": "drop_newer"
+        },
+        "ephemeral_id": "a81cc0a9-d9e2-49ec-9d16-18b0aa2ad832",
+        "events": {
+          "duration_in_millis": 56060,
+          "filtered": 102011,
+          "in": 102011,
+          "out": 102011,
+          "queue_push_duration_in_millis": 45318
+        },
+        "flow": {
+          "filter_throughput": {
+            "current": 946.8,
+            "last_1_minute": 1669.0,
+            "lifetime": 1669.0
+          },
+          "input_throughput": {
+            "current": 922.7,
+            "last_1_minute": 1669.0,
+            "lifetime": 1669.0
+          },
+          "output_throughput": {
+            "current": 946.7,
+            "last_1_minute": 1669.0,
+            "lifetime": 1669.0
+          },
+          "queue_backpressure": {
+            "current": 0.4937,
+            "last_1_minute": 0.7414,
+            "lifetime": 0.7414
+          },
+          "worker_concurrency": {
+            "current": 0.6108,
+            "last_1_minute": 0.9171,
+            "lifetime": 0.9171
+          },
+          "worker_utilization": {
+            "current": 61.08,
+            "last_1_minute": 91.71,
+            "lifetime": 91.71
+          }
+        },
+        "hash": "f5043a8358fe4db9176ebe9401f23c93e50fb0c5c147184cb061205e8653e623",
+        "pipeline": {
+          "batch_delay": 50,
+          "batch_size": 125,
+          "workers": 1
+        },
+        "plugins": {
+          "codecs": [
+            {
+              "id": "331a9811-f536-40a9-bd28-6002377d210c",
+              "name": "plain"
+            },
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 22,
+                "writes_in": 0
+              },
+              "id": "json_lines_6f6c5d04-6ccc-4338-8b8b-a1e3edd36b4d",
+              "name": "json_lines"
+            },
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 0,
+                "writes_in": 0
+              },
+              "id": "plain_a885c57c-3a22-4a25-b14d-9ad7f0a595a3",
+              "name": "plain"
+            }
+          ],
+          "filters": [
+            {
+              "events": {
+                "duration_in_millis": 9834,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.1163,
+                  "last_1_minute": 0.0964,
+                  "lifetime": 0.0964
+                },
+                "worker_utilization": {
+                  "current": 10.87,
+                  "last_1_minute": 16.09,
+                  "lifetime": 16.09
+                }
+              },
+              "id": "phase4_evidence",
+              "name": "ruby"
+            }
+          ],
+          "inputs": [
+            {
+              "events": {
+                "out": 102011,
+                "queue_push_duration_in_millis": 45306
+              },
+              "flow": {
+                "throughput": {
+                  "current": 922.7,
+                  "last_1_minute": 1669.0,
+                  "lifetime": 1669.0
+                }
+              },
+              "id": "phase4_input",
+              "name": "file"
+            }
+          ],
+          "outputs": [
+            {
+              "events": {
+                "duration_in_millis": 182,
+                "in": 0,
+                "out": 0
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": "Infinity",
+                  "last_1_minute": "Infinity",
+                  "lifetime": "Infinity"
+                },
+                "worker_utilization": {
+                  "current": 0.2586,
+                  "last_1_minute": 0.2978,
+                  "lifetime": 0.2978
+                }
+              },
+              "id": "phase4_rejects",
+              "name": "file"
+            },
+            {
+              "bulk_requests": {
+                "responses": {
+                  "200": 817
+                },
+                "successes": 817
+              },
+              "documents": {
+                "successes": 102011
+              },
+              "events": {
+                "duration_in_millis": 45904,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.5333,
+                  "last_1_minute": 0.45,
+                  "lifetime": 0.45
+                },
+                "worker_utilization": {
+                  "current": 49.86,
+                  "last_1_minute": 75.11,
+                  "lifetime": 75.11
+                }
+              },
+              "id": "phase4_elasticsearch",
+              "name": "elasticsearch"
+            }
+          ]
+        },
+        "queue": {
+          "events_count": 0,
+          "max_queue_size_in_bytes": 0,
+          "queue_size_in_bytes": 0,
+          "type": "memory"
+        },
+        "reloads": {
+          "failures": 0,
+          "last_error": null,
+          "last_failure_timestamp": null,
+          "last_success_timestamp": null,
+          "successes": 0
+        }
+      }
+    },
+    "snapshot": false,
+    "status": "green",
+    "version": "9.5.3"
+  },
+  "phase3_manifest_sha256": "b4d715be0d67d4aba9b8b3478e67df24295e8536ed738ca473c5e483597d4806",
+  "phase3_verification": {
+    "all_original_rows_reconstructed": true,
+    "all_rows_accounted_for": true,
+    "input_events": 102011,
+    "offline_mapping_contract_passed": true,
+    "output_and_report_hashes_match": true,
+    "processed_events": 102011,
+    "raw_hashes_match": true,
+    "rejected_events": 0
+  },
+  "processed_sha256": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac",
+  "reset_requested": false,
+  "run_id": "4f3eccbe9f264f90a2676be6b1c49a6b",
+  "started_at_utc": "2026-09-12T13:38:22.084602+00:00",
+  "status": "failed"
+}

@@ -1,0 +1,5 @@
+api.http.host: "0.0.0.0"
+xpack.monitoring.enabled: false
+pipeline.ecs_compatibility: v8
+pipeline.workers: 1
+dead_letter_queue.enable: true

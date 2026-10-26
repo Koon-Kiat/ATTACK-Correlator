@@ -1,0 +1,413 @@
+- banner:
+  - status "Page change announcements": ATT&CK Detection & Correlation — Windows-APT 2025 - Dashboards - Elastic
+  - button "Skip to main content":
+    - generic: Skip to main content
+  - link "Elastic home":
+    - /url: /s/attack-correlator/app/home
+    - img "Elastic Logo"
+  - searchbox "Find apps, content, and more."
+  - 'generic "Keyboard shortcut: Control + /"': ^/
+  - paragraph: Use the Up and Down arrow keys to move focus over options. Press Enter to select. Press Escape to collapse options.
+  - button "Help menu":
+  - button "Newsfeed menu - unread items available":
+  - button "Submit feedback" [disabled]:
+    - img "Submit feedback"
+  - button "AI Agent":
+    - generic: AI Agent
+  - button "Account menu":
+    - img "elastic":
+      - generic: e
+  - button "Toggle primary navigation":
+  - button "Spaces navigation":
+    - img "ATT&CK Correlator":
+      - generic: AC
+  - navigation "Breadcrumbs":
+    - list:
+      - button "Dashboards"
+      - generic "ATT&CK Detection & Correlation — Windows-APT 2025"
+  - button "Add to Starred":
+  - navigation "App menu":
+    - button "Share":
+      - generic: Share
+    - button "Export":
+      - generic: Export
+    - button "More":
+    - button "Edit":
+      - generic: Edit
+- heading "Dashboards - ATT&CK Detection & Correlation — Windows-APT 2025" [level=1]
+- button "Add filter":
+- button "Query menu":
+- combobox "Search and filter the dashboards page":
+  - search:
+    - textbox "Start typing to search and filter the dashboards page":
+      - /placeholder: Filter your data using KQL syntax
+      - text: "detection.name host.name: \"__dashboard_no_match__\""
+    - button "Clear input"
+- button "Fast mode unavailable" [disabled]:
+- button "Sep 25, 2024 @ 00:00 → Nov 5, 2024 @ 00:00 ~1mo":
+  - generic: Sep 25, 2024 @ 00:00 → Nov 5, 2024 @ 00:00
+  - generic "~1mo":
+    - generic: ~1mo
+- group "Time window actions":
+  - generic: Time window actions
+  - button "Previous" [active]:
+    - generic: Previous
+  - button "Zoom out":
+    - generic: Zoom out
+  - button "Next":
+    - generic: Next
+- button "Refresh query":
+  - generic: Refresh
+- button "Send to background" [disabled]:
+- separator
+- figure:
+  - heading "ATT&CK detection & correlation" [level=2]
+  - paragraph:
+    - strong: Windows-APT 2025
+    - text: · T1059.001 PowerShell · T1059.003 Windows Command Shell · T1543.003 Windows Service
+  - paragraph:
+    - strong: "Fixed full historical scope: 5 November–15 December 2024 · UTC."
+    - text: Overview metrics/charts and scenario snapshots retain the validated scope. The Detection Event Evidence table accepts membership and search filters within this period.
+  - paragraph:
+    - strong: Counts represent detection candidates/evidence units, not confirmed attacks.
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "PowerShell":
+      - heading "PowerShell" [level=2]:
+        - button "PowerShell":
+          - generic "PowerShell"
+      - paragraph: Distinct candidate events
+      - paragraph: "290"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "Windows Command Shell":
+      - heading "Windows Command Shell" [level=2]:
+        - button "Windows Command Shell":
+          - generic "Windows Command Shell"
+      - paragraph: Distinct candidate events
+      - paragraph: "172"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "Service-create":
+      - heading "Service-create" [level=2]:
+        - button "Service-create":
+          - generic "Service-create"
+      - paragraph: Distinct candidate events
+      - paragraph: "41"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "Service-config":
+      - heading "Service-config" [level=2]:
+        - button "Service-config":
+          - generic "Service-config"
+      - paragraph: Distinct candidate events
+      - paragraph: "108"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "Refined correlation":
+      - heading "Refined correlation" [level=2]:
+        - button "Refined correlation":
+          - generic "Refined correlation"
+      - paragraph: Ordered pairs
+      - paragraph: "3"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - figure "Refined correlation hosts":
+      - heading "Refined correlation hosts" [level=2]:
+        - button "Refined correlation hosts":
+          - generic "Refined correlation hosts"
+      - paragraph: Distinct hosts
+      - paragraph: "3"
+  - button "1 visualization modifier":
+    - generic: "1"
+- figure:
+  - generic: Refined detection activity · UTC days
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - generic "series color":
+    - 'button "PowerShell; Click: to show, Ctrl + Click: to hide"': PowerShell
+    - generic "series color":
+    - 'button "Command Shell; Click: to show, Ctrl + Click: to hide"': Command Shell
+    - generic "series color":
+    - 'button "Service-create; Click: to show, Ctrl + Click: to hide"': Service-create
+    - generic "series color":
+    - 'button "Service-config; Click: to show, Ctrl + Click: to hide"': Service-config
+  - 'figure "Chart type: bar chart"':
+    - term: "Chart type:"
+    - definition: bar chart
+- figure:
+  - generic: Refined activity by host
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - list:
+    - generic "series color":
+    - 'button "PowerShell; Click: to show, Ctrl + Click: to hide"': PowerShell
+    - generic "series color":
+    - 'button "Command Shell; Click: to show, Ctrl + Click: to hide"': Command Shell
+    - generic "series color":
+    - 'button "Service-create; Click: to show, Ctrl + Click: to hide"': Service-create
+    - generic "series color":
+    - 'button "Service-config; Click: to show, Ctrl + Click: to hide"': Service-config
+  - 'figure "Chart type: bar chart"':
+    - term: "Chart type:"
+    - definition: bar chart
+- figure:
+  - paragraph: Detection membership (evidence table)
+  - combobox "Detection membership (evidence table)":
+    - generic: service_config_refined
+    - img "1 selection returns no results."
+    - generic: "1"
+- figure:
+  - generic: Inspect detection records
+  - paragraph:
+    - text: Choose a membership above; clear other search/filter pills for its full count. No selection shows
+    - strong: 611 event-within-rule rows
+    - text: . Overview KPIs remain fixed. Expand a row for full fields. Click
+    - strong: Source event ID
+    - text: for the original
+    - code: windows-apt-events-*
+    - text: record; empty cells mean unavailable.
+  - paragraph:
+    - strong: "Open historical records in Discover:"
+    - link "PowerShell refined (290) (external, opens in a new tab or window)":
+      - /url: /s/attack-correlator/app/discover#/?_a=%28query%3A%28esql%3A%27FROM%20attack-correlator-dashboard-%2A%20%7C%20WHERE%20record.kind%20%3D%3D%20%22detection_event%22%20AND%20detection.id%20%3D%3D%20%22powershell_refined%22%20AND%20%40timestamp%20%3E%3D%20TO_DATETIME%28%222024-11-05T00%3A00%3A00.000Z%22%29%20AND%20%40timestamp%20%3C%3D%20TO_DATETIME%28%222024-12-15T23%3A59%3A59.999Z%22%29%20%7C%20KEEP%20%40timestamp%2C%20analyst.attack_id%2C%20analyst.technique%2C%20detection.name%2C%20host.name%2C%20user.name%2C%20process.name%2C%20process.command_line%2C%20event.id%2C%20detection.id%20%7C%20SORT%20%40timestamp%2C%20event.id%20%7C%20LIMIT%201000%27%29%29&_g=%28time%3A%28from%3A%272024-11-05T00%3A00%3A00.000Z%27%2Cto%3A%272024-12-15T23%3A59%3A59.999Z%27%29%29
+      - text: PowerShell refined (290)
+      - generic: (external, opens in a new tab or window)
+    - text: ·
+    - link "Windows Command Shell refined (172) (external, opens in a new tab or window)":
+      - /url: /s/attack-correlator/app/discover#/?_a=%28query%3A%28esql%3A%27FROM%20attack-correlator-dashboard-%2A%20%7C%20WHERE%20record.kind%20%3D%3D%20%22detection_event%22%20AND%20detection.id%20%3D%3D%20%22shell_refined%22%20AND%20%40timestamp%20%3E%3D%20TO_DATETIME%28%222024-11-05T00%3A00%3A00.000Z%22%29%20AND%20%40timestamp%20%3C%3D%20TO_DATETIME%28%222024-12-15T23%3A59%3A59.999Z%22%29%20%7C%20KEEP%20%40timestamp%2C%20analyst.attack_id%2C%20analyst.technique%2C%20detection.name%2C%20host.name%2C%20user.name%2C%20process.name%2C%20process.command_line%2C%20event.id%2C%20detection.id%20%7C%20SORT%20%40timestamp%2C%20event.id%20%7C%20LIMIT%201000%27%29%29&_g=%28time%3A%28from%3A%272024-11-05T00%3A00%3A00.000Z%27%2Cto%3A%272024-12-15T23%3A59%3A59.999Z%27%29%29
+      - text: Windows Command Shell refined (172)
+      - generic: (external, opens in a new tab or window)
+    - text: ·
+    - link "Service-create refined (41) (external, opens in a new tab or window)":
+      - /url: /s/attack-correlator/app/discover#/?_a=%28query%3A%28esql%3A%27FROM%20attack-correlator-dashboard-%2A%20%7C%20WHERE%20record.kind%20%3D%3D%20%22detection_event%22%20AND%20detection.id%20%3D%3D%20%22service_create_refined%22%20AND%20%40timestamp%20%3E%3D%20TO_DATETIME%28%222024-11-05T00%3A00%3A00.000Z%22%29%20AND%20%40timestamp%20%3C%3D%20TO_DATETIME%28%222024-12-15T23%3A59%3A59.999Z%22%29%20%7C%20KEEP%20%40timestamp%2C%20analyst.attack_id%2C%20analyst.technique%2C%20detection.name%2C%20host.name%2C%20user.name%2C%20process.name%2C%20process.command_line%2C%20event.id%2C%20detection.id%20%7C%20SORT%20%40timestamp%2C%20event.id%20%7C%20LIMIT%201000%27%29%29&_g=%28time%3A%28from%3A%272024-11-05T00%3A00%3A00.000Z%27%2Cto%3A%272024-12-15T23%3A59%3A59.999Z%27%29%29
+      - text: Service-create refined (41)
+      - generic: (external, opens in a new tab or window)
+    - text: ·
+    - link "Service-config refined (108) (external, opens in a new tab or window)":
+      - /url: /s/attack-correlator/app/discover#/?_a=%28query%3A%28esql%3A%27FROM%20attack-correlator-dashboard-%2A%20%7C%20WHERE%20record.kind%20%3D%3D%20%22detection_event%22%20AND%20detection.id%20%3D%3D%20%22service_config_refined%22%20AND%20%40timestamp%20%3E%3D%20TO_DATETIME%28%222024-11-05T00%3A00%3A00.000Z%22%29%20AND%20%40timestamp%20%3C%3D%20TO_DATETIME%28%222024-12-15T23%3A59%3A59.999Z%22%29%20%7C%20KEEP%20%40timestamp%2C%20analyst.attack_id%2C%20analyst.technique%2C%20detection.name%2C%20host.name%2C%20user.name%2C%20process.name%2C%20process.command_line%2C%20event.id%2C%20detection.id%20%7C%20SORT%20%40timestamp%2C%20event.id%20%7C%20LIMIT%201000%27%29%29&_g=%28time%3A%28from%3A%272024-11-05T00%3A00%3A00.000Z%27%2Cto%3A%272024-12-15T23%3A59%3A59.999Z%27%29%29
+      - text: Service-config refined (108)
+      - generic: (external, opens in a new tab or window)
+    - text: .
+- figure:
+  - generic: Detection Event Evidence
+  - button "Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999":
+    - generic: Nov 5, 2024 @ 00:00:00.000 to Dec 15, 2024 @ 23:59:59.999
+  - text: No results found
+- figure:
+  - generic: Candidate Sequence Volume
+  - heading "261 broad → 3 refined ordered pairs" [level=2]
+  - paragraph:
+    - strong: 261 → 3 reflects additional behavioural and ancestry requirements; it is not a measured false-positive reduction.
+    - text: Both sets already require same-host GUID ancestry, strict ordering and a 60-second window. Refinement adds service-origin shell context and refined PowerShell behaviour.
+  - paragraph:
+    - strong: "Separate corroboration unit:"
+    - text: 3 service → cmd → PowerShell triples / 9 participating events / 3 hosts.
+- figure:
+  - generic: Primary scenario · DESKTOP-DS4FBF4
+  - heading "1 installation → 2 service-origin cmd.exe → 3 PowerShell · 41,801,900 ns" [level=3]
+  - paragraph:
+    - strong: Three-event corroborated candidate.
+    - text: "Shell process GUID equals the PowerShell parent GUID:"
+    - code: "{8e11608b-3ddb-672b-1705-000000000500}"
+    - text: . The service image association was independently validated against preserved SCM source evidence (normalized full command; lexical association).
+  - paragraph:
+    - strong: Malicious intent and final execution outcome are not independently proven.
+    - text: This bounded sequence is not a complete incident timeline.
+    - strong: "Triple ID:"
+    - code: f09a7676f6f7a5fea1aa767b84a4dbb50411cbdf1d66da690e98aa6a738ffa9c
+- figure:
+  - heading "1 · Windows Service" [level=3]
+  - paragraph:
+    - strong: T1543.003
+    - text: · SCM 7045 installation baseline
+  - paragraph:
+    - strong: UTC
+    - code: 2024-11-06T09:58:51.208562600Z
+  - paragraph:
+    - strong: "Process:"
+    - text: Unavailable
+    - strong: "User:"
+    - text: Unavailable
+  - paragraph:
+    - strong: "Service:"
+    - code: ARTService
+    - strong: "Service account:"
+    - code: LocalSystem
+  - paragraph:
+    - strong: Service imagePath (source evidence)
+    - code: C:\\WINDOWS\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt
+  - paragraph:
+    - strong: Source event ID
+    - code: be75d1504e5784527dfd60bc35420d21f910b57ffba3ffcc1d84ec30c23070f9
+  - paragraph:
+    - strong: "Next event:"
+    - text: 26,838,400 ns later
+- figure:
+  - heading "2 · Windows Command Shell" [level=3]
+  - paragraph:
+    - strong: T1059.003
+    - text: · Service-origin cmd.exe refined
+  - paragraph:
+    - strong: UTC
+    - code: 2024-11-06T09:58:51.235401Z
+  - paragraph:
+    - strong: "Process:"
+    - code: cmd.exe
+    - strong: "User:"
+    - code: SYSTEM
+  - paragraph:
+    - strong: "Parent:"
+    - code: services.exe
+  - paragraph:
+    - strong: Process command line
+    - code: C:\\WINDOWS\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt
+  - paragraph:
+    - strong: Source event ID
+    - code: c5a93a534cf031f5789b321d070b3f6cf33ec3e79e50b72cf15e384b7821e8e4
+  - paragraph:
+    - strong: "Next event:"
+    - text: 14,963,500 ns later
+- figure:
+  - heading "3 · PowerShell" [level=3]
+  - paragraph:
+    - strong: T1059.001
+    - text: · PowerShell refined
+  - paragraph:
+    - strong: UTC
+    - code: 2024-11-06T09:58:51.250364500Z
+  - paragraph:
+    - strong: "Process:"
+    - code: powershell.exe
+    - strong: "User:"
+    - code: SYSTEM
+  - paragraph:
+    - strong: "Parent:"
+    - code: cmd.exe
+  - paragraph:
+    - strong: Process command line
+    - code: powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt
+  - paragraph:
+    - strong: Source event ID
+    - code: c87894aacb7c79e770e4eb8b1fd95fcf9612bb5fddba0c3f00edea3a9a9d6634
+  - paragraph:
+    - strong: End of this bounded three-event sequence.
+- figure:
+  - generic: Supporting evidence · exact source references
+  - paragraph: Four deterministic supporting examples; sample rows are not corpus denominators. Analyst ATT&CK mappings.
+  - table:
+    - rowgroup:
+      - row "UTC / host Technique / observation Process / user Inert command and source identity":
+        - columnheader "UTC / host"
+        - columnheader "Technique / observation"
+        - columnheader "Process / user"
+        - columnheader "Inert command and source identity"
+    - rowgroup:
+      - 'row "2024-11-25T23:07:50.027718700Z · DESKTOP-QGB4EQH T1059.003 · Windows Command Shell · Service-origin cmd.exe refined cmd.exe · SYSTEM C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt · Event: 3154fbb47b3c3efd78fe60f5d197b960a91a267fc38c8db272196e38c200c358 · Triple: 2f651454f30296c77fa573c1f4225fe7828571ff77c136516256d3c2189f2941"':
+        - cell "2024-11-25T23:07:50.027718700Z · DESKTOP-QGB4EQH":
+          - code: 2024-11-25T23:07:50.027718700Z
+          - text: ·
+          - code: DESKTOP-QGB4EQH
+        - cell "T1059.003 · Windows Command Shell · Service-origin cmd.exe refined"
+        - cell "cmd.exe · SYSTEM":
+          - code: cmd.exe
+          - text: ·
+          - code: SYSTEM
+        - 'cell "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt · Event: 3154fbb47b3c3efd78fe60f5d197b960a91a267fc38c8db272196e38c200c358 · Triple: 2f651454f30296c77fa573c1f4225fe7828571ff77c136516256d3c2189f2941"':
+          - code: C:\\Windows\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt
+          - text: ·
+          - strong: "Event:"
+          - code: 3154fbb47b3c3efd78fe60f5d197b960a91a267fc38c8db272196e38c200c358
+          - text: ·
+          - strong: "Triple:"
+          - code: 2f651454f30296c77fa573c1f4225fe7828571ff77c136516256d3c2189f2941
+      - 'row "2024-11-09T19:19:38.522452Z · DESKTOP-FMI6MML T1059.003 · Windows Command Shell · Service-origin cmd.exe refined cmd.exe · SYSTEM C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt · Event: 8f0564e44cea0da1038e46484c816a8668ee890529fcc83432f6c830a64d3e90 · Triple: 65c305042ffebd17a2627fe4b4a0b20ef5b75ae7bae09b12dc5b7887fc47c91d"':
+        - cell "2024-11-09T19:19:38.522452Z · DESKTOP-FMI6MML":
+          - code: 2024-11-09T19:19:38.522452Z
+          - text: ·
+          - code: DESKTOP-FMI6MML
+        - cell "T1059.003 · Windows Command Shell · Service-origin cmd.exe refined"
+        - cell "cmd.exe · SYSTEM":
+          - code: cmd.exe
+          - text: ·
+          - code: SYSTEM
+        - 'cell "C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt · Event: 8f0564e44cea0da1038e46484c816a8668ee890529fcc83432f6c830a64d3e90 · Triple: 65c305042ffebd17a2627fe4b4a0b20ef5b75ae7bae09b12dc5b7887fc47c91d"':
+          - code: C:\\Windows\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt
+          - text: ·
+          - strong: "Event:"
+          - code: 8f0564e44cea0da1038e46484c816a8668ee890529fcc83432f6c830a64d3e90
+          - text: ·
+          - strong: "Triple:"
+          - code: 65c305042ffebd17a2627fe4b4a0b20ef5b75ae7bae09b12dc5b7887fc47c91d
+      - 'row "2024-12-10T10:50:27.384701800Z · DESKTOP-QGB4EQH T1543.003 · Windows Service · Service-create refined sc.exe · mari sc.exe create ARTService binPath= \\\"C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\" · Event: 01a39aaa0ab4f30ba0883fad92598d99a9347baed6a395936abbda41ae2bd09a · Triple: Unavailable"':
+        - cell "2024-12-10T10:50:27.384701800Z · DESKTOP-QGB4EQH":
+          - code: 2024-12-10T10:50:27.384701800Z
+          - text: ·
+          - code: DESKTOP-QGB4EQH
+        - cell "T1543.003 · Windows Service · Service-create refined"
+        - cell "sc.exe · mari":
+          - code: sc.exe
+          - text: ·
+          - code: mari
+        - 'cell "sc.exe create ARTService binPath= \\\"C:\\\\Windows\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\" · Event: 01a39aaa0ab4f30ba0883fad92598d99a9347baed6a395936abbda41ae2bd09a · Triple: Unavailable"':
+          - code: sc.exe create ARTService binPath= \"C:\\Windows\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\art-marker.txt\"
+          - text: ·
+          - strong: "Event:"
+          - code: 01a39aaa0ab4f30ba0883fad92598d99a9347baed6a395936abbda41ae2bd09a
+          - text: ·
+          - strong: "Triple:"
+          - text: Unavailable
+      - 'row "2024-12-03T11:27:20.607512100Z · DESKTOP-QGB4EQH T1543.003 · Windows Service · Service-config refined sc.exe · mari sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host ''T1543.003 Test''\\\\\\\"\\\" · Event: 014b4475343bcdf621c664c5caf7d29448162ee516d406ce2048197e2ae9540f · Triple: Unavailable"':
+        - cell "2024-12-03T11:27:20.607512100Z · DESKTOP-QGB4EQH":
+          - code: 2024-12-03T11:27:20.607512100Z
+          - text: ·
+          - code: DESKTOP-QGB4EQH
+        - cell "T1543.003 · Windows Service · Service-config refined"
+        - cell "sc.exe · mari":
+          - code: sc.exe
+          - text: ·
+          - code: mari
+        - 'cell "sc config Fax binPath= \\\"C:\\\\windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe -noexit -c \\\\\\\"write-host ''T1543.003 Test''\\\\\\\"\\\" · Event: 014b4475343bcdf621c664c5caf7d29448162ee516d406ce2048197e2ae9540f · Triple: Unavailable"':
+          - code: sc config Fax binPath= \"C:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -noexit -c \\\"write-host 'T1543.003 Test'\\\"\"
+          - text: ·
+          - strong: "Event:"
+          - code: 014b4475343bcdf621c664c5caf7d29448162ee516d406ce2048197e2ae9540f
+          - text: ·
+          - strong: "Triple:"
+          - text: Unavailable
+- figure:
+  - generic: Correlation logic and interpretation
+  - paragraph:
+    - strong: Same host + service-origin context + exact process GUID ancestry + strict event ordering + bounded time + refined PowerShell behaviour.
+  - paragraph: Independent ancestry and SCM image evidence make the candidate more structurally supported than isolated interpreter execution. Approved administration, service wrappers and marker-file tests can still satisfy every condition. Missing native PowerShell or service telemetry, absent GUIDs, renamed/in-process interpreters, alternate parents and longer delays can prevent a match.
+  - paragraph:
+    - strong: "Coverage:"
+    - text: 102,011 source observations; 90,601 timed; 11,410 intentionally undated and excluded from ordering. Service-create and service-config remain separate cohorts. Individual units are distinct events within a rule; pairs and triples are ordered ID tuples. No independent intent truth exists to measure precision, recall or a false-positive rate. Missing fields display as
+    - strong: Unavailable
+    - text: .
+- log "Notification message list"
+- tooltip "Previous ~1 month":
+  - generic: Previous ~1 month

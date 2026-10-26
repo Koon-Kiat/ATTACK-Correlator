@@ -1,0 +1,91 @@
+{
+  "allow_partial_search_results": false,
+  "allow_partial_sequence_results": false,
+  "fetch_size": 1000,
+  "filter": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "event.provider": "Microsoft-Windows-Sysmon"
+          }
+        },
+        {
+          "term": {
+            "event.code": "1"
+          }
+        },
+        {
+          "exists": {
+            "field": "@timestamp"
+          }
+        }
+      ]
+    }
+  },
+  "keep_on_completion": false,
+  "query": "sequence by host.name with maxspan=60001ms\n  [any where event.provider == \"Microsoft-Windows-Sysmon\" and event.code == \"1\"\n    and correlation.name_lc == \"cmd.exe\"\n    and correlation.parent_name_lc == \"services.exe\"\n    and correlation.command_lc regex \".*(powershell[.]exe|pwsh[.]exe).*\"\n  ] by correlation.actor_guid\n  [any where event.provider == \"Microsoft-Windows-Sysmon\" and event.code == \"1\"\n    and correlation.name_lc in (\"powershell.exe\", \"pwsh.exe\")\n    and (\n      (correlation.command_lc regex \".*(invoke-webrequest|downloadstring|downloadfile|[^a-z0-9_]iwr[^a-z0-9_]).*\"\n        and correlation.command_lc regex \".*(invoke-expression|[^a-z0-9_]iex[^a-z0-9_]|start-process).*\")\n      or\n      (correlation.command_lc regex \".*[ ]-(w|windowstyle)[ ]+hidden([ ].*)?\"\n        and correlation.command_lc regex \".*[ ]-(nop|noprofile)([ ].*)?\"\n        and correlation.command_lc regex \".*[ ]-(c|command)[ ]+.*\")\n    )\n  ] by correlation.parent_guid",
+  "result_position": "head",
+  "runtime_mappings": {
+    "correlation.actor_guid": {
+      "script": {
+        "params": {
+          "field": "process.entity_id"
+        },
+        "source": "if (doc[params.field].size() != 0) emit(doc[params.field].value.toLowerCase(Locale.ROOT));"
+      },
+      "type": "keyword"
+    },
+    "correlation.command_lc": {
+      "script": {
+        "params": {
+          "field": "process.command_line"
+        },
+        "source": "if (doc[params.field].size() != 0) emit(doc[params.field].value.toLowerCase(Locale.ROOT));"
+      },
+      "type": "keyword"
+    },
+    "correlation.name_lc": {
+      "script": {
+        "params": {
+          "field": "process.name"
+        },
+        "source": "if (doc[params.field].size() != 0) emit(doc[params.field].value.toLowerCase(Locale.ROOT));"
+      },
+      "type": "keyword"
+    },
+    "correlation.parent_guid": {
+      "script": {
+        "params": {
+          "field": "process.parent.entity_id"
+        },
+        "source": "if (doc[params.field].size() != 0) emit(doc[params.field].value.toLowerCase(Locale.ROOT));"
+      },
+      "type": "keyword"
+    },
+    "correlation.parent_name_lc": {
+      "script": {
+        "params": {
+          "field": "process.parent.name"
+        },
+        "source": "if (doc[params.field].size() != 0) emit(doc[params.field].value.toLowerCase(Locale.ROOT));"
+      },
+      "type": "keyword"
+    },
+    "correlation.time_ms": {
+      "script": {
+        "source": "if (doc['@timestamp'].size() != 0) emit(doc['@timestamp'].value.toInstant().toEpochMilli());"
+      },
+      "type": "date"
+    },
+    "correlation.time_ns": {
+      "script": {
+        "source": "if (doc['@timestamp'].size() != 0) { def t = doc['@timestamp'].value.toInstant(); emit(t.getEpochSecond() * 1000000000L + t.getNano()); }"
+      },
+      "type": "long"
+    }
+  },
+  "size": 1000,
+  "tiebreaker_field": "correlation.time_ns",
+  "timestamp_field": "correlation.time_ms"
+}

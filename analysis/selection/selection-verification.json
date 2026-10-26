@@ -1,0 +1,38 @@
+{
+  "artifact_sha256": {
+    "analysis/selection/correlation-feasibility.json": "7189293904407a906677f9edbf119efc1f110bc3f4e2b6cc22a4678eda25610b",
+    "analysis/selection/exploratory-queries.json": "be4157321ac509688c98d3bf4ea156630f9e00371391150d3815c1cdfa3bf0f0",
+    "analysis/selection/live-state.json": "3d6b260831d39e8de0794bc930e1576319daf17a35c9606f6fbe4c0f85d47aed",
+    "analysis/technique_selection.json": "3c25ab7887efa14c79924767c9385ddc379a32117ef62d59ac007688ea792012",
+    "scripts/inspect_selection_relationships.py": "f2466edfe125a56a8fbc3df6e06736869eed33015eb7957d4fe58d04f4a9b1cd",
+    "scripts/inspect_technique_candidates.py": "ecb5cf155b91fecfea9edddcea5489cb0dcc0acee061a7460adb3a72a5ffc801",
+    "scripts/verify_technique_selection.py": "f246b38066eb2a02539fca63daa963f3218703155084fb24e69b7f31855f3bb9"
+  },
+  "checks": [
+    "Inventory, normalization, ingestion and projected cache hash continuity",
+    "Exact total/timestamp/provider/code/GUID counts replayed",
+    "Exactly three distinct sub-technique IDs and consistent cohort counts",
+    "Every retained event projection compared with live indexed evidence",
+    "All process/object joins recomputed from fresh live records",
+    "No annotations, scenario or rule metadata in exploratory predicates",
+    "Only explicit UTC timestamps enter ordered correlations"
+  ],
+  "fresh_process_records": 20814,
+  "fresh_service_records": 102,
+  "live_counts": {
+    "all": 102011,
+    "timed": 90601,
+    "untimed": 11410
+  },
+  "passed": true,
+  "replayed_queries": 29,
+  "selected_ids": [
+    "T1059.001",
+    "T1059.003",
+    "T1543.003"
+  ],
+  "verified_at_utc": "2026-09-16T12:49:49.008309+00:00",
+  "verified_event_projections": 141,
+  "verified_service_shell_powershell_chains": 3,
+  "verified_unique_event_ids": 114
+}
