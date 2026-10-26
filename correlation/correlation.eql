@@ -1,0 +1,17 @@
+sequence by host.name with maxspan=60001ms
+  [any where event.provider == "Microsoft-Windows-Sysmon" and event.code == "1"
+    and correlation.name_lc == "cmd.exe"
+    and correlation.parent_name_lc == "services.exe"
+    and correlation.command_lc regex ".*(powershell[.]exe|pwsh[.]exe).*"
+  ] by correlation.actor_guid
+  [any where event.provider == "Microsoft-Windows-Sysmon" and event.code == "1"
+    and correlation.name_lc in ("powershell.exe", "pwsh.exe")
+    and (
+      (correlation.command_lc regex ".*(invoke-webrequest|downloadstring|downloadfile|[^a-z0-9_]iwr[^a-z0-9_]).*"
+        and correlation.command_lc regex ".*(invoke-expression|[^a-z0-9_]iex[^a-z0-9_]|start-process).*")
+      or
+      (correlation.command_lc regex ".*[ ]-(w|windowstyle)[ ]+hidden([ ].*)?"
+        and correlation.command_lc regex ".*[ ]-(nop|noprofile)([ ].*)?"
+        and correlation.command_lc regex ".*[ ]-(c|command)[ ]+.*")
+    )
+  ] by correlation.parent_guid

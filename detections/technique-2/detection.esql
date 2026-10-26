@@ -1,0 +1,11 @@
+FROM windows-apt-events-*
+| WHERE event.provider == "Microsoft-Windows-Sysmon" AND event.code == "1"
+    AND TO_LOWER(process.name) == "cmd.exe"
+| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, ""))
+| EVAL service_parent_interpreter = TO_LOWER(COALESCE(process.parent.name, "")) == "services.exe"
+        AND command_lc RLIKE ".*(powershell[.]exe|pwsh[.]exe).*",
+    service_control_interpreter = command_lc RLIKE ".*[ ]sc([.]exe)?[ ]+(create|config)[ ]+.*binpath=.*(cmd[.]exe|powershell[.]exe|pwsh[.]exe).*"
+| WHERE service_parent_interpreter OR service_control_interpreter
+| KEEP event.id, @timestamp, host.name, service_parent_interpreter, service_control_interpreter
+| SORT event.id ASC
+| LIMIT 10000

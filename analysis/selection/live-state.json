@@ -1,0 +1,17 @@
+{
+  "accessed_at_utc": "2026-09-16T12:48:43.194185+00:00",
+  "counts": {
+    "all": 102011,
+    "timed": 90601,
+    "untimed": 11410
+  },
+  "index_pattern": "windows-apt-events-*",
+  "phase2_evidence_sha256": "55b4ed66467349c2fba82cc730836bb8391b42593cc3cd98adbc7c7664c5b8a7",
+  "phase3_manifest_sha256": "383db119936ec5e1023c0edb3884780380bfc1613d9ba9645217eb12b394cd50",
+  "phase4_passed": true,
+  "phase4_validation_sha256": "24863f3884750e754d29d9c743958bbe0ff6dcca4c1255326841d3e8614699c2",
+  "projected_process_count": 20814,
+  "projected_process_sha256": "73578fa94c12a2049108763ddcbd8b871b8f697e149885785dd530d9c8395678",
+  "projected_service_sha256": "ec2d754e4c35363d29c433d00e0a03e7dfdf9fc16dd96242c85c621cb17e08f7",
+  "query_results_sha256": "be4157321ac509688c98d3bf4ea156630f9e00371391150d3815c1cdfa3bf0f0"
+}

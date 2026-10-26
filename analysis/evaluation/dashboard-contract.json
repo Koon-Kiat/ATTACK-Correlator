@@ -1,0 +1,323 @@
+{
+  "correlation_metrics": {
+    "broad": {
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "tuple_count": 261,
+      "unique_host_count": 3,
+      "unique_participating_events": 483,
+      "unit": "ordered_pair"
+    },
+    "refined": {
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "tuple_count": 3,
+      "unique_host_count": 3,
+      "unique_participating_events": 6,
+      "unit": "ordered_pair"
+    },
+    "three_event": {
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "tuple_count": 3,
+      "unique_host_count": 3,
+      "unique_participating_events": 9,
+      "unit": "ordered_triple"
+    }
+  },
+  "dashboard_built": false,
+  "historical_filter": {
+    "bounds": "inclusive",
+    "from_utc": "2024-11-05T11:03:49.493885Z",
+    "to_utc": "2024-12-15T13:42:34.263750700Z"
+  },
+  "individual_metrics": {
+    "powershell_baseline": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) IN (\"powershell.exe\", \"pwsh.exe\")\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 2060,
+      "file": "detections/technique-1/baseline.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-22T09:13:51.694757Z",
+        "min_utc": "2024-11-05T10:42:56.3186326Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "3608c17c8968d44484e145b59955c10b1e72270a93ed475b21a4431eb668ea45",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 2060,
+      "without_timestamp": 0
+    },
+    "powershell_refined": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) IN (\"powershell.exe\", \"pwsh.exe\")\n| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, \"\"))\n| EVAL retrieval = command_lc RLIKE \".*(invoke-webrequest|downloadstring|downloadfile|[^a-z0-9_]iwr[^a-z0-9_]).*\",\n    execution = command_lc RLIKE \".*(invoke-expression|[^a-z0-9_]iex[^a-z0-9_]|start-process).*\",\n    hidden = command_lc RLIKE \".*[ ]-(w|windowstyle)[ ]+hidden([ ].*)?\",\n    no_profile = command_lc RLIKE \".*[ ]-(nop|noprofile)([ ].*)?\",\n    inline_command = command_lc RLIKE \".*[ ]-(c|command)[ ]+.*\"\n| WHERE (retrieval AND execution) OR (hidden AND no_profile AND inline_command)\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 290,
+      "file": "detections/technique-1/detection.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-15T13:42:34.2637507Z",
+        "min_utc": "2024-11-05T11:03:49.493885Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "a5c0fe4dd9d0d5e98a620cef5cfd2f26b9a7d5fbfab02adeda724f36fe6938b4",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 290,
+      "without_timestamp": 0
+    },
+    "service_config_baseline": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"sc.exe\"\n    AND TO_LOWER(COALESCE(process.command_line, \"\")) LIKE \"* config *\"\n    AND TO_LOWER(COALESCE(process.command_line, \"\")) LIKE \"*binpath=*\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 117,
+      "file": "detections/technique-3/baseline-config.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-14T17:30:59.7729986Z",
+        "min_utc": "2024-11-05T13:34:51.2709569Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "f076ef01e2aa6cfad8da249b80801e13aad5ce4f734bf4cef97ba346bfeace61",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 117,
+      "without_timestamp": 0
+    },
+    "service_config_refined": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"sc.exe\"\n| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, \"\"))\n| WHERE command_lc LIKE \"* config *\"\n    AND command_lc RLIKE \".*binpath=.*(cmd[.]exe|powershell[.]exe|pwsh[.]exe).*\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 108,
+      "file": "detections/technique-3/detection-config.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-14T17:30:59.7729986Z",
+        "min_utc": "2024-11-05T13:34:51.2709569Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "cf03df40bdcbfb81fd708f88494689008702a9c29143816d9f50631974c4ad45",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 108,
+      "without_timestamp": 0
+    },
+    "service_create_baseline": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"sc.exe\"\n    AND TO_LOWER(COALESCE(process.command_line, \"\")) LIKE \"* create *\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 155,
+      "file": "detections/technique-3/baseline-create.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-14T09:01:47.5042143Z",
+        "min_utc": "2024-11-05T13:35:33.3145881Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "b6ed3c8f4acc94c596083de9c172504ee52c410ee4a8fac0bff64aef2e3ca9ee",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 155,
+      "without_timestamp": 0
+    },
+    "service_create_refined": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"sc.exe\"\n| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, \"\"))\n| WHERE command_lc LIKE \"* create *\"\n    AND command_lc RLIKE \".*binpath=.*(cmd[.]exe|powershell[.]exe|pwsh[.]exe).*\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 41,
+      "file": "detections/technique-3/detection.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-13T00:13:35.9641019Z",
+        "min_utc": "2024-11-06T09:58:51.2110964Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "c7ba53145709d2d4be931d84ecd85e783b1a6b171a87bc0e22370e6aaf6db187",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 41,
+      "without_timestamp": 0
+    },
+    "service_installation": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Service Control Manager\" AND event.code == \"7045\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 102,
+      "file": "detections/technique-3/baseline.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-22T11:05:33.0936847Z",
+        "min_utc": "2024-11-05T10:54:14.4669595Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-B37GATP",
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "eea1745f2a5696cae8dbcf862b1819192a1c8db8569fdf71283d33a5e5c8512e",
+      "unique_host_count": 4,
+      "unit": "event",
+      "with_timestamp": 102,
+      "without_timestamp": 0
+    },
+    "service_registry": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"13\"\n    AND TO_LOWER(registry.path) LIKE \"*currentcontrolset*services*imagepath\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 708,
+      "file": "detections/technique-3/baseline-registry.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-22T12:53:49.226296Z",
+        "min_utc": "2024-11-05T10:39:32.6261111Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "f3d6c7662a4570e083ffff28f7988a4f6f592e52cdb07d87da03f5dc5157b921",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 708,
+      "without_timestamp": 0
+    },
+    "shell_baseline": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"cmd.exe\"\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 7717,
+      "file": "detections/technique-2/baseline.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-22T12:53:50.1888457Z",
+        "min_utc": "2024-11-05T10:48:57.8075783Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "c9f1d06026a5aa462ee406eeb0d5365f3d8bf873ef109e94b9c9e5f789c745df",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 7717,
+      "without_timestamp": 0
+    },
+    "shell_refined": {
+      "count_query": "FROM windows-apt-events-*\n| WHERE event.provider == \"Microsoft-Windows-Sysmon\" AND event.code == \"1\"\n    AND TO_LOWER(process.name) == \"cmd.exe\"\n| EVAL command_lc = TO_LOWER(COALESCE(process.command_line, \"\"))\n| EVAL service_parent_interpreter = TO_LOWER(COALESCE(process.parent.name, \"\")) == \"services.exe\"\n        AND command_lc RLIKE \".*(powershell[.]exe|pwsh[.]exe).*\",\n    service_control_interpreter = command_lc RLIKE \".*[ ]sc([.]exe)?[ ]+(create|config)[ ]+.*binpath=.*(cmd[.]exe|powershell[.]exe|pwsh[.]exe).*\"\n| WHERE service_parent_interpreter OR service_control_interpreter\n| STATS total_rows = COUNT(*)",
+      "distinct_event_count": 172,
+      "file": "detections/technique-2/detection.esql",
+      "historical_time_range": {
+        "max_utc": "2024-12-14T17:30:59.5689515Z",
+        "min_utc": "2024-11-05T13:34:51.2080098Z",
+        "precision": "nanoseconds; absent timestamps excluded only from min/max"
+      },
+      "hosts": [
+        "DESKTOP-DS4FBF4",
+        "DESKTOP-FMI6MML",
+        "DESKTOP-QGB4EQH"
+      ],
+      "query_sha256": "fe55d00ede00ecade2ca6c2c30234c6ec1d0696ed854fb0ca28444ab0695ad08",
+      "unique_host_count": 3,
+      "unit": "event",
+      "with_timestamp": 172,
+      "without_timestamp": 0
+    }
+  },
+  "input_sha256": {
+    "analysis/correlation/correlation-results.json": "84df398314963c28fd07be5bd5eae021f21ed64164c6a7e9ef85ea6a04e684b7",
+    "analysis/detections/detection-results.json": "c55cf2cf9731ccd6682b5bf235a2b2b96917224bb6bb919e337bbb487071624e",
+    "analysis/technique_selection.json": "3c25ab7887efa14c79924767c9385ddc379a32117ef62d59ac007688ea792012",
+    "correlation/manifest.json": "ade4e480b19ee8f740ad6dbda2aa5b7c2ec826ad23a0cd419c7fbbd95fe8583e",
+    "detections/manifest.json": "a4f48efac65601500885ecc94167b699e64d865eba4398a8ac9d9d510e543908",
+    "scripts/build_scenario_evidence.py": "9d1b1e08ff598e19534ff75dced1f84dcc6317d8f31106a4bccd257be1e1a0f1",
+    "scripts/scenario_report.py": "a7175c20b401efdd7240b1bc77f9b5a6466542eca06bcf46e0e98c923407dd16"
+  },
+  "panel_sources": {
+    "activity": "analysis/evaluation/evaluation-results.json#/activity; four existing refined ES|QL query files",
+    "correlation": "analysis/correlation/correlation-results.json#/windows/60; scripts/run_correlation.py all-pairs output",
+    "evidence_table": "analysis/evaluation/evaluation-results.json#/evidence_rows; analysis/scenarios/scenario-demonstration.json#/review_units",
+    "overview": "analysis/evaluation/evaluation-results.json#/individual_observations and #/correlation_windows/60",
+    "primary_scenario": "analysis/scenarios/scenario-demonstration.json#/primary and #/evidence; analysis/scenarios/primary-scenario.esql; analysis/scenarios/primary-scenario-search.json"
+  },
+  "primary_scenario": {
+    "correlation_id": "f09a7676f6f7a5fea1aa767b84a4dbb50411cbdf1d66da690e98aa6a738ffa9c",
+    "event_ids": [
+      "be75d1504e5784527dfd60bc35420d21f910b57ffba3ffcc1d84ec30c23070f9",
+      "c5a93a534cf031f5789b321d070b3f6cf33ec3e79e50b72cf15e384b7821e8e4",
+      "c87894aacb7c79e770e4eb8b1fd95fcf9612bb5fddba0c3f00edea3a9a9d6634"
+    ],
+    "exclusion_reasons": [],
+    "gaps_nanoseconds": [
+      26838400,
+      14963500
+    ],
+    "guid_join": {
+      "host.name": "DESKTOP-DS4FBF4",
+      "normalized_guid": "{8e11608b-3ddb-672b-1705-000000000500}",
+      "powershell_parent_entity_id": "{8e11608b-3ddb-672b-1705-000000000500}",
+      "shell_process_entity_id": "{8e11608b-3ddb-672b-1705-000000000500}"
+    },
+    "host": "DESKTOP-DS4FBF4",
+    "normalized_command": "c:\\windows\\system32\\cmd.exe /c powershell.exe -nop -w hidden -command new-item -itemtype file c:\\art-marker.txt",
+    "phase6_membership": {
+      "powershell_refined": true,
+      "service_installation_baseline": true,
+      "shell_service_origin_branch": true
+    },
+    "satisfies_refined_endpoints": true,
+    "service_image_path": "C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+    "shell_command_line": "C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt",
+    "span_nanoseconds": 41801900,
+    "strength": "three-event corroborated candidate; intent and outcome unproven",
+    "timestamps": [
+      "2024-11-06T09:58:51.208562600Z",
+      "2024-11-06T09:58:51.235401Z",
+      "2024-11-06T09:58:51.250364500Z"
+    ]
+  },
+  "refined_affected_hosts": [
+    "DESKTOP-DS4FBF4",
+    "DESKTOP-FMI6MML",
+    "DESKTOP-QGB4EQH"
+  ],
+  "rules": [
+    "Each individual metric counts distinct event.id within its named cohort.",
+    "Do not sum installation/create/config/registry observations into service or attack counts.",
+    "Correlation metric unit is an ordered pair or triple; recompute filtered tuples from all endpoints. Endpoint row counts and broad EQL 222 are not the complete denominator.",
+    "Snapshot metrics describe the full historical corpus. Do not imply that arbitrary dashboard filters recompute them; label fixed scope or implement verified tuple filtering.",
+    "Use exact event-ID sets or authoritative ES|QL for refined activity, not coarse KQL.",
+    "Derived ATT&CK IDs, rule names, correlation IDs and evidence categories are local analytic output, not fields installed in the source index.",
+    "Read service imagePath from _source or the verified artifact; never search disabled originals.",
+    "Display null user/process/correlation fields as unavailable; never fabricate severity, confidence or malicious/benign labels. Source strings must be escaped as inert text.",
+    "No malicious-versus-benign panel is supported; no network panel is needed for this scope.",
+    "Later implementation must compare every metric, historical range and evidence link with this contract before dashboard export; no dashboard is installed by this helper."
+  ],
+  "selected_techniques": [
+    "T1059.001",
+    "T1059.003",
+    "T1543.003"
+  ],
+  "source_index": "windows-apt-events-*",
+  "status": "validated_evidence_contract_only",
+  "timezone": "UTC"
+}

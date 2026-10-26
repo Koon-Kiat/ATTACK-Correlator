@@ -1,0 +1,268 @@
+{
+  "completed_at_utc": "2026-09-12T13:44:30.260630+00:00",
+  "implementation_sha256": {
+    "docker-compose.yml": "83795daa33b646601fb2430a058e2ced8d10621bc4af4ccbe88edb3c15b884fd",
+    "logstash/config/logstash.yml": "e0d1ade857d51fae305470aaa20492cb509055e2aa2e43e0a348a3cda85feffc",
+    "logstash/pipeline/windows-apt.conf": "f5043a8358fe4db9176ebe9401f23c93e50fb0c5c147184cb061205e8653e623",
+    "logstash/scripts/preserve_event.rb": "f401091d52fe82df059092c2b243ce9bbdebd2f0980c80b90aa4d0004034ce39",
+    "scripts/ingest.py": "a6147c5ac02452fc66d184be10f5931322b9bd6ded7cf498861a993b26db321c"
+  },
+  "index": "windows-apt-events-v1",
+  "index_count_after": 102011,
+  "index_count_before": 102011,
+  "ingestion_seconds": 69.83,
+  "logstash_stats": {
+    "ephemeral_id": "a5b69055-7399-4206-8cd3-1743ff64daaf",
+    "host": "a1027b9e1f91",
+    "http_address": "0.0.0.0:9600",
+    "id": "a90eda35-c38f-4afd-b69c-a138275947a8",
+    "name": "a1027b9e1f91",
+    "pipeline": {
+      "batch_delay": 50,
+      "batch_size": 125,
+      "workers": 1
+    },
+    "pipelines": {
+      "main": {
+        "batch": {
+          "byte_size": {
+            "average": {
+              "last_1_minute": 3346000,
+              "lifetime": 3346000
+            },
+            "current": 0,
+            "max": {
+              "lifetime": 4702207
+            },
+            "p50": {
+              "lifetime": 3348479
+            },
+            "p90": {
+              "lifetime": 4132863
+            }
+          },
+          "event_count": {
+            "average": {
+              "last_1_minute": 125,
+              "lifetime": 125
+            },
+            "current": 0
+          }
+        },
+        "dead_letter_queue": {
+          "dropped_events": 0,
+          "expired_events": 0,
+          "last_error": "no errors",
+          "max_queue_size_in_bytes": 1073741824,
+          "queue_size_in_bytes": 1,
+          "storage_policy": "drop_newer"
+        },
+        "ephemeral_id": "5efe06a6-83e4-4fb2-a27a-9fb7333c204c",
+        "events": {
+          "duration_in_millis": 55167,
+          "filtered": 102011,
+          "in": 102011,
+          "out": 102011,
+          "queue_push_duration_in_millis": 44483
+        },
+        "flow": {
+          "filter_throughput": {
+            "current": 874.3,
+            "last_1_minute": 1672.0,
+            "lifetime": 1672.0
+          },
+          "input_throughput": {
+            "current": 850.3,
+            "last_1_minute": 1672.0,
+            "lifetime": 1672.0
+          },
+          "output_throughput": {
+            "current": 874.3,
+            "last_1_minute": 1672.0,
+            "lifetime": 1672.0
+          },
+          "queue_backpressure": {
+            "current": 0.4169,
+            "last_1_minute": 0.729,
+            "lifetime": 0.729
+          },
+          "worker_concurrency": {
+            "current": 0.5274,
+            "last_1_minute": 0.904,
+            "lifetime": 0.904
+          },
+          "worker_utilization": {
+            "current": 52.74,
+            "last_1_minute": 90.4,
+            "lifetime": 90.4
+          }
+        },
+        "hash": "f5043a8358fe4db9176ebe9401f23c93e50fb0c5c147184cb061205e8653e623",
+        "pipeline": {
+          "batch_delay": 50,
+          "batch_size": 125,
+          "workers": 1
+        },
+        "plugins": {
+          "codecs": [
+            {
+              "id": "9e35d355-9dad-45d9-9e76-54c13112f654",
+              "name": "plain"
+            },
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 37,
+                "writes_in": 0
+              },
+              "id": "json_lines_f3762c4b-f3de-4b67-9697-159529a2d80b",
+              "name": "json_lines"
+            },
+            {
+              "decode": {
+                "duration_in_millis": 0,
+                "out": 0,
+                "writes_in": 0
+              },
+              "encode": {
+                "duration_in_millis": 0,
+                "writes_in": 0
+              },
+              "id": "plain_8476dd74-0331-4f61-932a-cfbbaff32c5b",
+              "name": "plain"
+            }
+          ],
+          "filters": [
+            {
+              "events": {
+                "duration_in_millis": 9218,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.1095,
+                  "last_1_minute": 0.09036,
+                  "lifetime": 0.09036
+                },
+                "worker_utilization": {
+                  "current": 9.446,
+                  "last_1_minute": 15.11,
+                  "lifetime": 15.11
+                }
+              },
+              "id": "phase4_evidence",
+              "name": "ruby"
+            }
+          ],
+          "inputs": [
+            {
+              "events": {
+                "out": 102011,
+                "queue_push_duration_in_millis": 44471
+              },
+              "flow": {
+                "throughput": {
+                  "current": 850.3,
+                  "last_1_minute": 1672.0,
+                  "lifetime": 1672.0
+                }
+              },
+              "id": "phase4_input",
+              "name": "file"
+            }
+          ],
+          "outputs": [
+            {
+              "events": {
+                "duration_in_millis": 198,
+                "in": 0,
+                "out": 0
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": "Infinity",
+                  "last_1_minute": "Infinity",
+                  "lifetime": "Infinity"
+                },
+                "worker_utilization": {
+                  "current": 0.3924,
+                  "last_1_minute": 0.3245,
+                  "lifetime": 0.3245
+                }
+              },
+              "id": "phase4_rejects",
+              "name": "file"
+            },
+            {
+              "bulk_requests": {
+                "responses": {
+                  "200": 817
+                },
+                "successes": 817
+              },
+              "documents": {
+                "successes": 102011
+              },
+              "events": {
+                "duration_in_millis": 45601,
+                "in": 102011,
+                "out": 102011
+              },
+              "flow": {
+                "worker_millis_per_event": {
+                  "current": 0.4961,
+                  "last_1_minute": 0.447,
+                  "lifetime": 0.447
+                },
+                "worker_utilization": {
+                  "current": 42.79,
+                  "last_1_minute": 74.73,
+                  "lifetime": 74.73
+                }
+              },
+              "id": "phase4_elasticsearch",
+              "name": "elasticsearch"
+            }
+          ]
+        },
+        "queue": {
+          "events_count": 0,
+          "max_queue_size_in_bytes": 0,
+          "queue_size_in_bytes": 0,
+          "type": "memory"
+        },
+        "reloads": {
+          "failures": 0,
+          "last_error": null,
+          "last_failure_timestamp": null,
+          "last_success_timestamp": null,
+          "successes": 0
+        }
+      }
+    },
+    "snapshot": false,
+    "status": "green",
+    "version": "9.5.3"
+  },
+  "phase3_manifest_sha256": "b4d715be0d67d4aba9b8b3478e67df24295e8536ed738ca473c5e483597d4806",
+  "phase3_verification": {
+    "all_original_rows_reconstructed": true,
+    "all_rows_accounted_for": true,
+    "input_events": 102011,
+    "offline_mapping_contract_passed": true,
+    "output_and_report_hashes_match": true,
+    "processed_events": 102011,
+    "raw_hashes_match": true,
+    "rejected_events": 0
+  },
+  "processed_sha256": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac",
+  "reset_requested": false,
+  "run_id": "8309efd025b049e6b441a58713ef8ca1",
+  "started_at_utc": "2026-09-12T13:43:20.431554+00:00",
+  "status": "passed"
+}

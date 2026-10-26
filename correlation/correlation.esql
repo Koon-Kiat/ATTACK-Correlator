@@ -1,0 +1,12 @@
+FROM windows-apt-events-*
+| WHERE event.provider == "Microsoft-Windows-Sysmon" AND event.code == "1"
+    AND TO_LOWER(process.name) IN ("cmd.exe", "powershell.exe", "pwsh.exe")
+| EVAL endpoint = TO_LOWER(process.name),
+    service_origin = TO_LOWER(COALESCE(process.parent.name, "")) == "services.exe"
+        AND TO_LOWER(COALESCE(process.command_line, "")) RLIKE ".*(powershell[.]exe|pwsh[.]exe).*"
+        AND TO_LOWER(process.name) == "cmd.exe"
+| STATS raw_events = COUNT(*), timed_events = COUNT(@timestamp),
+    actor_guid_events = COUNT(process.entity_id), parent_guid_events = COUNT(process.parent.entity_id)
+    BY endpoint, service_origin
+| SORT endpoint ASC, service_origin ASC
+| LIMIT 10

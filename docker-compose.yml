@@ -1,0 +1,123 @@
+name: ${COMPOSE_PROJECT_NAME:-attack-correlator}
+
+services:
+  certificates:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION:-9.5.3}
+    user: "0"
+    entrypoint: ["bash", "/scripts/create-certificates.sh"]
+    volumes:
+      - ./scripts/create-certificates.sh:/scripts/create-certificates.sh:ro
+      - elastic-certs:/certs
+      - public-ca:/ca
+    restart: "no"
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION:-9.5.3}
+    depends_on:
+      certificates:
+        condition: service_completed_successfully
+    environment:
+      node.name: elasticsearch
+      cluster.name: attack-correlator
+      discovery.type: single-node
+      xpack.license.self_generated.type: basic
+      xpack.security.enabled: "true"
+      xpack.security.http.ssl.enabled: "true"
+      xpack.security.http.ssl.key: certs/elasticsearch/elasticsearch.key
+      xpack.security.http.ssl.certificate: certs/elasticsearch/elasticsearch.crt
+      xpack.security.http.ssl.certificate_authorities: certs/ca.crt
+      xpack.security.transport.ssl.enabled: "true"
+      xpack.security.transport.ssl.key: certs/elasticsearch/elasticsearch.key
+      xpack.security.transport.ssl.certificate: certs/elasticsearch/elasticsearch.crt
+      xpack.security.transport.ssl.certificate_authorities: certs/ca.crt
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:?Run scripts/configure_env.py first}
+      ES_JAVA_OPTS: ${ES_JAVA_OPTS:--Xms1g -Xmx1g}
+    ports:
+      - "127.0.0.1:${ES_PORT:-9200}:9200"
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+      - elastic-certs:/usr/share/elasticsearch/config/certs:ro
+    mem_limit: ${ES_MEMORY_LIMIT:-2g}
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail --cacert config/certs/ca.crt -u \"elastic:$${ELASTIC_PASSWORD}\" 'https://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s' >/dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+
+  setup:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION:-9.5.3}
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    entrypoint: ["bash", "/scripts/bootstrap-elastic.sh"]
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:?Run scripts/configure_env.py first}
+      KIBANA_PASSWORD: ${KIBANA_PASSWORD:?Run scripts/configure_env.py first}
+    volumes:
+      - ./scripts/bootstrap-elastic.sh:/scripts/bootstrap-elastic.sh:ro
+      - public-ca:/ca:ro
+    restart: "no"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION:-9.5.3}
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    environment:
+      SERVER_HOST: "0.0.0.0"
+      ELASTICSEARCH_HOSTS: '["https://elasticsearch:9200"]'
+      ELASTICSEARCH_USERNAME: kibana_system
+      ELASTICSEARCH_PASSWORD: ${KIBANA_PASSWORD:?Run scripts/configure_env.py first}
+      ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES: /usr/share/kibana/config/ca/ca.crt
+      XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: ${KIBANA_ENCRYPTION_KEY:?Run scripts/configure_env.py first}
+      XPACK_SECURITY_ENCRYPTIONKEY: ${KIBANA_SECURITY_KEY:?Run scripts/configure_env.py first}
+      XPACK_REPORTING_ENCRYPTIONKEY: ${KIBANA_REPORTING_KEY:?Run scripts/configure_env.py first}
+      TELEMETRY_ENABLED: "false"
+    ports:
+      - "127.0.0.1:${KIBANA_PORT:-5601}:5601"
+    volumes:
+      - public-ca:/usr/share/kibana/config/ca:ro
+      - kibana-data:/usr/share/kibana/data
+    mem_limit: ${KIBANA_MEMORY_LIMIT:-2g}
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:5601/api/status >/dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 40
+      start_period: 60s
+    restart: unless-stopped
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${STACK_VERSION:-9.5.3}
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      LS_JAVA_OPTS: ${LS_JAVA_OPTS:--Xms512m -Xmx512m}
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:?Run scripts/configure_env.py first}
+      WINDOWS_APT_INPUT: ${WINDOWS_APT_INPUT:-/dataset/ingest-disabled.ndjson}
+      WINDOWS_APT_RUN: ${WINDOWS_APT_RUN:-idle}
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/scripts:/usr/share/logstash/scripts:ro
+      - ./dataset/processed:/dataset:ro
+      - public-ca:/usr/share/logstash/config/ca:ro
+      - logstash-data:/usr/share/logstash/data
+    mem_limit: ${LOGSTASH_MEMORY_LIMIT:-1g}
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:9600/_node/pipelines/main >/dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  elastic-data:
+  elastic-certs:
+  public-ca:
+  kibana-data:
+  logstash-data:

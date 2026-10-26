@@ -1,0 +1,13 @@
+{
+  "dashboard_id": "attack-correlator-windows-apt-2025",
+  "definition_sha256": "c7e599254639a28c17c318efc22cd725566306ad9d682021e1c02430156a9751",
+  "panel_types": {
+    "discover_session": 1,
+    "markdown": 9,
+    "options_list_control": 1,
+    "vis": 8
+  },
+  "space": "attack-correlator",
+  "url": "http://localhost:5601/s/attack-correlator/app/dashboards#/view/attack-correlator-windows-apt-2025",
+  "version": "9.5.3"
+}

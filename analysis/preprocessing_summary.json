@@ -1,0 +1,170 @@
+{
+  "counts": {
+    "conflicting_source_identities": 0,
+    "distinct_source_identities": 102011,
+    "exact_duplicate_documents": 0,
+    "input_events": 102011,
+    "invalid_ip_values": 0,
+    "invalid_pid_values": 0,
+    "invalid_port_values": 0,
+    "processed_events": 102011,
+    "rejected_events": 0
+  },
+  "ecs_fields_populated": {
+    "@timestamp": 90601,
+    "agent.id": 102011,
+    "agent.name": 102011,
+    "destination.ip": 467,
+    "destination.port": 467,
+    "dll.hash.md5": 4112,
+    "dll.hash.sha1": 4112,
+    "dll.hash.sha256": 4112,
+    "dll.name": 4112,
+    "dll.path": 4112,
+    "dns.question.name": 3935,
+    "event.code": 90601,
+    "event.id": 102011,
+    "event.original": 9192,
+    "event.provider": 90601,
+    "file.name": 22981,
+    "file.path": 22981,
+    "host.name": 90601,
+    "network.transport": 467,
+    "process.command_line": 20814,
+    "process.entity_id": 51780,
+    "process.executable": 55125,
+    "process.hash.md5": 20814,
+    "process.hash.sha1": 16137,
+    "process.hash.sha256": 20814,
+    "process.name": 55313,
+    "process.parent.command_line": 20772,
+    "process.parent.entity_id": 20758,
+    "process.parent.executable": 20772,
+    "process.parent.name": 20772,
+    "process.parent.pid": 20814,
+    "process.pid": 55313,
+    "registry.path": 947,
+    "rule.id": 102011,
+    "source.ip": 467,
+    "source.port": 467,
+    "user.domain": 55545,
+    "user.id": 3774,
+    "user.name": 55545
+  },
+  "enrichment": {
+    "attack_annotated_events": 63619,
+    "mapping_join_matches": 102011,
+    "missing_mapping_rows": 0,
+    "scenario_enriched_events": 102011,
+    "wazuh_annotated_events": 102011
+  },
+  "mapping_warning_counts": {
+    "unresolved_zero_security_pid": 13,
+    "unreviewed_hash_object": 1,
+    "unreviewed_process_context": 76
+  },
+  "normalization_warning_counts": {
+    "invalid_process_entity_id": 4,
+    "invalid_process_parent_entity_id": 56
+  },
+  "phase": 3,
+  "processing_version": "1.0.0",
+  "record_conservation": {
+    "original_rows_round_tripped": 102011,
+    "passed": true,
+    "raw_files_unchanged": true
+  },
+  "scenario_strengths": {
+    "NARROWED": 5913,
+    "SHARED-WEAK": 89820,
+    "UNIQUE-MATCH": 373,
+    "UNRESOLVED": 5905
+  },
+  "source_files": {
+    "01-03-December.csv": {
+      "input": 8838,
+      "processed": 8838,
+      "rejected": 0
+    },
+    "03-04-December.csv": {
+      "input": 7291,
+      "processed": 7291,
+      "rejected": 0
+    },
+    "04-07-December.csv": {
+      "input": 7750,
+      "processed": 7750,
+      "rejected": 0
+    },
+    "07-10-December.csv": {
+      "input": 9185,
+      "processed": 9185,
+      "rejected": 0
+    },
+    "1-11-November.csv": {
+      "input": 8807,
+      "processed": 8807,
+      "rejected": 0
+    },
+    "10-December-P1.csv": {
+      "input": 9049,
+      "processed": 9049,
+      "rejected": 0
+    },
+    "10-December-P2.csv": {
+      "input": 1188,
+      "processed": 1188,
+      "rejected": 0
+    },
+    "11-12-December.csv": {
+      "input": 9655,
+      "processed": 9655,
+      "rejected": 0
+    },
+    "11-16-November.csv": {
+      "input": 6554,
+      "processed": 6554,
+      "rejected": 0
+    },
+    "12-13-December.csv": {
+      "input": 6406,
+      "processed": 6406,
+      "rejected": 0
+    },
+    "13-14-December.csv": {
+      "input": 9738,
+      "processed": 9738,
+      "rejected": 0
+    },
+    "14-17-December.csv": {
+      "input": 5644,
+      "processed": 5644,
+      "rejected": 0
+    },
+    "22-December.csv": {
+      "input": 1173,
+      "processed": 1173,
+      "rejected": 0
+    },
+    "23-30-November.csv": {
+      "input": 8038,
+      "processed": 8038,
+      "rejected": 0
+    },
+    "28-October-01-November.csv": {
+      "input": 693,
+      "processed": 693,
+      "rejected": 0
+    },
+    "30-November.csv": {
+      "input": 2002,
+      "processed": 2002,
+      "rejected": 0
+    }
+  },
+  "timestamp_quality": {
+    "explicit_utc": 90601,
+    "unresolved": 11410,
+    "validated_fallback": 0
+  }
+}

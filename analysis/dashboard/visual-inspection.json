@@ -1,0 +1,93 @@
+{
+  "commands_and_ids_readable": true,
+  "detection_discover_results": 172,
+  "detection_discover_rule": "shell_refined",
+  "detection_discover_verified": true,
+  "evidence_membership_rows": {
+    "powershell_refined": 290,
+    "service_config_refined": 108,
+    "service_create_refined": 41,
+    "shell_refined": 172
+  },
+  "excluded_screenshots": {
+    "analysis/dashboard/screenshots/02-primary-sequence.png": {
+      "reason": "Earlier filename was misleading: this capture depicts the negative filter test, not the primary/supporting scenario. Original bytes retained; excluded from report figures and positive scenario proof.",
+      "sha256": "ca8fab3a04d35e97f61b7db5502d37da5399631ccc1af1ca959eb79ff1a13b25"
+    },
+    "analysis/dashboard/screenshots/03-supporting-evidence.png": {
+      "reason": "Earlier filename was misleading: this capture depicts the negative filter test, not the primary/supporting scenario. Original bytes retained; excluded from report figures and positive scenario proof.",
+      "sha256": "b79b5037c6082fddb0f52061398feaa7d1d1c153ad8d89d44cb26e1ef4030e10"
+    }
+  },
+  "export_sha256": "da224fc8e6547d5d39338e18083780d6dffec333210d9b345fa0420df0f1c1de",
+  "final_audit": {
+    "detection_discover_results": 172,
+    "detection_discover_rule": "shell_refined",
+    "evidence_membership_rows": {
+      "powershell_refined": 290,
+      "service_config_refined": 108,
+      "service_create_refined": 41,
+      "shell_refined": 172
+    },
+    "export_unchanged": true,
+    "membership_restored": "Any",
+    "method": "Selected each single membership in the real Kibana browser and read its native document total. Followed original-ID and explicit cohort links into Discover.",
+    "source_discover_event_id": "2118eb1bc31bc69085be22cba47e873cbbffd0282f45b46056f5f7d618c8ba97",
+    "source_discover_results": 1
+  },
+  "global_filter_invariance_verified": true,
+  "import_space": "attack-correlator-check-e51876158514",
+  "imported_evidence_filter": {
+    "service_create_refined": 41
+  },
+  "imported_metric_values": [
+    290,
+    172,
+    41,
+    108,
+    3,
+    3
+  ],
+  "method": "Real Kibana browser inspection via native browser automation. Exact full membership ID sets and source resolution are separately verified by validate_dashboard.py.",
+  "no_panel_errors": true,
+  "notes": [
+    "Overview values stayed 290/172/41/108/3/3 with a nonmatching host query and shifted global time; the document table showed No results found.",
+    "The dashboard was reset to its saved state after temporary filter tests. Reset changes also clears stale browser view overrides after API rebuilds.",
+    "Use the explicit historical cohort links above the table; the built-in Open in Discover can drop membership controls.",
+    "Commands are inert text. Expand document rows for full values; horizontal scrolling exposes columns in smaller viewports.",
+    "Final screenshots include the working dashboard and the retained clean-space import.",
+    "Final preparation corrected misleading screenshot filenames without deleting historical originals; final-primary-scenario.png supplies the positive primary-scenario evidence. Fresh source and cohort Discover screenshots corroborate traceability."
+  ],
+  "passed": true,
+  "previous_reviewed_at_utc": "2026-09-15T07:31:50.290765+00:00",
+  "primary_order_verified": true,
+  "reviewed_at_utc": "2026-09-15T17:44:00.197523+00:00",
+  "screenshots": {
+    "analysis/dashboard/screenshots/01-overview.png": "399fbc9bfee18fd8dbb440e0c5fe6ae4f559a46604bf6c87631b3aec03bdfb06",
+    "analysis/dashboard/screenshots/04-powershell-evidence.png": "949daea59da6d1a5a409b2d8fdf2f28f0d2de4bba438455799d3696fb75fb1ad",
+    "analysis/dashboard/screenshots/05-shell-evidence.png": "30707d3db91b0a62c8fa02209eff3cda1efdc88ec7cfdc4ff74b9507fc4574a0",
+    "analysis/dashboard/screenshots/06-service-create-evidence.png": "1379c609db3533f2786d1f500e0d9b3ed1b60cf3e98d3387a522ca5ec8d8035d",
+    "analysis/dashboard/screenshots/07-service-config-evidence.png": "7673fd0687ce5ce033dc4fe148bda7bb6e0cf33bdbe0b6cfe7330f37f51b1a2c",
+    "analysis/dashboard/screenshots/08-source-discover.png": "c1fc8911241c59ae4ec54447eaa5b6aa80f02107be5e153afb8261fb717e656c",
+    "analysis/dashboard/screenshots/09-detection-discover.png": "524fd4c8e81534811dde6bbb96179141a7f4433d3332da7481f77ee82f175810",
+    "analysis/dashboard/screenshots/10-fixed-overview-filters.png": "5dc0291af19c27d19077ffbc47282679efced56991ff90defffee291cb8d8aae",
+    "analysis/dashboard/screenshots/11-imported-overview.png": "7e0b476edc7c91c91c28e8b384239e34accf1c4e40602bfe057ae00d2624d731",
+    "analysis/dashboard/screenshots/12-imported-evidence.png": "a6781bfe556f31121bebf4ecea4f3677b75a5c6e21aab2414974f9d0a6207d0f",
+    "analysis/dashboard/screenshots/final-detection-discover.png": "bde521f0c77afd4e90e4f5e95382e32940f48fa064496c750f013d45503f8eab",
+    "analysis/dashboard/screenshots/final-primary-scenario.png": "247cc84b90bbe2ac6737da7ecb9c737e71726a88b50a14064e5ac3a5fb55846d",
+    "analysis/dashboard/screenshots/final-source-discover.png": "62c4dc0ae20d72ba3b55d63b32548c6576d5417c9fcb83edd1ed5698b9dde5ef"
+  },
+  "source_discover_event_id": "45f8d95894f821e404938d4f6e30a435cee80a95473ef376b837bfe919ec8ea2",
+  "source_discover_results": 1,
+  "source_discover_verified": true,
+  "unfiltered_evidence_rows": 611,
+  "unfiltered_pages_at_25_rows": 25,
+  "working_metric_values": [
+    290,
+    172,
+    41,
+    108,
+    3,
+    3
+  ]
+}

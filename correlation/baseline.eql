@@ -1,0 +1,7 @@
+sequence by host.name with maxspan=60001ms
+  [any where event.provider == "Microsoft-Windows-Sysmon" and event.code == "1"
+    and correlation.name_lc == "cmd.exe"
+  ] by correlation.actor_guid
+  [any where event.provider == "Microsoft-Windows-Sysmon" and event.code == "1"
+    and correlation.name_lc in ("powershell.exe", "pwsh.exe")
+  ] by correlation.parent_guid

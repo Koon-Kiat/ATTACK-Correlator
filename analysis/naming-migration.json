@@ -1,0 +1,31 @@
+{
+  "migrated_at_utc": "2026-09-15T18:04:53.716035+00:00",
+  "reason": "Descriptive filename migration with deterministic normalization regeneration; no source re-ingestion.",
+  "previous_normalization_manifest_sha256": "b4d715be0d67d4aba9b8b3478e67df24295e8536ed738ca473c5e483597d4806",
+  "current_normalization_manifest_sha256": "383db119936ec5e1023c0edb3884780380bfc1613d9ba9645217eb12b394cd50",
+  "processed_outputs_byte_identical": true,
+  "processed_output_sha256": {
+    "elastic-mapping.json": "1ceeba3bc7c9fc841bef1022e576a6c977b132e878d94ed6f9f9383b08994daa",
+    "publisher-metadata.json": "3c47f04d4df41f90ef044da6d935c20f01a2dcd3714cc5756d0fe628d4a332ce",
+    "source-schemas.json": "481b0258cb4c6eb0ba3e1379dd28e9fc76c000d405c47545658e082bad5749d2",
+    "windows-apt-events.ndjson": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac"
+  },
+  "renamed_files": {
+    "analysis/correlation/phase7-report.md": "analysis/correlation/correlation-report.md",
+    "analysis/correlation/phase7-results.json": "analysis/correlation/correlation-results.json",
+    "analysis/detections/phase6-report.md": "analysis/detections/detection-report.md",
+    "analysis/detections/phase6-results.json": "analysis/detections/detection-results.json",
+    "analysis/detections/prerequisites/phase4-report.md": "analysis/detections/prerequisites/ingestion-report.md",
+    "analysis/detections/prerequisites/phase4-validation.json": "analysis/detections/prerequisites/ingestion-validation.json",
+    "analysis/evaluation/phase8-report.md": "analysis/evaluation/evaluation-report.md",
+    "analysis/evaluation/phase8-results.json": "analysis/evaluation/evaluation-results.json",
+    "analysis/ingestion/phase4-report.md": "analysis/ingestion/ingestion-report.md",
+    "analysis/ingestion/phase4-validation.json": "analysis/ingestion/ingestion-validation.json",
+    "analysis/phase2_manifest.json": "analysis/inventory-manifest.json",
+    "analysis/phase3_manifest.json": "analysis/normalization-manifest.json",
+    "analysis/selection/phase5-verification.json": "analysis/selection/selection-verification.json",
+    "src/preprocessing/phase2_reports.py": "src/preprocessing/inventory_reports.py",
+    "tests/test_phase2_inventory.py": "tests/test_evidence_inventory.py"
+  },
+  "source_index_reingested": false
+}
