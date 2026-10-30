@@ -2,7 +2,8 @@
 
 Status: executable historical correlation, validated against the existing Elastic 9.5.3
 index. Selected sub-techniques remain T1059.001 PowerShell, T1059.003 Windows Command Shell
-and T1543.003 Windows Service. No scheduled Security rule or dashboard is installed.
+and T1543.003 Windows Service. No scheduled Security rule is installed. The
+[implemented dashboard](../docs/dashboard.md) presents the validated correlation evidence.
 
 ## Primary relationship
 
@@ -115,7 +116,7 @@ The runner always replays individual detection, checks frozen definitions/counts
 executes/repeats both EQL views for each window and validates the ES|QL census. A failed
 or interrupted attempt marks its results unvalidated; rerun after resolving the cause.
 No preprocessing, ingestion or mapping extension is needed. See the
-[delivery record](../docs/event-correlation-validation.md), [report](../analysis/correlation/correlation-report.md)
+[validation runbook](../docs/event-correlation-validation.md), [report](../analysis/correlation/correlation-report.md)
 and [full results](../analysis/correlation/correlation-results.json) for hashes, exact IDs,
 source provenance, gaps, exclusions and language differences.
 

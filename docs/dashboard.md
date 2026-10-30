@@ -1,7 +1,8 @@
 # ATT&CK evidence dashboard
 
-**ATT&CK Detection & Correlation — Windows-APT 2025** is a live, validated Kibana 9.5.3
-dashboard in the `attack-correlator` space.
+**ATT&CK Detection & Correlation — Windows-APT 2025** is implemented for Kibana 9.5.3
+in the `attack-correlator` space. Saved validation documents its recorded API/data/import
+and browser checks; start the local stack before opening it.
 [Open locally](http://localhost:5601/s/attack-correlator/app/dashboards#/view/attack-correlator-windows-apt-2025).
 
 The original [scenario evaluation contract](../analysis/evaluation/dashboard-contract.json) remains
@@ -100,6 +101,10 @@ as inert code text, with no execution or automatic URL opening.
 
 ## Presentation and reproduction
 
+Complete the [detection prerequisites](individual-detection-implementation.md#reproduce)
+first. The [dashboard runbook](kibana-dashboard-implementation.md) explains full replay,
+optional prerequisite reuse, import checks and separate browser inspection.
+
 `scripts/build_dashboard_data.py` checks individual detection through scenario evaluation hashes/counts and reads 1,096 required
 live source IDs. It validates refined memberships, all broad pair structures and all
 three triples, then writes **881 deterministic documents** to
@@ -113,7 +118,7 @@ The data view is `attack-correlator-dashboard-*` with `@timestamp` (`date_nanos`
 service evidence and provenance retain their separate roles.
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/build_scenario_evidence.py --reuse-validated-prerequisites
+.\.venv\Scripts\python.exe scripts/build_scenario_evidence.py
 .\.venv\Scripts\python.exe scripts/build_dashboard_data.py
 .\.venv\Scripts\python.exe scripts/build_dashboard.py
 .\.venv\Scripts\python.exe scripts/validate_dashboard.py

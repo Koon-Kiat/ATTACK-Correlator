@@ -178,7 +178,8 @@ record endings. `rejected-events.ndjson` exists only when rejections occur. Side
 `source-schemas.json`, `publisher-metadata.json` and `elastic-mapping.json`. These local
 data files are Git-ignored while `.gitkeep` remains versionable.
 
-The mapping is an offline contract, not an installed template. It explicitly types ECS
+Preprocessing writes an offline mapping contract. The ingestion wrapper installs it
+as the event index template after verification. The contract explicitly types ECS
 and quality fields, uses strict dynamic mappings, and marks original/Wazuh/publisher
 payload objects `enabled: false`. Their values stay in Elasticsearch `_source` without
 source dotted keys expanding into conflicting or excessive fields. [Elastic enabled setting](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/enabled).
@@ -197,7 +198,7 @@ the manifest is written last. Consumers must verify its output hashes. An interr
 publication is not considered valid until those hashes match. No wall-clock generation
 timestamps or temporary paths enter deterministic artifacts. Repeated unchanged runs
 must produce identical hashes; source schemas and publisher sidecars must accompany the
-NDJSON for complete evidence reconstruction. [Validation record](data-sanitization-and-ecs-normalization.md).
+NDJSON for complete evidence reconstruction. See the [saved preprocessing report](../analysis/preprocessing_report.md).
 
 Run `python -m src.preprocessing.verify_processed` to independently stream every
 published event/rejection against its actual raw CSV row, validate output/report/code
@@ -205,7 +206,7 @@ hashes, confirm record accounting, reconstruct every original row, and check nor
 field shapes against the offline mapping contract. It writes its result to
 `analysis/inspection/normalization-verification.json`. This does not connect to Elasticsearch.
 
-## dataset inspection evidence basis
+## Dataset inspection evidence basis
 
 Use the [generated mapping proposals](../analysis/ecs_mapping_candidates.md) and
 [source-quality inventory](../analysis/dataset_inventory.md) as the implementation
@@ -218,4 +219,4 @@ Prefer explicit Windows `systemTime` where available. Display timestamps lack ti
 information, period `utcTime` can omit the date/hour, and combined `utcTime` can be numeric.
 Unsupported timestamps require a visible fallback or quarantine decision, not silent guessing.
 Keep original IDs as strings, source hashes/row locations, original field values and
-Wazuh/derived-scenario annotations separate from future detection outputs.
+Wazuh/derived-scenario annotations separate from project detection outputs.

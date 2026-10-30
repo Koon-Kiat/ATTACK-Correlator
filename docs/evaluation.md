@@ -1,7 +1,7 @@
-# Evaluation preparation
+# Scenario evaluation and evidence review
 
-Status: **scenario evaluation bounded review and scenario demonstration complete**. Individual
-detections and correlation were replayed; exact sources and dashboard inputs are verified.
+Status: **bounded review and scenario demonstration implemented**. Saved validation
+records document detection/correlation replay, exact sources and dashboard inputs.
 Intent classification and measured accuracy remain unavailable. The dataset's Wazuh annotations,
 publisher success ratios and derived scenario assignments are not independent event-level
 malicious/benign truth. They cannot supply a confusion matrix for these rules.
@@ -95,3 +95,25 @@ The [dashboard contract](dashboard.md) uses per-cohort counts, **611 verified ac
 rows**, three refined pairs and the bounded primary triple. No measured accuracy or
 malicious/benign panel is supported. The [live dashboard](dashboard.md) presents these
 validated units. Full incident chronology and automated response are outside scope.
+
+
+## Reproduce the scenario and review
+
+Complete the [detection prerequisites](individual-detection-implementation.md#reproduce)
+with the local stack running, then execute from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/build_scenario_evidence.py
+```
+
+The default command replays individual detections and correlation, verifies 621 live
+source IDs, selects the earliest installation triple with ordered IDs as a tie-breaker,
+and writes the scenario, evaluation, exact-ID queries and dashboard contract. All three
+triples, reviewed units and four refined activity cohorts are checked. Starting a run
+invalidates previous success artifacts, so resolve failures before using the outputs.
+
+With unchanged verified inputs, `--reuse-validated-prerequisites` skips detection and
+correlation replay but still checks saved hashes, live counts/mapping and source evidence.
+It does not provide fresh query execution. Fixed prerequisites produce deterministic
+scenario outputs; a fresh replay changes audit times/hashes without changing the selection
+rule. Continue with the [dashboard build](kibana-dashboard-implementation.md).

@@ -1,8 +1,8 @@
 # Architecture
 
-Status: environment setup through dashboard implementation infrastructure, inspection, preprocessing, ingestion, technique
-selection, individual detections, historical correlation, scenario review and the
-live Kibana dashboard are implemented. No scheduled Security rules are installed.
+Inspection, preprocessing, ingestion, technique selection, individual detections,
+historical correlation, scenario review and the Kibana dashboard are implemented.
+No scheduled Security rules are installed.
 
 ```mermaid
 flowchart LR
@@ -19,7 +19,7 @@ flowchart LR
 
 Raw data stays immutable under `dataset/raw/`. The inspector writes separate
 inventories under `analysis/inspection/`; it is not the preprocessing stage.
-data normalization streams canonical period CSVs into provenance-preserving NDJSON, uses a
+Normalization streams canonical period CSVs into provenance-preserving NDJSON, uses a
 temporary SQLite index for scenario joins, and emits a mapping contract and conservation
 reports. Pandas supports the inspection profiler; normalization uses strict Python
 converters to retain raw spelling and avoid implicit type coercion.
@@ -50,19 +50,19 @@ and reports live under `analysis/ingestion/`. Source annotations and scenario la
 remain context for later review; they do not drive detection logic. See
 [ingestion validation](elastic-ingestion-and-validation.md) for operational details and limits.
 
-individual detection executes single-record ES|QL against the ordinary historical index. Its manifest
+Individual detection executes single-record ES|QL against the ordinary historical index. Its manifest
 keeps installation, service-command and registry cohorts separate. The runner verifies
 exact match sets, fields and source evidence in bounded batches and writes results under
 `analysis/detections/`. It does not change mappings or dataset timestamps. See
 [individual detection](individual-detection-implementation.md) for analytical predicates and reproducible verification.
 
-event correlation executes EQL sequence views with request-local runtime fields and validates all
+Event correlation executes EQL sequence views with request-local runtime fields and validates all
 host/GUID/time tuples from complete source sets. Service installation objects are read
 from preserved original evidence only. No extra index, mapping or runtime infrastructure
 is installed. See [event correlation](event-correlation-validation.md) for exact units and EQL fan-out limitations.
 
-scenario evaluation verifies the primary and corroborating scenarios and emits a hashed evidence
-contract. dashboard implementation checks that contract, fetches 1,096 required source IDs, and builds
+Scenario evaluation verifies the primary and corroborating scenarios and emits a hashed evidence
+contract. The presentation builder checks that contract, fetches 1,096 required source IDs, and builds
 `attack-correlator-dashboard-v1`: 611 event-within-rule memberships, 261 ordered pairs
 with exactly three refined flags, and nine event-within-triple rows. Deterministic IDs,
 strict mapping ownership and complete readback prevent silent count drift. Source data
