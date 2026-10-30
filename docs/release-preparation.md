@@ -1,76 +1,94 @@
 # Report authoring and release packaging
 
-The engineering records in `docs/` and saved results in `analysis/` document
-the project. Optional report sources and generated documents belong in the
-Git-ignored `reports/` directory; they are not required to run the analytics.
+The [documentation guide](README.md) covers maintained instructions; saved evidence
+under `analysis/` retains its recorded validation scope and hashes. Optional report
+sources and generated documents belong in Git-ignored `reports/`. They are not required
+to run the analytics and are not included in the code archive.
 
 ## Report reproduction
 
-`scripts/render_report_pdf.py` accepts a local `reports/technical-report.md` source and explicit
-portrait/landscape page boundaries. It uses optional ReportLab, Pillow and pypdf
-libraries with Windows Arial fonts; these are document-authoring dependencies, not
-requirements of the analytics runtime. They were already available in the author's
-document environment. From an environment containing those libraries, run:
+Supply the reviewed source at `reports/technical-report.md`. A plain Git checkout and
+the generated code ZIP do not include that source. Do not recreate unavailable originals.
+The PDF renderer uses optional ReportLab, Pillow and pypdf; the Word renderer also
+requires python-docx. Use an authoring environment on Windows with Arial fonts, separate
+from the analytics environment. From the project root, run:
 
 ```powershell
 python scripts/render_report_pdf.py
 python scripts/render_report_word.py
 ```
 
-The PDF renderer fails if a declared page overflows. It records source/PDF hashes and figure provenance in the local render audit.
-After every report edit, inspect the rendered PDF again and update the visual review
-only after confirming the latest output. The selected figures are the dashboard
-overview, the primary three-event scenario and the 41-row service-create evidence table.
-Original PNGs remain under `analysis/dashboard/screenshots/`; clipping in the report
-only removes unrelated viewport areas.
+The PDF renderer uses explicit portrait/landscape page boundaries and fails on page
+overflow. Its `--source` and `--output` options override the defaults. Default PDF/Word
+outputs remain under `reports/`. The PDF step prepares figure crops used by the Word
+renderer. Inspect both rendered documents after edits for pagination, clipping and
+overflow; source parsing alone is not visual verification.
 
-The Word renderer additionally uses optional `python-docx`. Run it after the PDF
-renderer, which prepares the figure crops. The Word version keeps editable paragraphs
-and tables. Pagination must be checked by rendering in Word or LibreOffice; check each generated document for clipping and overflow. These authoring dependencies are separate from the analytics environment.
+Render audits record source/output hashes and figure provenance. Original screenshots
+remain under `analysis/dashboard/screenshots/`. The historical `02-primary-sequence.png`
+and `03-supporting-evidence.png` capture negative filter tests; they are excluded as
+primary-scenario proof in `visual-inspection.json`. Use `final-primary-scenario.png`
+for the primary scenario and retain source/Discover captures for traceability.
 
-Two historical PNG names were misleading: `02-primary-sequence.png` and
-`03-supporting-evidence.png` depict negative filter tests. Their original bytes remain
-for provenance, but `visual-inspection.json` explicitly excludes them as primary
-scenario proof. `final-primary-scenario.png` supplies the correct primary capture.
-Fresh `final-source-discover.png` and `final-detection-discover.png` support traceability.
+## Validate the analytics before release
 
-## Verification and archive
-
-The required live sequence is ingestion validation into the separate prerequisites
-directory, technique-selection verification, the default scenario helper, presentation
-data refresh and dashboard validation with the visual requirement. The default scenario
-helper also runs the complete individual-detection and correlation validators. This
-replays the existing analytics; it does not preprocess or re-ingest the source corpus.
+Complete dataset preparation, preprocessing and ingestion from the project README.
+With the local stack healthy, use the analytics environment:
 
 ```powershell
-python scripts/validate_ingestion.py --output-directory analysis/detections/prerequisites
-python scripts/verify_technique_selection.py
-python scripts/build_scenario_evidence.py
-python scripts/build_dashboard_data.py
-python scripts/validate_dashboard.py --reuse-import-check --require-visual
-python -m pytest -q --basetemp .test-tmp
-python -m ruff check .
-python -m ruff format --check .
-python -m pip check
+.\.venv\Scripts\python.exe scripts/validate_ingestion.py --output-directory analysis/detections/prerequisites
+.\.venv\Scripts\python.exe scripts/inspect_technique_candidates.py
+.\.venv\Scripts\python.exe scripts/inspect_selection_relationships.py
+.\.venv\Scripts\python.exe scripts/verify_technique_selection.py
+.\.venv\Scripts\python.exe scripts/build_scenario_evidence.py
+.\.venv\Scripts\python.exe scripts/build_dashboard_data.py
+.\.venv\Scripts\python.exe scripts/validate_dashboard.py
+.\.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m ruff format --check .
+.\.venv\Scripts\python.exe -m pip check
 ```
 
-After reviewing and staging only intended project files, build the archive:
+The scenario helper includes full detection/correlation replay. The two selection
+inspection commands rebuild ignored caches for a fresh checkout or extraction.
+If the dashboard has not been built, or its definition changed, run
+`scripts/build_dashboard.py` after building presentation data and before validation.
+See the [dashboard runbook](kibana-dashboard-implementation.md).
+
+After reviewing the current dashboard in a browser and recording matching visual
+evidence, run `scripts/validate_dashboard.py --reuse-import-check --require-visual`.
+This checks saved import/visual records; it does not perform a browser inspection.
+Keep historical checks and fresh checks distinguishable.
+
+## Build and verify the archive
+
+Review and stage the exact project changes intended for the release. The current
+packager reads **Git-index blobs**, including reviewed staged changes; it does not
+read unstaged edits or untracked files. Check `git diff --cached` before packaging:
 
 ```powershell
-python scripts/package_release.py
+.\.venv\Scripts\python.exe scripts/package_release.py
 ```
 
-The packager reads Git-index blobs, preserving the byte hashes of historical artifacts.
-It rejects unresolved merges, links, tracked generated reports, credentials, datasets,
-private keys, caches and archives; `.env.example` is required. It checks archive CRCs
-and reads back every member's SHA-256. `archive-validation.json` records the index tree
-and every included filename, size and hash; `archive-contents.txt` lists all members.
-Nothing under `reports/` is staged, included recursively or committed.
+The default output is `reports/ATTACK-Correlator-code.zip`. `--output` must point inside
+the ignored `reports/` directory. The command requires a Git checkout, so it cannot
+rebuild directly from an extracted code ZIP without a reviewed Git index.
+
+The packager rejects forbidden staged paths, local credential values and private-key
+markers. It verifies archive CRCs and every member's SHA-256. Adjacent
+`archive-validation.json` records the Git index tree, blob IDs and member hashes;
+`archive-contents.txt` lists members. It does not validate Markdown links, bundle the
+editable report, or include rendered PDF/Word files. Deliver report artifacts separately.
+
+Independently inspect and test the extracted package. Obtain the dataset separately
+and rebuild ignored caches rather than copying development state. Old archive counts
+and checks do not validate a new ZIP. Never distribute development archives containing
+local configuration or source datasets.
 
 ## Saved validation provenance
 
-Saved validation JSON records the script hashes and results from its original run.
-The wording cleanup changes comments or descriptions in `scripts/ingest.py`,
-`scripts/build_dashboard.py` and `scripts/validate_dashboard.py`; those historical
-hashes remain unchanged. Run the live validation commands above before treating
-saved results as verification of the current script bytes.
+Validation JSON records implementation hashes and results from its original run.
+Source edits can invalidate those hashes even when only comments changed. Preserve
+old evidence and run affected validators before claiming current implementation
+verification. Documentation review and successful packaging do not prove live query
+execution, browser behavior or report layout.

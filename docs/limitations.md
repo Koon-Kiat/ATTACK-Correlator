@@ -2,7 +2,7 @@
 
 | Limitation | Implication | Required next action |
 |---|---|---|
-| scenario evaluation scope | Individual strategies/correlation replayed; bounded review and scenario demonstration complete; intent and accuracy remain unmeasured | The dashboard implements the validated evidence contract; retain candidate interpretation and explicit units |
+| Scenario evaluation scope | Individual strategies/correlation replayed; bounded review and scenario demonstration complete; intent and accuracy remain unmeasured | The dashboard implements the validated evidence contract; retain candidate interpretation and explicit units |
 | v4 mapping is derived; citation retains base v3 DOI | Contextual attribution is not independent technique truth | Retain v4 provenance and assess label derivation |
 | Combined and period exports | Same document IDs but altered representations; concatenation double-counts | Use verified period corpus and retain combined comparison evidence |
 | Field-name hints | Cannot establish source semantics | Review actual values and publisher documentation |
@@ -38,7 +38,7 @@
 | Command pattern coverage | Encoded-only, renamed/hosted interpreters, aliases, spacing, and quoted/commented text can cause missed or ambiguous matches | Preserve exact commands and missing-field counts; avoid interpreting substring matches as shell parsing |
 | Service configuration concentration | 108 of 117 configuration events match the same interpreter-oriented command family | Explain the observed homogeneity; retention is not precision or prevalence |
 | ES\|QL export cap | Each export is capped at 10,000 rows | Use the runner's full pre-limit count and fail on truncation; do not use an exported row count alone on larger corpora |
-| Batched evidence readback | Elasticsearch rejects an ids query above its 10,000 result window | Read back at most 1,000 requested IDs per batch and verify every batch; retain cluster limits |
+| Batched evidence readback | A readback requesting more than the 10,000-hit result window fails | Read back at most 1,000 requested IDs per batch and verify every batch; retain cluster limits |
 | KQL review filters | KQL files are broader than the refined regex predicates | Treat ES\|QL as authoritative and retain the explicit role in the manifest |
 | Verification artifact continuity | Refreshing the original ingestion validation JSON changes a hash checked by technique selection | Save the individual detection prerequisite replay separately with --output-directory |
 
@@ -81,7 +81,7 @@ See [event correlation](event-correlation-validation.md) for executable queries,
 - The 611 activity rows are events within four refined cohorts; 16 reviewed events and
   18 preserved scenario records have separate scopes. No total is an attack count.
 
-dashboard implementation installs these derived fields only in `attack-correlator-dashboard-v1`.
+The dashboard implementation installs these derived fields only in `attack-correlator-dashboard-v1`.
 Its 881 documents present validated artifacts and source references; this is not
 another detector or a new source of truth. Prerequisite hash drift, altered counts,
 missing source IDs or changed evidence stop generation.
@@ -102,4 +102,4 @@ which the import replaces with UTC settings. This implementation is validated on
 9.5.3; other versions need fresh API/import/render checks. Long displayed values wrap;
 the stored source strings remain exact.
 
-See [scenario evaluation](scenario-validation-and-evaluation.md), [dashboard implementation](kibana-dashboard-implementation.md) and the [dashboard guide](dashboard.md).
+See [scenario evaluation](evaluation.md), [dashboard implementation](kibana-dashboard-implementation.md) and the [dashboard guide](dashboard.md).
