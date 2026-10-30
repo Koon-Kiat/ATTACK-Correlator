@@ -4,7 +4,7 @@ Status: **event correlation implemented**. Executable queries and the authoritat
 in [correlation/](../correlation/README.md); [results](../analysis/correlation/correlation-results.json)
 and the [report](../analysis/correlation/correlation-report.md) retain the live evidence.
 
-The primary relationship is a individual detection service-origin cmd.exe event followed by a individual detection
+The primary relationship is a service-origin cmd.exe event followed by a separate
 refined PowerShell event. The shell is Sysmon 1, has services.exe as parent and mentions
 PowerShell/pwsh in its command. Require exact host equality, shell actor GUID equal to
 child parent GUID (case-only normalization), explicit UTC times, strict ordering and an
@@ -60,13 +60,13 @@ support and the 169 shell candidates in the other service-control branch as stan
 observations. Missing GUIDs/timestamps/events, other interpreters/parents, renamed/hosted
 PowerShell and delayed execution can prevent correlation.
 
-scenario evaluation replays this validator and selects the earliest installation triple on
+Scenario evaluation replays this validator and selects the earliest installation triple on
 **DESKTOP-DS4FBF4 (6 November 2024)** for a bounded demonstration. The other two triples
 remain corroboration. [Scenario evidence](../analysis/scenarios/scenario-demonstration.md)
 retains exact IDs, service object, GUIDs, nanosecond gaps and provenance. The SCM record
 is a baseline installation, outside refined sc.exe process cohorts.
 
-See [evaluation](evaluation.md) for the completed 11-unit review, [event correlation](event-correlation-validation.md)
-for unchanged correlation logic and [scenario evaluation](scenario-validation-and-evaluation.md) for evidence preparation.
+See [evaluation](evaluation.md) for the 11-unit review and evidence preparation, and
+the [correlation runbook](event-correlation-validation.md) for replay commands.
 The [live dashboard](dashboard.md) implements this evidence contract. Full incident
 reconstruction and automated response remain outside scope.

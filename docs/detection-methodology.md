@@ -1,10 +1,10 @@
 # Detection methodology
 
 Status: **Individual detections, historical correlation and the Kibana dashboard are
-implemented and live-validated**. No scheduled Security rules are installed. See the
+implemented**, with live validation recorded in the saved evidence. No scheduled Security rules are installed. See the
 [correlation validator](correlation.md) and [dashboard](dashboard.md).
 
-The [technique selection selection](../analysis/technique_selection.md) and structured contracts remain
+The [technique selection](../analysis/technique_selection.md) and structured contracts remain
 authoritative: T1059.001 PowerShell, T1059.003 Windows Command Shell and T1543.003 Windows
 Service. The [manifest](../detections/manifest.json) identifies each query, observation
 cohort, paired baseline, matching unit, guidance and latest validated count.
@@ -52,7 +52,7 @@ do not prevent an individual match and are excluded only from min/max. All match
 are timed, while 11,410 other retained records lack defensible timestamps. Later scheduled
 rules need an explicit replay/look-back policy; source times must remain unchanged.
 
-Run the commands in [individual detection](individual-detection-implementation.md#reproduce). The fresh ingestion validation validation is saved
+Run the commands in [individual detection](individual-detection-implementation.md#reproduce). The fresh ingestion validation is saved
 separately to preserve the earlier report hash required by technique selection. No preprocessing,
 ingestion, technique reselection or dataset modification is part of this workflow.
 
@@ -76,11 +76,12 @@ Command patterns cannot prove execution outcome or malicious persistence. Encode
 renamed/hosted interpreters, missing commands/parents, alias/spacing/quoting differences and
 API/PowerShell service modification limit coverage. Text in comments or quoted arguments
 can match. The high service-config retention reflects repeated similar commands in this
-corpus and is explicitly investigated in the individual detection record.
+corpus; the [service specification](../detections/technique-3/README.md) explains the
+retained and excluded command families.
 
 SCM serviceName/imagePath remain unindexed original fields, retrievable for review only.
 No mapping was extended to make an installation-object refinement or join appear available.
-event correlation implements host/GUID correlation with explicit tuple units, fan-out and
+Event correlation implements host/GUID correlation with explicit tuple units, fan-out and
 missing-support analysis: 261 broad tuples become 3 refined tuples. Standalone candidates
 remain available. All three earlier installation corroborations satisfy the refinement. Precision, recall, F1 and FPR
 require defensible independent truth and remain unmeasured.

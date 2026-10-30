@@ -1,9 +1,12 @@
 # Evaluation workspace
 
-Phase 8 is complete. [Results](evaluation-results.json) and the [report](evaluation-report.md)
-contain the bounded evidence review, separate event/pair/triple counts, exact refined
-activity timestamps and qualitative FP/FN reasoning. [Dashboard contract](dashboard-contract.json)
-identifies validated panel sources; the dashboard itself is not built.
+[Results](evaluation-results.json) and the [report](evaluation-report.md) contain the
+bounded evidence review, separate event/pair/triple counts, exact refined activity
+timestamps and qualitative coverage reasoning. The [dashboard contract](dashboard-contract.json)
+identifies validated panel sources. Its `dashboard_built: false` records the prerequisite
+stage; the implemented dashboard has its own [validation report](../dashboard/dashboard-report.md).
 
-Reviewed artifacts are versioned with source/query hashes. Bulk temporary data remains
-in ignored `results/`. No independent intent labels or accuracy metrics are supplied.
+Use the [evaluation guide](../../docs/evaluation.md) for reproduction and interpretation.
+Reviewed artifacts retain source/query
+hashes, and temporary data belongs in ignored `results/`. No independent intent labels
+or measured accuracy metrics are supplied. See [snapshot provenance](../README.md).

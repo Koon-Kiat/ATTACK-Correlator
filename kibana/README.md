@@ -12,10 +12,12 @@ Lens and Markdown panels are embedded. The export contains no credentials.
 
 ## Required data and import
 
-The export contains no Elasticsearch data. Retain the verified source index
-`windows-apt-events-*` and first run:
+The export contains no Elasticsearch data. Complete the
+[detection prerequisites](../docs/individual-detection-implementation.md#reproduce), retain
+the verified source index `windows-apt-events-*`, then prepare the scenario and presentation data:
 
 ```powershell
+.\.venv\Scripts\python.exe scripts/build_scenario_evidence.py
 .\.venv\Scripts\python.exe scripts/build_dashboard_data.py
 ```
 
