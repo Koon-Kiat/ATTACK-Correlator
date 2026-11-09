@@ -1,6 +1,6 @@
 # Bounded scenario demonstration
 
-Prerequisite replay: 2026-09-16T12:50:21.306930+00:00. Every displayed scenario and comparison was read back from live Elasticsearch.
+Prerequisite replay: 2026-09-19T17:53:18.313841+00:00. Every displayed scenario and comparison was read back from live Elasticsearch.
 
 ## Selection and scope
 

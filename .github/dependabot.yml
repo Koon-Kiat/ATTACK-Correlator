@@ -1,0 +1,38 @@
+# Routine version updates. Security updates are a repository setting and do not
+# wait for this schedule.
+#
+# The Elastic stack version in docker-compose.yml is deliberately not listed: saved
+# ingestion and dashboard evidence records it, and CI has no stack to validate a bump.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    # Major bumps stay out of both groups so each one is reviewed on its own.
+    groups:
+      runtime:
+        patterns:
+          - pandas
+          - numpy
+          - python-dateutil
+          - six
+          - tzdata
+        update-types:
+          - minor
+          - patch
+      tooling:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"

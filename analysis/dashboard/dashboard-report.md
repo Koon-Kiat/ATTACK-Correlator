@@ -2,7 +2,7 @@
 
 **ATT&CK Detection & Correlation — Windows-APT 2025** · Kibana 9.5.3 · UTC
 
-Validated: 2026-09-16T12:50:46.267416+00:00. API/data/import checks: **passed**. Visual inspection: **passed**.
+Validated: 2026-09-19T17:53:43.618407+00:00. API/data/import checks: **passed**. Visual inspection: **passed**.
 
 | Analytical unit | Live result |
 |---|---:|
