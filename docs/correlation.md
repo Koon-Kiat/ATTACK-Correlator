@@ -70,3 +70,17 @@ See [evaluation](evaluation.md) for the 11-unit review and evidence preparation,
 the [correlation runbook](event-correlation-validation.md) for replay commands.
 The [live dashboard](dashboard.md) implements this evidence contract. Full incident
 reconstruction and automated response remain outside scope.
+
+## Concrete refinement exclusion
+
+The report uses the first retained removed representative, replayed against the prepared
+NDJSON by `python scripts/verify_evidence.py`. Its
+[complete source evidence and predicates](../analysis/correlation/excluded-pair-example.json)
+show a cmd.exe parent and powershell.exe child on DESKTOP-QGB4EQH at
+2024-12-09T23:27:23.322813Z and 23:27:23.376916100Z. Their identical parent/actor GUID
+`{15959494-7CDB-6757-181B-000000001E00}` and 54,103,100 ns gap satisfy the broad join.
+The cmd parent is powershell.exe rather than services.exe, and the encoded child lacks
+both implemented PowerShell flag combinations. Both refined endpoint predicates fail.
+Source rows 3475 and 6548 of `10-December-P1.csv` (zero-based) retain original IDs
+`4ce_rZMBnOFSf1ly0iSe` and `4se_rZMBnOFSf1ly0iSe`. This demonstrates filtering, not a
+ground-truth false positive or a measured improvement in accuracy.

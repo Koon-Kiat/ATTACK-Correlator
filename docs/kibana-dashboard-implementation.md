@@ -66,5 +66,4 @@ their recorded run times. Existing screenshots document their original inspectio
 
 Counts are candidate observations and ordered tuples. The 261-to-3 reduction does not
 measure false-positive reduction, and the primary SCM installation is separate from
-the refined sc.exe cohorts. See [limitations](limitations.md). Report authoring and
-archive output locations are documented in [release preparation](release-preparation.md).
+the refined sc.exe cohorts. See [limitations](limitations.md).

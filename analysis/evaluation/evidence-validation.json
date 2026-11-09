@@ -1,0 +1,45 @@
+{
+  "events": 102011,
+  "exact_correlation_tuple_sets": {
+    "300": {
+      "broad": 261,
+      "refined": 3,
+      "triples": 3
+    },
+    "60": {
+      "broad": 261,
+      "refined": 3,
+      "triples": 3
+    },
+    "900": {
+      "broad": 261,
+      "refined": 3,
+      "triples": 3
+    }
+  },
+  "exact_query_id_sets": {
+    "powershell_baseline": 2060,
+    "powershell_kql_review": 2060,
+    "powershell_refined": 290,
+    "service_config_baseline": 117,
+    "service_config_refined": 108,
+    "service_create_baseline": 155,
+    "service_create_refined": 41,
+    "service_installation": 102,
+    "service_kql_review": 523,
+    "service_registry": 708,
+    "shell_baseline": 7717,
+    "shell_kql_review": 7717,
+    "shell_refined": 172
+  },
+  "input_sha256": {
+    "analysis/correlation/correlation-results.json": "75e9adaf4452597fe76a473df7bfce4ccb5b74faec3466876a6e0b78974b2861",
+    "analysis/detections/detection-results.json": "a41d4176901b42b31c6b0ed1ba48e529fca1b899976ae798c190211fa77851a7",
+    "dataset/processed/windows-apt-events.ndjson": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac"
+  },
+  "mode": "Offline source predicates; live ES|QL/EQL execution is recorded separately",
+  "passed": true,
+  "runner_sha256": "4205c9f118d6319d16df4373ba89bb189419fe7c69329eb20fb25b4097eb364a",
+  "timed": 90601,
+  "undated": 11410
+}
