@@ -1,6 +1,6 @@
 # T1059.001 — PowerShell
 
-Tactics: Execution. Validated: 2026-09-16T12:50:04.356335+00:00.
+Tactics: Execution. Validated: 2026-09-19T17:52:56.693104+00:00.
 
 ## Objective and observable telemetry
 

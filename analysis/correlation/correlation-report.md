@@ -1,6 +1,6 @@
 # Historical event correlation results
 
-Live validation passed: 2026-09-16T12:50:21.306930+00:00. Elasticsearch corpus: 102,011 events; 90,601 timed, 11,410 undated.
+Live validation passed: 2026-09-19T17:53:18.313841+00:00. Elasticsearch corpus: 102,011 events; 90,601 timed, 11,410 undated.
 
 ## Relationship and matching units
 

@@ -1,0 +1,171 @@
+{
+  "conditions": {
+    "execution": false,
+    "hidden": true,
+    "inline_command": true,
+    "interpreter_binpath": true,
+    "no_profile": true,
+    "retrieval": false,
+    "service_control_interpreter": false,
+    "service_parent_interpreter": false
+  },
+  "event": {
+    "@timestamp": "2024-11-06T09:58:51.2110964Z",
+    "agent": {
+      "id": "1",
+      "name": "DESKTOP-DS4FBF4"
+    },
+    "event": {
+      "code": "1",
+      "id": "a09e22b650cbb31dd9c8ed646ee200e6083c4a30eace7a4598e7a050ec71e06b",
+      "provider": "Microsoft-Windows-Sysmon"
+    },
+    "host": {
+      "name": "DESKTOP-DS4FBF4"
+    },
+    "process": {
+      "command_line": "sc.exe  create ARTService binPath= \\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\"",
+      "entity_id": "{8e11608b-3ddb-672b-1505-000000000500}",
+      "executable": "C:\\\\Windows\\\\System32\\\\sc.exe",
+      "hash": {
+        "md5": "3fb5cf71f7e7eb49790cb0e663434d80",
+        "sha1": "b4979a9f970029889713d756c3f123643dde73da",
+        "sha256": "41f067c3a11b02fe39947f9eba68ae5c7cb5bd1872a6009a4cd1506554a9aba9"
+      },
+      "name": "sc.exe",
+      "parent": {
+        "command_line": "cmd.exe /C sc.exe create ARTService binPath= \\\"%COMSPEC% /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\" &amp;&amp; sc.exe start ARTService &amp;&amp; sc.exe delete ARTService",
+        "entity_id": "{8e11608b-3ddb-672b-1405-000000000500}",
+        "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "name": "cmd.exe",
+        "pid": 7144
+      },
+      "pid": 7872
+    },
+    "rule": {
+      "id": "92032"
+    },
+    "user": {
+      "domain": "DESKTOP-DS4FBF4",
+      "name": "mari"
+    },
+    "windows_apt": {
+      "annotations": {
+        "attack": {
+          "ids": [
+            "T1087",
+            "T1059.003"
+          ],
+          "names": [
+            "Account Discovery",
+            "Windows Command Shell"
+          ],
+          "tactics": [
+            "Discovery",
+            "Execution"
+          ]
+        },
+        "wazuh": {
+          "cis": " ",
+          "cis_csc": " ",
+          "cis_csc_v7": " ",
+          "cis_csc_v8": " ",
+          "description": "Suspicious Windows cmd shell execution",
+          "firedtimes": "8",
+          "frequency": " ",
+          "gdpr": " ",
+          "gdpr_IV": " ",
+          "gpg13": " ",
+          "gpg_13": " ",
+          "groups": "[\"sysmon\",\"sysmon_eid1_detections\",\"windows\"]",
+          "hipaa": " ",
+          "id": "92032",
+          "info": " ",
+          "level": "3",
+          "mail": "FALSE",
+          "mitre.id": "[\"T1087\",\"T1059.003\"]",
+          "mitre.tactic": "[\"Discovery\",\"Execution\"]",
+          "mitre.technique": "[\"Account Discovery\",\"Windows Command Shell\"]",
+          "mitre_mitigations": " ",
+          "mitre_tactics": " ",
+          "mitre_techniques": " ",
+          "nist_800_53": " ",
+          "pci_dss": " ",
+          "soc_2": " ",
+          "tsc": " "
+        }
+      },
+      "original": {
+        "_source.data.win.eventdata.commandLine": "sc.exe  create ARTService binPath= \\\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\"",
+        "_source.data.win.eventdata.company": "Microsoft Corporation",
+        "_source.data.win.eventdata.currentDirectory": "C:\\\\WINDOWS\\\\system32\\\\",
+        "_source.data.win.eventdata.description": "Service Control Manager Configuration Tool",
+        "_source.data.win.eventdata.fileVersion": "10.0.19041.1 (WinBuild.160101.0800)",
+        "_source.data.win.eventdata.hashes": "SHA1=B4979A9F970029889713D756C3F123643DDE73DA,MD5=3FB5CF71F7E7EB49790CB0E663434D80,SHA256=41F067C3A11B02FE39947F9EBA68AE5C7CB5BD1872A6009A4CD1506554A9ABA9,IMPHASH=803254E010814E69947095A2725B2AFD",
+        "_source.data.win.eventdata.image": "C:\\\\Windows\\\\System32\\\\sc.exe",
+        "_source.data.win.eventdata.integrityLevel": "High",
+        "_source.data.win.eventdata.logonGuid": "{8e11608b-2164-672b-54cc-5c0000000000}",
+        "_source.data.win.eventdata.logonId": "0x5ccc54",
+        "_source.data.win.eventdata.originalFileName": "sc.exe",
+        "_source.data.win.eventdata.parentCommandLine": "cmd.exe /C sc.exe create ARTService binPath= \\\"%COMSPEC% /c powershell.exe -nop -w hidden -command New-Item -ItemType File C:\\\\art-marker.txt\\\" &amp;&amp; sc.exe start ARTService &amp;&amp; sc.exe delete ARTService",
+        "_source.data.win.eventdata.parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "_source.data.win.eventdata.parentProcessGuid": "{8e11608b-3ddb-672b-1405-000000000500}",
+        "_source.data.win.eventdata.parentProcessId": "7144",
+        "_source.data.win.eventdata.parentUser": "DESKTOP-DS4FBF4\\\\mari",
+        "_source.data.win.eventdata.processGuid": "{8e11608b-3ddb-672b-1505-000000000500}",
+        "_source.data.win.eventdata.processId": "7872",
+        "_source.data.win.eventdata.product": "Microsoft® Windows® Operating System",
+        "_source.data.win.eventdata.ruleName": "technique_id=T1543.003,technique_name=Windows Service",
+        "_source.data.win.eventdata.terminalSessionId": "1",
+        "_source.data.win.eventdata.user": "DESKTOP-DS4FBF4\\\\mari",
+        "_source.data.win.eventdata.utcTime": "58:51.2"
+      },
+      "provenance": {
+        "csv_record_end_line": 93977,
+        "dataset": "Windows-APT 2025",
+        "dataset_version": "4",
+        "original_id": "8dvpAJMBLF98WFwuwQMU",
+        "original_index": "wazuh-alerts-4.x-2024.11.06",
+        "processing_version": "1.0.0",
+        "row_sha256": "45715a9e2fd9fc3b9ec4467e0213416741b2f62cddc334f922954f79883779da",
+        "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/1-11-November.csv",
+        "source_representation": "period_csv",
+        "source_row_index": 6796,
+        "source_sha256": "e60f822890dab491a7a189c549c873a52d56f52c3dc31c125923917014a56900"
+      },
+      "quality": {
+        "timestamp": "explicit_utc"
+      },
+      "scenario": {
+        "attribution_strength": "SHARED-WEAK",
+        "derived_label": "technique-tagged",
+        "id": "S34",
+        "metadata_ref": "publisher-metadata.json#S34",
+        "name": "Rocke",
+        "source_mapping": {
+          "Agent_Name": "DESKTOP-DS4FBF4",
+          "Attribution_Strength": "SHARED-WEAK",
+          "Candidate_Scenarios": "S34|S07|S33|S35|S16|S28|S36|S32",
+          "Derived_Label": "technique-tagged",
+          "MITRE_Group_ID": "Rocke",
+          "MITRE_Technique": "[\"T1087\",\"T1059.003\"]",
+          "Mapping_Evidence": "p=0.19; margin=0.04; own-technique",
+          "Row_Index": "6796",
+          "Scenario_ID": "S34",
+          "Scenario_Name": "Rocke",
+          "Scenario_Posterior": "S34:0.19|S07:0.15|S33:0.12|S35:0.09",
+          "Source_CSV": "1-11-November.csv",
+          "Timestamp": "Nov 6, 2024 @ 09:58:50.642"
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "analysis/correlation/correlation-results.json": "75e9adaf4452597fe76a473df7bfce4ccb5b74faec3466876a6e0b78974b2861",
+    "analysis/detections/detection-results.json": "a41d4176901b42b31c6b0ed1ba48e529fca1b899976ae798c190211fa77851a7",
+    "dataset/processed/windows-apt-events.ndjson": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac"
+  },
+  "interpretation": "Separate sc.exe process match; not an additional asserted GUID edge",
+  "passed": true,
+  "source": "Prepared source in the exact live-validated service_create_refined set"
+}

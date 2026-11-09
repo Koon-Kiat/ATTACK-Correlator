@@ -14,6 +14,7 @@ Use the [project README](../README.md) for reproduction order and the
 | [Correlation report](correlation/correlation-report.md) | Complete ordered pairs, EQL differences and service corroboration |
 | [Scenario demonstration](scenarios/scenario-demonstration.md), [evaluation](evaluation/evaluation-report.md) | Bounded review and exact source evidence; see [evaluation guidance](../docs/evaluation.md) |
 | [Dashboard report](dashboard/dashboard-report.md) | Recorded API/data/import and visual checks; see [dashboard guide](../docs/dashboard.md) |
+| [Offline evidence validation](evaluation/evidence-validation.json) | Saved source-predicate replay; does not replace live ES\|QL/EQL execution |
 
 ## Interpreting historical wording
 

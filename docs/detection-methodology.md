@@ -85,3 +85,17 @@ Event correlation implements host/GUID correlation with explicit tuple units, fa
 missing-support analysis: 261 broad tuples become 3 refined tuples. Standalone candidates
 remain available. All three earlier installation corroborations satisfy the refinement. Precision, recall, F1 and FPR
 require defensible independent truth and remain unmeasured.
+
+## Report examples
+
+The technical report includes the full executable service-create query from
+`detections/technique-3/detection.esql`, including provider/event guards, lowercase
+normalization, command predicates, source-ID projection, ordering and export bound.
+The PowerShell and shell explanations reference their full query files. Their existing
+predicates and result sets were preserved during the technical audit.
+
+The [refined service example](../analysis/detections/refined-service-example.json)
+is sc.exe PID 7872 on DESKTOP-DS4FBF4 at 2024-11-06T09:58:51.211096400Z, with a cmd.exe
+parent and interpreter binPath. It is one of the 41 exact service-create matches and
+appears in the retained screenshot. It is not the SCM 7045 installation event, and no
+additional process ancestry relationship is inferred from timestamp proximity.

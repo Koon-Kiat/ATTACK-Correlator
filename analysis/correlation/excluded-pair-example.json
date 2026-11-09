@@ -1,0 +1,332 @@
+{
+  "child_conditions": {
+    "execution": false,
+    "hidden": false,
+    "inline_command": false,
+    "interpreter_binpath": false,
+    "no_profile": false,
+    "retrieval": false,
+    "service_control_interpreter": false,
+    "service_parent_interpreter": false
+  },
+  "events": [
+    {
+      "@timestamp": "2024-12-09T23:27:23.322813000Z",
+      "agent": {
+        "id": "3",
+        "name": "window-agent3"
+      },
+      "event": {
+        "code": "1",
+        "id": "01ea2e887c88adf9d4b6a5edf353af461617e8372ebfe98f63b117460e79b760",
+        "provider": "Microsoft-Windows-Sysmon"
+      },
+      "host": {
+        "name": "DESKTOP-QGB4EQH"
+      },
+      "process": {
+        "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+        "entity_id": "{15959494-7CDB-6757-181B-000000001E00}",
+        "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "hash": {
+          "md5": "4e2acf4f8a396486ab4268c94a6a245f",
+          "sha1": "3ce71813199abae99348f61f0caa34e2574f831c",
+          "sha256": "9a7c58bd98d70631aa1473f7b57b426db367d72429a5455b433a05ee251f3236"
+        },
+        "name": "cmd.exe",
+        "parent": {
+          "command_line": "powershell.exe -ExecutionPolicy Bypass -C \\\"invoke-expression 'cmd /c start powershell -Command {cmd /c \\\\\\\"PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe\\\\\\\"}'; sleep -s 60; stop-process -name \\\\\\\"tor\\\\\\\" | out-null\\\"",
+          "entity_id": "{15959494-7CDA-6757-0C1B-000000001E00}",
+          "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+          "name": "powershell.exe",
+          "pid": 9320
+        },
+        "pid": 9748
+      },
+      "rule": {
+        "id": "92004"
+      },
+      "user": {
+        "domain": "DESKTOP-QGB4EQH",
+        "name": "mari"
+      },
+      "windows_apt": {
+        "annotations": {
+          "attack": {
+            "ids": [
+              "T1059.003"
+            ],
+            "names": [
+              "Windows Command Shell"
+            ],
+            "tactics": [
+              "Execution"
+            ]
+          },
+          "wazuh": {
+            "description": "Powershell process spawned Windows command shell instance",
+            "firedtimes": "1",
+            "frequency": " ",
+            "gdpr": " ",
+            "gpg13": " ",
+            "groups": "[\"sysmon\",\"sysmon_eid1_detections\",\"windows\"]",
+            "hipaa": " ",
+            "id": "92004",
+            "info": " ",
+            "level": "4",
+            "mail": "FALSE",
+            "mitre.id": "[\"T1059.003\"]",
+            "mitre.tactic": "[\"Execution\"]",
+            "mitre.technique": "[\"Windows Command Shell\"]",
+            "nist_800_53": " ",
+            "pci_dss": " ",
+            "tsc": " "
+          }
+        },
+        "original": {
+          "_source.data.win.eventdata.commandLine": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+          "_source.data.win.eventdata.company": "Microsoft Corporation",
+          "_source.data.win.eventdata.currentDirectory": "C:\\\\Users\\\\mari\\\\",
+          "_source.data.win.eventdata.description": "Windows Command Processor",
+          "_source.data.win.eventdata.fileVersion": "10.0.17134.1 (WinBuild.160101.0800)",
+          "_source.data.win.eventdata.hashes": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+          "_source.data.win.eventdata.image": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+          "_source.data.win.eventdata.integrityLevel": "Medium",
+          "_source.data.win.eventdata.logonGuid": "{15959494-3A30-6757-9B97-090000000000}",
+          "_source.data.win.eventdata.logonId": "0x9979b",
+          "_source.data.win.eventdata.originalFileName": "Cmd.Exe",
+          "_source.data.win.eventdata.parentCommandLine": "powershell.exe -ExecutionPolicy Bypass -C \\\"invoke-expression 'cmd /c start powershell -Command {cmd /c \\\\\\\"PathToAtomicsFolder\\\\..\\\\ExternalPayloads\\\\tor\\\\Tor\\\\tor.exe\\\\\\\"}'; sleep -s 60; stop-process -name \\\\\\\"tor\\\\\\\" | out-null\\\"",
+          "_source.data.win.eventdata.parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+          "_source.data.win.eventdata.parentProcessGuid": "{15959494-7CDA-6757-0C1B-000000001E00}",
+          "_source.data.win.eventdata.parentProcessId": "9320",
+          "_source.data.win.eventdata.parentUser": "DESKTOP-QGB4EQH\\\\mari",
+          "_source.data.win.eventdata.processGuid": "{15959494-7CDB-6757-181B-000000001E00}",
+          "_source.data.win.eventdata.processId": "9748",
+          "_source.data.win.eventdata.product": "Microsoft® Windows® Operating System",
+          "_source.data.win.eventdata.ruleName": "technique_id=T1059.003,technique_name=Windows Command Shell",
+          "_source.data.win.eventdata.terminalSessionId": "1",
+          "_source.data.win.eventdata.user": "DESKTOP-QGB4EQH\\\\mari",
+          "_source.data.win.eventdata.utcTime": "27:23.3"
+        },
+        "provenance": {
+          "csv_record_end_line": 70133,
+          "dataset": "Windows-APT 2025",
+          "dataset_version": "4",
+          "original_id": "4ce_rZMBnOFSf1ly0iSe",
+          "original_index": "wazuh-alerts-4.x-2024.12.09",
+          "processing_version": "1.0.0",
+          "row_sha256": "787aaa8fae24d67d6003bb7be377bb1abda6b45b8d8335ea202f7b8e09de3e06",
+          "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+          "source_representation": "period_csv",
+          "source_row_index": 3475,
+          "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+        },
+        "quality": {
+          "timestamp": "explicit_utc"
+        },
+        "scenario": {
+          "attribution_strength": "SHARED-WEAK",
+          "derived_label": "technique-tagged",
+          "id": "S07",
+          "metadata_ref": "publisher-metadata.json#S07",
+          "name": "APT41",
+          "source_mapping": {
+            "Agent_Name": "window-agent3",
+            "Attribution_Strength": "SHARED-WEAK",
+            "Candidate_Scenarios": "S07|S33|S36|S08|S16|S26|S06|S32|S25|S11|S28|S31",
+            "Derived_Label": "technique-tagged",
+            "MITRE_Group_ID": "APT41",
+            "MITRE_Technique": "[\"T1059.003\"]",
+            "Mapping_Evidence": "p=0.09; margin=0.00; own-technique",
+            "Row_Index": "3475",
+            "Scenario_ID": "S07",
+            "Scenario_Name": "APT41",
+            "Scenario_Posterior": "S07:0.09|S33:0.08|S36:0.08|S08:0.08",
+            "Source_CSV": "10-December-P1.csv",
+            "Timestamp": "Dec 9, 2024 @ 23:27:25.284"
+          }
+        }
+      }
+    },
+    {
+      "@timestamp": "2024-12-09T23:27:23.376916100Z",
+      "agent": {
+        "id": "3",
+        "name": "window-agent3"
+      },
+      "event": {
+        "code": "1",
+        "id": "32be01ebebaa05d0b83cb068bbcab36b41c24a1a48ca750d33bed090f68bb51a",
+        "provider": "Microsoft-Windows-Sysmon"
+      },
+      "host": {
+        "name": "DESKTOP-QGB4EQH"
+      },
+      "process": {
+        "command_line": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+        "entity_id": "{15959494-7CDB-6757-191B-000000001E00}",
+        "executable": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "hash": {
+          "md5": "95000560239032bc68b4c2fdfcdef913",
+          "sha1": "1b3b40fbc889fd4c645cc12c85d0805ac36ba254",
+          "sha256": "d3f8fade829d2b7bd596c4504a6dae5c034e789b6a3defbe013bda7d14466677"
+        },
+        "name": "powershell.exe",
+        "parent": {
+          "command_line": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+          "entity_id": "{15959494-7CDB-6757-181B-000000001E00}",
+          "executable": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+          "name": "cmd.exe",
+          "pid": 9748
+        },
+        "pid": 9936
+      },
+      "rule": {
+        "id": "92032"
+      },
+      "user": {
+        "domain": "DESKTOP-QGB4EQH",
+        "name": "mari"
+      },
+      "windows_apt": {
+        "annotations": {
+          "attack": {
+            "ids": [
+              "T1087",
+              "T1059.003"
+            ],
+            "names": [
+              "Account Discovery",
+              "Windows Command Shell"
+            ],
+            "tactics": [
+              "Discovery",
+              "Execution"
+            ]
+          },
+          "wazuh": {
+            "description": "Suspicious Windows cmd shell execution",
+            "firedtimes": "30",
+            "frequency": " ",
+            "gdpr": " ",
+            "gpg13": " ",
+            "groups": "[\"sysmon\",\"sysmon_eid1_detections\",\"windows\"]",
+            "hipaa": " ",
+            "id": "92032",
+            "info": " ",
+            "level": "3",
+            "mail": "FALSE",
+            "mitre.id": "[\"T1087\",\"T1059.003\"]",
+            "mitre.tactic": "[\"Discovery\",\"Execution\"]",
+            "mitre.technique": "[\"Account Discovery\",\"Windows Command Shell\"]",
+            "nist_800_53": " ",
+            "pci_dss": " ",
+            "tsc": " "
+          }
+        },
+        "original": {
+          "_source.data.win.eventdata.commandLine": "powershell  -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+          "_source.data.win.eventdata.company": "Microsoft Corporation",
+          "_source.data.win.eventdata.currentDirectory": "C:\\\\Users\\\\mari\\\\",
+          "_source.data.win.eventdata.description": "Windows PowerShell",
+          "_source.data.win.eventdata.fileVersion": "10.0.17134.1 (WinBuild.160101.0800)",
+          "_source.data.win.eventdata.hashes": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+          "_source.data.win.eventdata.image": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+          "_source.data.win.eventdata.integrityLevel": "Medium",
+          "_source.data.win.eventdata.logonGuid": "{15959494-3A30-6757-9B97-090000000000}",
+          "_source.data.win.eventdata.logonId": "0x9979b",
+          "_source.data.win.eventdata.originalFileName": "PowerShell.EXE",
+          "_source.data.win.eventdata.parentCommandLine": "\\\"C:\\\\Windows\\\\system32\\\\cmd.exe\\\" /c start powershell -encodedCommand YwBtAGQAIAAvAGMAIAAiAFAAYQB0AGgAVABvAEEAdABvAG0AaQBjAHMARgBvAGwAZABlAHIAXAAuAC4AXABFAHgAdABlAHIAbgBhAGwAUABhAHkAbABvAGEAZABzAFwAdABvAHIAXABUAG8AcgBcAHQAbwByAC4AZQB4AGUAIgA= -inputFormat xml -outputFormat text",
+          "_source.data.win.eventdata.parentImage": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+          "_source.data.win.eventdata.parentProcessGuid": "{15959494-7CDB-6757-181B-000000001E00}",
+          "_source.data.win.eventdata.parentProcessId": "9748",
+          "_source.data.win.eventdata.parentUser": "DESKTOP-QGB4EQH\\\\mari",
+          "_source.data.win.eventdata.processGuid": "{15959494-7CDB-6757-191B-000000001E00}",
+          "_source.data.win.eventdata.processId": "9936",
+          "_source.data.win.eventdata.product": "Microsoft® Windows® Operating System",
+          "_source.data.win.eventdata.ruleName": "technique_id=T1059.001,technique_name=PowerShell",
+          "_source.data.win.eventdata.terminalSessionId": "1",
+          "_source.data.win.eventdata.user": "DESKTOP-QGB4EQH\\\\mari",
+          "_source.data.win.eventdata.utcTime": "27:23.4"
+        },
+        "provenance": {
+          "csv_record_end_line": 131800,
+          "dataset": "Windows-APT 2025",
+          "dataset_version": "4",
+          "original_id": "4se_rZMBnOFSf1ly0iSe",
+          "original_index": "wazuh-alerts-4.x-2024.12.09",
+          "processing_version": "1.0.0",
+          "row_sha256": "fad4346d41b65b31224a4840a4401e25e1ee98d88f42d91c3c741e87983de984",
+          "source_file": "windows-apt-2025-v4/Windows-APT 2025 A Dataset for APT-Inspired Attack/10-December-P1.csv",
+          "source_representation": "period_csv",
+          "source_row_index": 6548,
+          "source_sha256": "896eb72630932598192628f72012ce749786868cc2d1f7217937e555ab588229"
+        },
+        "quality": {
+          "timestamp": "explicit_utc"
+        },
+        "scenario": {
+          "attribution_strength": "SHARED-WEAK",
+          "derived_label": "technique-tagged",
+          "id": "S34",
+          "metadata_ref": "publisher-metadata.json#S34",
+          "name": "Rocke",
+          "source_mapping": {
+            "Agent_Name": "window-agent3",
+            "Attribution_Strength": "SHARED-WEAK",
+            "Candidate_Scenarios": "S34|S07|S16|S33|S36|S08|S28|S06",
+            "Derived_Label": "technique-tagged",
+            "MITRE_Group_ID": "Rocke",
+            "MITRE_Technique": "[\"T1087\",\"T1059.003\"]",
+            "Mapping_Evidence": "p=0.19; margin=0.09; own-technique",
+            "Row_Index": "6548",
+            "Scenario_ID": "S34",
+            "Scenario_Name": "Rocke",
+            "Scenario_Posterior": "S34:0.19|S07:0.10|S16:0.09|S33:0.07",
+            "Source_CSV": "10-December-P1.csv",
+            "Timestamp": "Dec 9, 2024 @ 23:27:25.362"
+          }
+        }
+      }
+    }
+  ],
+  "input_sha256": {
+    "analysis/correlation/correlation-results.json": "75e9adaf4452597fe76a473df7bfce4ccb5b74faec3466876a6e0b78974b2861",
+    "analysis/detections/detection-results.json": "a41d4176901b42b31c6b0ed1ba48e529fca1b899976ae798c190211fa77851a7",
+    "dataset/processed/windows-apt-events.ndjson": "bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac"
+  },
+  "interpretation": "Related process activity excluded by service-parent and PowerShell predicates; not an independently classified false positive. Encoded content is not decoded.",
+  "pair": {
+    "correlation_id": "89dde0c506d0e067016c2b5c6b03bbf71baa58d23ea8466b032459d8f2e4814d",
+    "event_ids": [
+      "01ea2e887c88adf9d4b6a5edf353af461617e8372ebfe98f63b117460e79b760",
+      "32be01ebebaa05d0b83cb068bbcab36b41c24a1a48ca750d33bed090f68bb51a"
+    ],
+    "gap_nanoseconds": 54103100,
+    "host": "DESKTOP-QGB4EQH",
+    "join_keys": {
+      "host.name": "DESKTOP-QGB4EQH",
+      "normalized_guid": "{15959494-7cdb-6757-181b-000000001e00}",
+      "powershell_parent_entity_id": "{15959494-7CDB-6757-181B-000000001E00}",
+      "shell_process_entity_id": "{15959494-7CDB-6757-181B-000000001E00}"
+    },
+    "timestamps": [
+      "2024-12-09T23:27:23.322813000Z",
+      "2024-12-09T23:27:23.376916100Z"
+    ]
+  },
+  "passed": true,
+  "refined_powershell": false,
+  "refined_shell_service_origin": false,
+  "shell_conditions": {
+    "execution": false,
+    "hidden": false,
+    "inline_command": false,
+    "interpreter_binpath": false,
+    "no_profile": false,
+    "retrieval": false,
+    "service_control_interpreter": false,
+    "service_parent_interpreter": false
+  },
+  "verification": "Actual prepared NDJSON; all 13 saved query ID sets and tuples agree"
+}

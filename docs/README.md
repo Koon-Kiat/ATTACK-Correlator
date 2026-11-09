@@ -20,7 +20,7 @@ a new live Elasticsearch, Kibana or browser validation.
 | Build and validate the dashboard | [Dashboard runbook](kibana-dashboard-implementation.md) |
 | Import the saved dashboard | [Kibana export guide](../kibana/README.md) |
 | Check analytical and operational limits | [Limitations](limitations.md) |
-| Render reports and package current files | [Release preparation](release-preparation.md) |
+| Re-run validation after pipeline changes | [Revalidation](revalidation.md) |
 
 ## Evidence and historical records
 

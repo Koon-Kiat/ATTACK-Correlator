@@ -222,7 +222,7 @@
   },
   "index_count_before": 102011,
   "index_pattern": "windows-apt-events-*",
-  "index_size_bytes": 591317633,
+  "index_size_bytes": 814553619,
   "ingestion_failures": {
     "dead_letter_queue": {
       "dropped_events": 0,
@@ -823,5 +823,5 @@
       "passed": true
     }
   },
-  "validated_at_utc": "2026-09-16T12:49:35.435464+00:00"
+  "validated_at_utc": "2026-09-19T17:52:14.046734+00:00"
 }

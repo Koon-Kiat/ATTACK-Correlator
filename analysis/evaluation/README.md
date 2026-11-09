@@ -7,6 +7,7 @@ identifies validated panel sources. Its `dashboard_built: false` records the pre
 stage; the implemented dashboard has its own [validation report](../dashboard/dashboard-report.md).
 
 Use the [evaluation guide](../../docs/evaluation.md) for reproduction and interpretation.
-Reviewed artifacts retain source/query
+The [offline validation](evidence-validation.json) records source-predicate replay;
+live query execution is recorded separately. Reviewed artifacts retain source/query
 hashes, and temporary data belongs in ignored `results/`. No independent intent labels
 or measured accuracy metrics are supplied. See [snapshot provenance](../README.md).

@@ -1,6 +1,6 @@
 # Detection and correlation evidence review
 
-Prerequisite replay: 2026-09-16T12:50:21.306930+00:00. Live corpus: **102,011 total / 90,601 timed / 11,410 undated**.
+Prerequisite replay: 2026-09-19T17:53:18.313841+00:00. Live corpus: **102,011 total / 90,601 timed / 11,410 undated**.
 
 ## Units and review composition
 

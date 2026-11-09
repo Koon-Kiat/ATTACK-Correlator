@@ -2375,15 +2375,15 @@
     "with_timestamp": 90601,
     "without_timestamp": 11410
   },
-  "manifest_sha256": "a4f48efac65601500885ecc94167b699e64d865eba4398a8ac9d9d510e543908",
+  "manifest_sha256": "0c139f6942e09adf0888051c3eed579951da245e05e0f920d9b89198ae8fc7d6",
   "matching_unit": "distinct event.id",
   "method": "Full COUNT(*) before the export LIMIT guards truncation. Exact distinct IDs and hosts use complete returned sets, not approximate cardinality. Every query is replayed; all IDs and claimed fields are verified against live source projections. Refined sets are independently checked against their paired baseline source events.",
   "passed": true,
   "phase": 6,
   "prerequisite_sha256": {
-    "analysis/detections/prerequisites/ingestion-validation.json": "425de66bb8624af56e27b2681c14a570ec38475766450ac2e7c8ed9458dd8c21",
+    "analysis/detections/prerequisites/ingestion-validation.json": "fc8794f9e2749a1fcab047799c6d846029a3c5037ec9d3c644dbc9fc4ff8facf",
     "analysis/ingestion/ingestion-validation.json": "24863f3884750e754d29d9c743958bbe0ff6dcca4c1255326841d3e8614699c2",
-    "analysis/selection/selection-verification.json": "d5cfb93d3a1d5ca38d76928f8f8e8625c6a19b9a192757f4b8243820fe0547ee",
+    "analysis/selection/selection-verification.json": "0864997dab429d5135d33819ef649f68ddf7b06096c3ada04640606c14580532",
     "analysis/technique_selection.json": "3c25ab7887efa14c79924767c9385ddc379a32117ef62d59ac007688ea792012"
   },
   "queries": {
@@ -24946,7 +24946,7 @@
       "tactics": [
         "Execution"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     },
     {
       "attack_guidance": {
@@ -25052,7 +25052,7 @@
       "tactics": [
         "Execution"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     },
     {
       "attack_guidance": {
@@ -25209,8 +25209,8 @@
         "Persistence",
         "Privilege Escalation"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     }
   ],
-  "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+  "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
 }

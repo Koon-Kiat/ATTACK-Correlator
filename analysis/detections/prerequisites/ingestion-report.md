@@ -1,13 +1,13 @@
 # Live ingestion validation
 
-Validated: 2026-09-16T12:49:35.435464+00:00. Overall passed: **True**.
+Validated: 2026-09-19T17:52:14.046734+00:00. Overall passed: **True**.
 
 Index `windows-apt-events-v1`; template `windows-apt-events-template`; query pattern `windows-apt-events-*`.
 Processed SHA-256: `bb2bc4510dba83e445f0c62649de216d6c0f32bda2b5cbe0b43c134ab93121ac`.
 
 Stack versions: Elasticsearch 9.5.3, Logstash 9.5.3, Kibana 9.5.3.
 Expected/indexed: 102,011 / 102,011.
-Ingestion (container recreation through drain): 69.83 seconds. Index store: 591,317,633 bytes.
+Ingestion (container recreation through drain): 69.83 seconds. Index store: 814,553,619 bytes.
 Input count before this run: 102,011.
 
 ## Failure accounting
@@ -18,12 +18,12 @@ Input count before this run: 102,011.
   "elasticsearch_non_retryable_failures": 0,
   "elasticsearch_successful_operations": 102011,
   "dead_letter_queue": {
-    "max_queue_size_in_bytes": 1073741824,
-    "queue_size_in_bytes": 1,
-    "dropped_events": 0,
     "last_error": "no errors",
     "storage_policy": "drop_newer",
-    "expired_events": 0
+    "dropped_events": 0,
+    "expired_events": 0,
+    "queue_size_in_bytes": 1,
+    "max_queue_size_in_bytes": 1073741824
   },
   "dead_letter_queue_note": "An empty Logstash DLQ has a one-byte segment header.",
   "logstash_input_events": 102011,

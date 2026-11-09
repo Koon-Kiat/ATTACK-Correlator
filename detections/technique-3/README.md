@@ -1,6 +1,6 @@
 # T1543.003 — Windows Service
 
-Tactics: Persistence, Privilege Escalation. Validated: 2026-09-16T12:50:04.356335+00:00.
+Tactics: Persistence, Privilege Escalation. Validated: 2026-09-19T17:52:56.693104+00:00.
 
 ## Objective and observable telemetry
 

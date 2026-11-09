@@ -104,7 +104,7 @@
       "tactics": [
         "Execution"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     },
     {
       "attack_guidance": {
@@ -210,7 +210,7 @@
       "tactics": [
         "Execution"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     },
     {
       "attack_guidance": {
@@ -367,7 +367,7 @@
         "Persistence",
         "Privilege Escalation"
       ],
-      "validated_at_utc": "2026-09-16T12:50:04.356335+00:00"
+      "validated_at_utc": "2026-09-19T17:52:56.693104+00:00"
     }
   ]
 }

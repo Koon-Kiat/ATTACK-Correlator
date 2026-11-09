@@ -215,32 +215,23 @@ and [import instructions](kibana/README.md).
 .\.venv\Scripts\python.exe -m ruff check .
 .\.venv\Scripts\python.exe -m ruff format --check .
 .\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe scripts/verify_evidence.py
 ```
 
 Software tests cover preservation, normalization, query contracts, exact counting,
 correlation boundaries, fan-out, scenario selection and dashboard reconciliation.
-They do not measure detector accuracy. Full source preservation is checked by
-`python -m src.preprocessing.verify_processed`. Live ES|QL/EQL execution and source
-readback require the earlier Elastic commands; saved reports retain their recorded
-run times and validation scope.
+They do not measure detector accuracy. The offline evidence verifier checks all 13
+saved query ID sets and every broad/refined pair and service triple against prepared
+NDJSON. It also writes the [excluded pair](analysis/correlation/excluded-pair-example.json)
+and [refined service example](analysis/detections/refined-service-example.json).
+Live ES|QL/EQL execution still requires the earlier Elastic commands.
 
-## Report authoring and packaging
-
-Follow [release preparation](docs/release-preparation.md) for optional PDF/Word authoring,
-visual checks and release validation. Report authoring uses optional ReportLab, Pillow,
-pypdf and python-docx libraries with Windows Arial fonts. Supply the reviewed source
-at ignored `reports/technical-report.md` before rendering. Reports and their source
-are excluded from the code archive.
-
-```powershell
-.\.venv\Scripts\python.exe scripts/package_release.py
-```
-
-The default ZIP is `reports/ATTACK-Correlator-code.zip`; `--output` must remain under
-`reports/`. The packager reads Git-index blobs, so review and stage intended changes
-before packaging. Unstaged and untracked files are not included. It checks forbidden
-paths, local credential values, archive CRCs and member hashes. PDF/Word files and
-the editable report source are delivered separately. Packaging requires a Git checkout.
+GitHub Actions runs the software tests on Linux and Windows with Python 3.12 and 3.15,
+plus lint, dependency and Compose configuration checks, for pull requests and pushes to
+`main`. CI has no dataset or Elastic stack, so it does not replace the evidence verifier
+or the live validation in the [revalidation guide](docs/revalidation.md). Dependabot
+proposes weekly Python and GitHub Actions updates. Upgrade the Elastic stack by hand,
+because saved ingestion and dashboard evidence record its version.
 
 ## Troubleshooting
 
@@ -259,4 +250,3 @@ the editable report source are delivered separately. Packaging requires a Git ch
 | CSV/Unicode or partial-scan error | Read diagnostics and choose a verified delimiter/encoding; do not silently skip records. |
 | Large JSON rejected by inspector | Its default limit is 64 MiB; review the input before raising `--max-json-mb`. |
 | Test temporary-folder error | Use the directly creatable `--basetemp .test-tmp`. |
-| Missing report source during rendering | Supply the reviewed `reports/technical-report.md`; it is not included in Git or the code archive. |

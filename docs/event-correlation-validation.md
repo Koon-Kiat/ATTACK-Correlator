@@ -41,7 +41,7 @@ extensions are required.
 These are candidate evidence units, not attacks or measured error rates. The complete
 Python enumeration is authoritative for pair counts. All three known service triples
 satisfy refined endpoints; no excluded triple is invented. The
-[excluded examples in the report](../analysis/correlation/correlation-report.md) document
+[concrete excluded pair](../analysis/correlation/excluded-pair-example.json) documents
 real broad lineage outside both refined endpoint predicates.
 
 ## Software checks and downstream review

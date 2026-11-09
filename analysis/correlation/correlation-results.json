@@ -2393,10 +2393,10 @@
     "shell_refined": 172
   },
   "prerequisite_sha256": {
-    "analysis/detections/detection-results.json": "c55cf2cf9731ccd6682b5bf235a2b2b96917224bb6bb919e337bbb487071624e",
+    "analysis/detections/detection-results.json": "a41d4176901b42b31c6b0ed1ba48e529fca1b899976ae798c190211fa77851a7",
     "analysis/selection/correlation-feasibility.json": "7189293904407a906677f9edbf119efc1f110bc3f4e2b6cc22a4678eda25610b",
     "analysis/technique_selection.json": "3c25ab7887efa14c79924767c9385ddc379a32117ef62d59ac007688ea792012",
-    "detections/manifest.json": "a4f48efac65601500885ecc94167b699e64d865eba4398a8ac9d9d510e543908"
+    "detections/manifest.json": "0c139f6942e09adf0888051c3eed579951da245e05e0f920d9b89198ae8fc7d6"
   },
   "query_sha256": {
     "correlation/baseline.eql": "45cee262d4120826a4e20add6c56a26ca19c9a6c671cb1d8dc7b398bce31f437",
@@ -2415,7 +2415,7 @@
   "runner_sha256": "c8d9cda26b40be67667fc0bce963d66a14611087e050a7b24ccc6f42822b9e1a",
   "unbounded_lineage_count": 261,
   "unbounded_service_origin_lineage_count": 3,
-  "validated_at_utc": "2026-09-16T12:50:21.306930+00:00",
+  "validated_at_utc": "2026-09-19T17:53:18.313841+00:00",
   "windows": {
     "300": {
       "broad": {
